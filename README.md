@@ -4,12 +4,11 @@ A simple top down game in Unity
 
 
 
-Assets Dir
-|
-|-- Graphics( Where the art is saved  )
-|
-|-- PreFab ( Where we save prefab gameObjects)
-|
-|-- Scenes (Where we save Scenes )
-|
-|-- Scripts ( Where we save Scripts)
+<h3> Assets Dir </h3>
+<ul>
+  <li> Graphics - where we save the Sprites  </li>
+  <li> Prefab - where we save PreFab GameObjects  </li>
+  <li> Scenes - where we save Scenes  </li>
+  <li> Script - where we save the Scripts  </li>
+</ul>
+  
