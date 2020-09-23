@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - bullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - whatIsGround
+  - behind_player
+  - whatIsPlayer
+  - front_player
+  - top
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: whatIsGround
+    uniqueID: 2402839255
+    locked: 0
+  - name: behind_player
+    uniqueID: 637676957
+    locked: 0
+  - name: whatIsPlayer
+    uniqueID: 3965179369
+    locked: 0
+  - name: front_player
+    uniqueID: 3273331529
+    locked: 0
+  - name: top
+    uniqueID: 422361111
+    locked: 0
