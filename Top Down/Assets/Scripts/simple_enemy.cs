@@ -7,8 +7,18 @@ public class simple_enemy : MonoBehaviour
 {
     [Space]
     [Header ("status : ")]
-    public int health = 2;
+    public GameObject enemy;
+    public int health = 4;
+    private int fullHealth;
     public float move_speed = 4.0f;
+
+    public GameObject healthBarG;
+    public float xBarOffSet;
+    public float yBarOffSet;
+    private Vector3 iniHealthScale;
+
+    public GameObject healthBarR;
+
 
     [Space]
     [Header ("Basic IA : ")]
@@ -38,7 +48,21 @@ public class simple_enemy : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     
 
-    
+    private void Start() {
+        iniHealthScale = new Vector3(healthBarG.transform.localScale.x, 
+                                   healthBarG.transform.localScale.y,
+                                   healthBarG.transform.localScale.z);
+        fullHealth = health;
+        xBarOffSet = healthBarG.transform.position.x - enemy.transform.position.x;
+        yBarOffSet = healthBarG.transform.position.y - enemy.transform.position.y;
+    }
+
+    private void Update() {
+        healthBarG.transform.position = new Vector2(enemy.transform.position.x + xBarOffSet,
+                                                    enemy.transform.position.y + yBarOffSet); 
+        healthBarR.transform.position = healthBarG.transform.position;
+        
+    }
 
    
 
@@ -46,11 +70,15 @@ public class simple_enemy : MonoBehaviour
         if (other.gameObject.tag.Equals("bullet"))
         {
             health = health - 1;
-            
+            Debug.Log((float) health/ (float)fullHealth);
+            healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
+                                                            iniHealthScale.y,
+                                                            iniHealthScale.z);
+
         }
         Debug.Log("squirtle hit");
         
-        if (health == 0)
+        if (health <= 0)
         {
             Debug.Log("squirtle Died");
             spriteRenderer.sprite = dead_sprite; 
