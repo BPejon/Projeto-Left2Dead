@@ -4,7 +4,7 @@ A simple top down game in Unity
 
 
 
-<h3> Top Donw/Assets Dir </h3>
+<h3> Top Down/Assets Dir </h3>
 <ul>
   <li> Graphics - where we save the Sprites  </li>
   <li> Prefab - where we save PreFab GameObjects  </li>
