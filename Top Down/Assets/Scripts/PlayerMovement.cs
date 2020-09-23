@@ -46,9 +46,12 @@ public class PlayerMovement : MonoBehaviour
     public float BULLET_BASE_SPEED = 19.0f;
 
 
+    [Space]
+    [Header("Dash : ")]
+    public float dashSpeed;
+    public float dashTime;
+    public float startDashTime;
 
-
-    
 
     void Start() {
         player_scale_ini = new Vector3(player.transform.localScale.x, 
@@ -57,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-
-
 
 
 
@@ -119,8 +120,13 @@ public class PlayerMovement : MonoBehaviour
         // movement  / fisics
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
+
+
+
         Vector2 auxVector = (firePoint.position);
         Vector2 lookDir = mousePos - auxVector;
+
+        
 
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         
