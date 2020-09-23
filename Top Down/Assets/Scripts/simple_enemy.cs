@@ -67,14 +67,17 @@ public class simple_enemy : MonoBehaviour
    
 
     void OnCollisionEnter2D(Collision2D  other) {
+
+
         if (other.gameObject.tag.Equals("bullet"))
         {
             health = health - 1;
-            Debug.Log((float) health/ (float)fullHealth);
-            healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
+            if (health >= 0)
+            {
+                healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
                                                             iniHealthScale.y,
                                                             iniHealthScale.z);
-
+            }
         }
         Debug.Log("squirtle hit");
         
@@ -82,7 +85,6 @@ public class simple_enemy : MonoBehaviour
         {
             Debug.Log("squirtle Died");
             spriteRenderer.sprite = dead_sprite; 
-
         }
     }
 
