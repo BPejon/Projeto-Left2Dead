@@ -7,57 +7,48 @@ public class simple_enemy : MonoBehaviour
 {
     [Space]
     [Header ("status : ")]
-    public GameObject enemy;
-    public int health = 4;
-    private int fullHealth;
-    public float move_speed = 4.0f;
+    public GameObject enemy;    // gameobject do inimigo
+    public int health = 4;      // a quantidade de vida do inimigo
+    private int fullHealth;     // a quantidade de vida máxima inicial do inimigo
+    public float move_speed = 4.0f; // a velocidade de movimento do inimigo
 
-    public GameObject healthBarG;
-    public float xBarOffSet;
-    public float yBarOffSet;
-    private Vector3 iniHealthScale;
+    public GameObject healthBarG;   // objeto barra de vida verde
+    public float xBarOffSet;        // distância da barra de vida em relação ao inimigo eixo x
+    public float yBarOffSet;        // distância da barra de vida em relação ao inimigo eixo y
+    private Vector3 iniHealthScale; // scale inicial da barra de vida
 
-    public GameObject healthBarR;
+    public GameObject healthBarR; // barra de vida vemelha
 
 
     [Space]
     [Header ("Basic IA : ")]
 
-    public float sightRange = 5.0f;
-    public float attackRange = 3.0f;
-    public bool playerInSightRange, playerInAttackRange;
-    // Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange = 3.0f;
-    // Attacking
-    public float timeBetweenAtacks = 1.0f;
-    bool alreadyAttacked;
 
 
 
     [Space]
     [Header ("Sprites : ")]
-    public SpriteRenderer spriteRenderer;
-    public Sprite dead_sprite;
-    public Sprite standard;
+    public SpriteRenderer spriteRenderer;   //  spriteRender principal do inimigo
+    public Sprite dead_sprite;              // sprite do inimigo morto
+    public Sprite standard;                 // sprite principal do inimigo
 
-    [Space]
-    [Header ("Player : ")]
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+
     
 
     private void Start() {
+        // define o scale da barra de vida inicial
         iniHealthScale = new Vector3(healthBarG.transform.localScale.x, 
                                    healthBarG.transform.localScale.y,
                                    healthBarG.transform.localScale.z);
+        // define quanto é vida cheia
         fullHealth = health;
+        // define a posição da barra de vida do inimigo
         xBarOffSet = healthBarG.transform.position.x - enemy.transform.position.x;
         yBarOffSet = healthBarG.transform.position.y - enemy.transform.position.y;
     }
 
     private void Update() {
+        // faz a barra de vida ficar em cima do inimigo
         healthBarG.transform.position = new Vector2(enemy.transform.position.x + xBarOffSet,
                                                     enemy.transform.position.y + yBarOffSet); 
         healthBarR.transform.position = healthBarG.transform.position;
@@ -66,12 +57,14 @@ public class simple_enemy : MonoBehaviour
 
    
 
+    // define colisor
     void OnCollisionEnter2D(Collision2D  other) {
 
-
+        // de colidir com bala então diminui a vida
         if (other.gameObject.tag.Equals("bullet"))
         {
             health = health - 1;
+            // se a vida for maior igual a zero, re-escala a vida verde
             if (health >= 0)
             {
                 healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
@@ -81,6 +74,7 @@ public class simple_enemy : MonoBehaviour
         }
         Debug.Log("squirtle hit");
         
+        // se a vida for menor que zero, fala que o inimigo morreu e troca de sprite.
         if (health <= 0)
         {
             Debug.Log("squirtle Died");
