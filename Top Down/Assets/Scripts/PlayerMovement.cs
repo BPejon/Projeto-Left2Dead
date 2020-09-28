@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // public Rigidbody2D rbw;
     public GameObject weapon;
     public SpriteRenderer  weapon_sprite;
+
     public float off_set_x; //the of set from the char 
     public float off_set_y; //the of set from the char 
     private float angle;
