@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
     void rotateGun(){
 
         // se a mira estiver no lado esquerdo.
-        if (((95.0f < angle && angle < 180.0f) || (-180.0f <= angle && angle <= -95.0f))  )
+        if (((100.0f < angle && angle < 180.0f) || (-180.0f <= angle && angle <= -100.0f))  )
         {
        
             is_invert = true;
@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
         
-        if ( ((0.0f < angle && angle < 85.0f) || (-85.0f <= angle && angle <= 0.0f)) )
+        if ( ((0.0f < angle && angle < 80.0f) || (-80.0f <= angle && angle <= 0.0f)) )
         {
             
             is_invert = false;
