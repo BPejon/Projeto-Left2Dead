@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 422361111
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -329787927
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3167689046128837550, guid: ad827de350a72144eacf66a45b52244c,
     type: 3}
@@ -224,21 +224,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a46dda060943674aa56f4d6c28456f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.91
+  moveSpeed: 4.9
   rb: {fileID: 8369403181377191480}
   animator1: {fileID: 8369403181377191430}
   player: {fileID: 8369403181377191428}
   cam: {fileID: 0}
-  CROSSHAIR_DISTANCE: 4
   crosshair: {fileID: 0}
   endOfAiming: 0
   weapon: {fileID: 8369403180682451416}
+  weapon_sprite: {fileID: 8369403180682451418}
   off_set_x: 0.217
   off_set_y: -0.285
   bulletPrefab: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9,
     type: 3}
   firePoint: {fileID: 8369403181848411463}
   BULLET_BASE_SPEED: 11
+  dashSpeed: 0
+  dashTime: 0
+  startDashTime: 0
 --- !u!95 &8369403181377191430
 Animator:
   serializedVersion: 3

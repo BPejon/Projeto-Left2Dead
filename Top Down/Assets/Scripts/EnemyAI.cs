@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     // inimigo
     GameObject enemy;
 
+
     // alvo
     public Transform target;
 
@@ -65,9 +66,10 @@ public class EnemyAI : MonoBehaviour
             reachedEndOfPath = false;
         }
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+
         
-        rb.AddForce(force);        
+
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -76,11 +78,11 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;
         }
 
-        if (rb.velocity.x >= 0.01f)
+        if (direction.x >= 0.01f)
         {
             transform.localScale = new Vector3(-1f,1f,1f);
         }
-        else if (rb.velocity.x <=  -0.01f)
+        else if (direction.x <=  -0.01f)
         {
             transform.localScale = new Vector3(1f,1f,1f);
         }
