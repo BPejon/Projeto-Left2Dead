@@ -362,11 +362,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  timeChangePoint: 2
+  timeChangePoint: 1.5
   walkPointRange: 10
   lastTime: 0
   timeBetweenAttacks: 0
-  sightRange: 10
+  sightRange: 7.5
   attackRange: 0
   onChase: 0
   playerInSightRange: 0

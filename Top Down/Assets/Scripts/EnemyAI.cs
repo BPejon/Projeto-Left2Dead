@@ -18,8 +18,8 @@ public class EnemyAI : MonoBehaviour
     
     [Space]
     [Header("Patroling")]
-    public float timeChangePoint = 2f; 
-    public float walkPointRange = 5f;
+    public float timeChangePoint = 1.5f; 
+    public float walkPointRange = 10f;
     public float lastTime = 0f;
 
 
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     // speed
     public float speed = 5f;
     // proximo ponto de escolha
-    public float nextWaypointDistance = 3f;
+    public float nextWaypointDistance = 5f;
 
     Path path;
     int currentWaypoint = 0;
@@ -56,6 +56,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("player").transform;
 
         GameObject newEmptyGO = new GameObject();
+        
         target = newEmptyGO.transform;
 
         target.position = new Vector2(transform.position.x , transform.position.y);
@@ -69,7 +70,10 @@ public class EnemyAI : MonoBehaviour
 
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+
+        getRandomPoint();
         
+
         InvokeRepeating("UpdatePath", 0f, .5f);
 
     }
@@ -114,6 +118,7 @@ public class EnemyAI : MonoBehaviour
         }
         return playerInSightRange;
     }
+
 
 
     // Update is called once per frame
