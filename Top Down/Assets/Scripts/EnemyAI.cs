@@ -8,7 +8,6 @@ public class EnemyAI : MonoBehaviour
     // inimigo
     GameObject enemy;
 
-
     // alvo
     public Transform target;
 
@@ -86,7 +85,5 @@ public class EnemyAI : MonoBehaviour
         {
             transform.localScale = new Vector3(1f,1f,1f);
         }
-
-
     }
 }
