@@ -256,7 +256,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2931220610143109904, guid: bcd0de8956907d040b9245c8aeaf76a5,
+    - target: {fileID: 4633537914780359827, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: target
       value: 
@@ -265,6 +265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886084, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
@@ -720,15 +725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2931220610143109904, guid: bcd0de8956907d040b9245c8aeaf76a5,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 646837985}
     - target: {fileID: 7026476679029886081, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: m_Name
-      value: enemy (1)
+      value: enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
