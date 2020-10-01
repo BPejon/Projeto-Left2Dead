@@ -156,14 +156,16 @@ public class PlayerMovement : MonoBehaviour
     void rotateGun(){
 
         // se a mira estiver no lado esquerdo.
-        if (((90.0f < angle && angle < 180.0f) || (-180.0f <= angle && angle <= -90.0f))  )
+        if (((95.0f < angle && angle < 180.0f) || (-180.0f <= angle && angle <= -95.0f))  )
         {
        
             is_invert = true;
             player.transform.localScale = new Vector3(-player_scale_ini.x, player_scale_ini.y, player_scale_ini.z);
             
         }
-        else{
+        
+        if ( ((0.0f < angle && angle < 85.0f) || (-85.0f <= angle && angle <= 0.0f)) )
+        {
             
             is_invert = false;
             player.transform.localScale = new Vector3(player_scale_ini.x, player_scale_ini.y, player_scale_ini.z);
