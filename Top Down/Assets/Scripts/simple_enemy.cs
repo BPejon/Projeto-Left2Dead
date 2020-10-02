@@ -26,11 +26,7 @@ public class simple_enemy : MonoBehaviour
 
 
 
-    [Space]
-    [Header ("Sprites : ")]
-    public SpriteRenderer spriteRenderer;   //  spriteRender principal do inimigo
-    public Sprite dead_sprite;              // sprite do inimigo morto
-    public Sprite standard;                 // sprite principal do inimigo
+
 
 
     
@@ -106,7 +102,6 @@ public class simple_enemy : MonoBehaviour
             }
             
             Debug.Log("squirtle Died");
-            spriteRenderer.sprite = dead_sprite; 
         }
     }
 
