@@ -5,8 +5,7 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    // inimigo
-    GameObject enemy;
+    
 
     [Space]
     [Header("player")]
@@ -40,8 +39,13 @@ public class EnemyAI : MonoBehaviour
 
     [Space]
     [Header("atributes")]
+    // script do basico do inimigo
+    simple_enemy enemyScript;
+
+
     // speed
     public float speed = 5f;
+    public int health = 4;
     // proximo ponto de escolha
     public float nextWaypointDistance = 5f;
 
@@ -54,6 +58,9 @@ public class EnemyAI : MonoBehaviour
 
     void Awake() {
         player = GameObject.Find("player").transform;
+        
+        enemyScript = gameObject.GetComponent<simple_enemy>();
+
 
         GameObject newEmptyGO = new GameObject();
         
@@ -80,6 +87,8 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
+        if(target == null)
+            return;
 
         if (seeker.IsDone()){
             seeker.StartPath(rb.position, target.position, OnPathComplete);
@@ -97,6 +106,7 @@ public class EnemyAI : MonoBehaviour
 
     void OnPathComplete(Path p )
     {
+        
         if (!p.error)
         {
             path = p;
@@ -124,6 +134,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
         if(target == null)
             return;
 
@@ -158,17 +170,22 @@ public class EnemyAI : MonoBehaviour
             transform.localScale = new Vector3(1f,1f,1f);
         }
         
-        if (!onChase)
-        {
-            checkIfInSight();
+        if (enemyScript.health > 0){
+            if (!onChase)
+            {
+                checkIfInSight();
+            }
+
+            /* verificando tempo de troca pontos para se andar (para fazer patroling) */
+            if (Time.time - lastTime >= timeChangePoint && !onChase)
+            {
+                getRandomPoint();
+                lastTime = Time.time;
+            }
+        }else{
+            target = null;
         }
 
-        /* verificando tempo de troca pontos para se andar (para fazer patroling) */
-        if (Time.time - lastTime >= timeChangePoint && !onChase)
-        {
-            getRandomPoint();
-            lastTime = Time.time;
-        }
         
 
         
