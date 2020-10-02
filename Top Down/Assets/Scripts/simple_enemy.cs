@@ -21,6 +21,9 @@ public class simple_enemy : MonoBehaviour
     private float timedied = -1f; // tempo em que o inimigo morreu
     private float timedie = 2f; // tempo até o inimigo depois de morto desaparecer
     private bool isDead = false;
+    public Animator animator;
+    Vector3 movement;
+    Vector3 prevLoc;
 
 
 
@@ -52,6 +55,7 @@ public class simple_enemy : MonoBehaviour
                                                     enemy.transform.position.y + yBarOffSet); 
         healthBarR.transform.position = healthBarG.transform.position;
         
+        
     }
 
     private void FixedUpdate() {
@@ -59,6 +63,18 @@ public class simple_enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        movement = (  transform.position - prevLoc)/ Time.deltaTime;
+
+        
+        // Debug.Log(movement.sqrMagnitude);
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        prevLoc = transform.position;
     }
 
    
