@@ -40,8 +40,7 @@ public class EnemyAI : MonoBehaviour
     [Space]
     [Header("atributes")]
     // script do basico do inimigo
-    simple_enemy enemyScript;
-
+    private simple_enemy enemyScript;
 
     // speed
     public float speed = 5f;
@@ -137,7 +136,10 @@ public class EnemyAI : MonoBehaviour
         
 
         if(target == null)
+        {
+
             return;
+        }
 
         if(path == null)
             return;

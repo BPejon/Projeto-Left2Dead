@@ -18,10 +18,9 @@ public class simple_enemy : MonoBehaviour
     private Vector3 iniHealthScale; // scale inicial da barra de vida
 
     public GameObject healthBarR; // barra de vida vemelha
-
-
-    [Space]
-    [Header ("Basic IA : ")]
+    private float timedied = -1f; // tempo em que o inimigo morreu
+    private float timedie = 2f; // tempo até o inimigo depois de morto desaparecer
+    private bool isDead = false;
 
 
 
@@ -55,6 +54,13 @@ public class simple_enemy : MonoBehaviour
         
     }
 
+    private void FixedUpdate() {
+        if (Time.time - timedied >= timedie && isDead)
+        {
+            Destroy(gameObject);
+        }
+    }
+
    
 
     // define colisor
@@ -72,11 +78,17 @@ public class simple_enemy : MonoBehaviour
                                                             iniHealthScale.z);
             }
         }
-        Debug.Log("squirtle hit");
+        
         
         // se a vida for menor que zero, fala que o inimigo morreu e troca de sprite.
         if (health <= 0)
         {
+            if (!isDead)
+            {
+                isDead = true;
+                timedied = Time.time;
+            }
+            
             Debug.Log("squirtle Died");
             spriteRenderer.sprite = dead_sprite; 
         }
