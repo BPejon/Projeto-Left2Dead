@@ -13,8 +13,6 @@ public class simple_enemy : MonoBehaviour
     public float move_speed = 4.0f; // a velocidade de movimento do inimigo
 
     public GameObject healthBarG;   // objeto barra de vida verde
-    public float xBarOffSet;        // distância da barra de vida em relação ao inimigo eixo x
-    public float yBarOffSet;        // distância da barra de vida em relação ao inimigo eixo y
     private Vector3 iniHealthScale; // scale inicial da barra de vida
 
     public GameObject healthBarR; // barra de vida vemelha
@@ -45,15 +43,15 @@ public class simple_enemy : MonoBehaviour
         // define quanto é vida cheia
         fullHealth = health;
         // define a posição da barra de vida do inimigo
-        xBarOffSet = healthBarG.transform.position.x - enemy.transform.position.x;
-        yBarOffSet = healthBarG.transform.position.y - enemy.transform.position.y;
+        
+        
     }
 
     private void Update() {
         // faz a barra de vida ficar em cima do inimigo
-        healthBarG.transform.position = new Vector2(enemy.transform.position.x + xBarOffSet,
-                                                    enemy.transform.position.y + yBarOffSet); 
-        healthBarR.transform.position = healthBarG.transform.position;
+
+
+        
         
         
     }
