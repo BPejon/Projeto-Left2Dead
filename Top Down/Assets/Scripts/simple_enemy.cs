@@ -19,7 +19,7 @@ public class simple_enemy : MonoBehaviour
 
     public GameObject healthBarR; // barra de vida vemelha
     private float timedied = -1f; // tempo em que o inimigo morreu
-    private float timedie = 4f; // tempo até o inimigo depois de morto desaparecer
+    private float timedie = 2f; // tempo até o inimigo depois de morto desaparecer
     private bool isDead = false;
     public Animator animator;
     Vector3 movement;
