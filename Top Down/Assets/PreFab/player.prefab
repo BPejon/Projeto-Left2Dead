@@ -210,7 +210,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8369403181377191431
 MonoBehaviour:
@@ -239,9 +239,10 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 8369403181848411463}
   BULLET_BASE_SPEED: 11
-  dashSpeed: 0
+  dashSpeed: 400
   dashTime: 0
   startDashTime: 0
+  isOnDash: 0
 --- !u!95 &8369403181377191430
 Animator:
   serializedVersion: 3

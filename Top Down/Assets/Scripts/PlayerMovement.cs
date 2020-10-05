@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private float angle;    // define o ângulo da arma
     private bool is_invert = false;    // verifica se a mira está invertida ( do lado esquerdo)
     
+    
 
 
     [Space]
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed; // valocidade do dash
     public float dashTime;  // tempo entre dash
     public float startDashTime; // tempo inicial do dash
+    public bool isOnDash = false;
 
 
     void Start() {
@@ -66,12 +68,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // input update
-        // guarda o input do movimento, move personagem        
+        
+        
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
         
+    
         // verifica se atirou, se atirar endOfAiming fica verdadeiro
         endOfAiming = Input.GetButtonUp("Fire1");
         // recebe onde está o mouse
@@ -109,14 +112,17 @@ public class PlayerMovement : MonoBehaviour
         
         
         Shoot();
-        
     }
 
     void FixedUpdate()
     {
         // movement  / fisics
         // movimenta o personagem
+        
+        
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        
+    
         // essas parte é para definir para onde o personagem está atirando
         Vector2 auxVector = (firePoint.position);
         Vector2 lookDir = mousePos - auxVector;
@@ -149,8 +155,9 @@ public class PlayerMovement : MonoBehaviour
             // depois de 2 segundos o projétil é destruido
             Destroy(bullet, 2.0f);
         }
-
     }
+
+   
 
     // inverte a arma caso ela seja apontada para a esquerda
     void rotateGun(){
@@ -158,10 +165,8 @@ public class PlayerMovement : MonoBehaviour
         // se a mira estiver no lado esquerdo.
         if (((95.0f < angle && angle < 180.0f) || (-180.0f <= angle && angle <= -95.0f))  )
         {
-       
             is_invert = true;
             player.transform.localScale = new Vector3(-player_scale_ini.x, player_scale_ini.y, player_scale_ini.z);
-            
         }
         
         if ( ((0.0f < angle && angle < 85.0f) || (-85.0f <= angle && angle <= 0.0f)) )
