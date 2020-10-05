@@ -79,7 +79,7 @@ public class simple_enemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D  other) {
 
         // de colidir com bala então diminui a vida
-        if (other.gameObject.tag.Equals("bullet"))
+        if (other.gameObject.tag.Equals("playerBullet"))
         {
             health = health - 1;
             // se a vida for maior igual a zero, re-escala a vida verde

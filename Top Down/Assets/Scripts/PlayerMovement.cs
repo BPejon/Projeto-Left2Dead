@@ -25,12 +25,20 @@ public class PlayerMovement : MonoBehaviour
     [Header ("gun : ")]
     // public Rigidbody2D rbw;
     public GameObject weapon;       // define a arma
-    public SpriteRenderer  weapon_sprite;   // define o sprite da arma
+    public SpriteRenderer weapon_sprite_render;  // define o sprite da arma
+    public Sprite[] weapon_sprites = new Sprite[6]; 
     public float off_set_x; //the of set from the char 
     public float off_set_y; //the of set from the char 
     private float angle;    // define o ângulo da arma
     private bool is_invert = false;    // verifica se a mira está invertida ( do lado esquerdo)
-    
+    /*
+        weapon_equip define a arma que o player está equipado
+        0 - pistola
+        1 - metralhadora
+        2 - shotgun
+        3 - sniper
+    */
+    private int weapon_equip = 0;
     
 
 
@@ -59,9 +67,8 @@ public class PlayerMovement : MonoBehaviour
         player_scale_ini = new Vector3(player.transform.localScale.x, 
                                    player.transform.localScale.y,
                                    player.transform.localScale.z);
-
-
-    }
+        weapon_sprite_render.sprite = weapon_sprites[weapon_equip];
+    }   
 
 
 
@@ -73,7 +80,22 @@ public class PlayerMovement : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        
+
+        if(Input.GetKeyDown("1")){
+            weapon_equip = 0;
+        }
+        if(Input.GetKeyDown("2")){
+            weapon_equip = 1;
+        } 
+        if(Input.GetKeyDown("3")){
+            weapon_equip = 2;
+        } 
+        if(Input.GetKeyDown("4")){
+            weapon_equip = 3;
+        }
+        weapon_sprite_render.sprite = weapon_sprites[weapon_equip];
+
+              
     
         // verifica se atirou, se atirar endOfAiming fica verdadeiro
         endOfAiming = Input.GetButtonUp("Fire1");
@@ -110,8 +132,22 @@ public class PlayerMovement : MonoBehaviour
 
         }
         
+        switch (weapon_equip)
+        {
+            case 0:
+                Shoot();
+                break;
+            case 1:
+                ShootAssult();
+                break;
+            case 2:
+                ShootShotgun();
+                break;
+            case 3:
+                ShootSniper();
+                break;
+        }
         
-        Shoot();
     }
 
     void FixedUpdate()
@@ -130,9 +166,9 @@ public class PlayerMovement : MonoBehaviour
         // caso o personagem esteja andando para cima, a sprite da arma é carregada atrás do player
         if (movement.y > 0.0f && movement.sqrMagnitude > 0.0f)
         {
-            weapon_sprite.sortingLayerName  = "behind_player";
+            weapon_sprite_render.sortingLayerName  = "behind_player";
         }else{
-            weapon_sprite.sortingLayerName  = "front_player";
+            weapon_sprite_render.sortingLayerName  = "front_player";
         }
 
         
@@ -157,6 +193,61 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void ShootShotgun(){
+        int numberOfbullets = 5;
+        float[] anglesBet = new float[5];
+
+
+        Vector2 auxVector = (firePoint.position);
+        Vector2 lookDir = mousePos - auxVector;    
+
+        if(endOfAiming){
+            GameObject[] bullet = new GameObject[numberOfbullets];
+            Rigidbody2D[] rbb = new Rigidbody2D[numberOfbullets];
+            for (int i = 0; i < numberOfbullets; i++)
+            {
+                bullet[i] = Instantiate(bulletPrefab, firePoint.position, 
+                                        firePoint.rotation ); 
+                rbb[i] = bullet[i].GetComponent<Rigidbody2D>();
+                anglesBet[i] = Random.Range(-70,70);
+                // adiciona uma força que define a movimentaçao da bala
+                Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * lookDir;
+                rbb[i].AddForce(directorShot.normalized * BULLET_BASE_SPEED, ForceMode2D.Impulse);
+                // depois de 2 segundos o projétil é destruido
+                Destroy(bullet[i], 1.2f);
+            }
+        }
+    }
+
+
+    void ShootSniper(){
+        // A BALA DA SNIPER AUMENTA o quão mais longe vc mirar
+
+
+        Vector2 auxVector = (firePoint.position);
+        Vector2 lookDir = mousePos - auxVector;    
+        if(endOfAiming){
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            // adiciona uma força que define a movimentaçao da bala
+            rbb.AddForce((lookDir/5) * (BULLET_BASE_SPEED + 2), ForceMode2D.Impulse);
+            // depois de 2 segundos o projétil é destruido
+            Destroy(bullet, 3.0f);
+        }
+    }
+
+    void ShootAssult(){
+        Vector2 auxVector = (firePoint.position);
+        Vector2 lookDir = mousePos - auxVector;    
+        if(endOfAiming){
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+            // adiciona uma força que define a movimentaçao da bala
+            rbb.AddForce(firePoint.up * BULLET_BASE_SPEED, ForceMode2D.Impulse);
+            // depois de 2 segundos o projétil é destruido
+            Destroy(bullet, 2.0f);
+        }
+    }
    
 
     // inverte a arma caso ela seja apontada para a esquerda
