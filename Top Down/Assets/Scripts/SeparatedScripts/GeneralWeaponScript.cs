@@ -43,7 +43,25 @@ public class GeneralWeaponScript : MonoBehaviour
             //Parte de lidar com munição ainda não criada.
             //Esta função é herdada da classe Gun - Mas como chamar "genericamente" ainda não ficou
             //Claro pra mim, estou vendo como será.
-            weapon.GetComponent<Pistol>().Shoot(camvec);
+            int fevent = weapon.GetComponent<Pistol>().Shoot(camvec);
+            if(fevent == 1){
+                Debug.Log("Shot Fired");
+            }
+            else{
+                Debug.Log("Must Reload");
+            }
+        }
+
+        //Se estamos recarregando
+        if(Input.GetButtonUp("Reload")){
+            Debug.Log("R pressed");
+            int fevent = weapon.GetComponent<Pistol>().Reload();
+            if(fevent == 0){
+                Debug.Log("No ammo");
+            }
+            else{
+                Debug.Log("Reloaded");
+            }
         }
 
     }

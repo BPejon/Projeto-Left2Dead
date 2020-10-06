@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 7872384499868384596}
   - component: {fileID: 7872384499868384599}
   m_Layer: 0
-  m_Name: NewPlayer
+  m_Name: NewPlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,6 +349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: curammo
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 156769526155525877, guid: 3e22f2eb3b5fd244bba09f8878ac5e0d,
+        type: 3}
+      propertyPath: ammo
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 156769526565187785, guid: 3e22f2eb3b5fd244bba09f8878ac5e0d,
         type: 3}
