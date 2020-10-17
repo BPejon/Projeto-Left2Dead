@@ -16,9 +16,7 @@ public class Pistol : Gun
 
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
-        clipsize = 6;
-        ammo = 0;
-        curammo = 6;
+
 
         self = this.gameObject;
 
@@ -29,9 +27,7 @@ public class Pistol : Gun
     
     void Start()
     {
-        clipsize = 6;
-        ammo = 0;
-        curammo = 6;
+        
     }
 
     // Update is called once per frame
@@ -55,15 +51,15 @@ public class Pistol : Gun
 
            
             //Quando Atiramos, temos também que sofrer um "recoil"
-           GameObject rb = this.transform.parent.gameObject;
+        //    GameObject rb = this.transform.parent.gameObject;
            //Precisamos pegar o Gameobject do pai do pai, isto é, do player;
-           GameObject rb2 = rb.transform.parent.gameObject;
+        //    GameObject rb2 = rb.transform.parent.gameObject;
            
           
            //Fazemos o Knockback por meio da posição da bala, em comparação com a posição do jogador.
-            Vector2 diference = rb2.transform.position - nbullet.transform.position;
-            float smoothener = 0.2f;
-            rb2.transform.position = new Vector2(rb2.transform.position.x + (diference.x* smoothener), rb2.transform.position.y + (diference.y*smoothener));
+            // Vector2 diference = rb2.transform.position - nbullet.transform.position;
+            // float smoothener = 0.2f;
+            // rb2.transform.position = new Vector2(rb2.transform.position.x + (diference.x* smoothener), rb2.transform.position.y + (diference.y*smoothener));
 
        }
        
