@@ -59,6 +59,16 @@ public abstract class Gun : MonoBehaviour
     //Também temos que aumentar a munição fora do clipe;
     public abstract void Refill(int Ammount);
 
+    //Esconder o seu sprite:
+    public void Hide(){
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    //mostrar seu sprite:
+    public void Show(){
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     //Pegamos o spirte para a arma, usado no contrutor;
     public Sprite GetSprite(string gname){
         switch(gname){
