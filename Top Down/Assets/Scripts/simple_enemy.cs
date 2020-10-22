@@ -23,6 +23,10 @@ public class simple_enemy : MonoBehaviour
     Vector3 movement;
     Vector3 prevLoc;
 
+    [Space]
+    [Header("dead")]
+    public ParticleSystem bloodParticle;
+
 
 
 
@@ -53,6 +57,7 @@ public class simple_enemy : MonoBehaviour
     }
 
     private void FixedUpdate() {
+      
         if (Time.time - timedied >= timedie && isDead)
         {
             Destroy(gameObject);

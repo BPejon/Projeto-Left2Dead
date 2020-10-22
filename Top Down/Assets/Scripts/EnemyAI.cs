@@ -55,6 +55,8 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    
+
     void Awake() {
         player = GameObject.Find("player").transform;
         
