@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement_dash();
 
         if(Input.GetKeyDown("1")){
             weapon_equip = 0;
@@ -159,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
         // movimenta o personagem
         
         movement_all();
-        movement_dash();
         
         // essas parte é para definir para onde o personagem está atirando
         Vector2 auxVector = (firePoint.position);
