@@ -272,6 +272,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7698422013590585130, guid: 6830c3be38476c648ab8600e9fc962d0,
         type: 3}
+    - target: {fileID: 7026476679029886082, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: bloodParticle
+      value: 
+      objectReference: {fileID: 1068871189053294826, guid: d01e8f88e54d3c747aa7b3426726c15e,
+        type: 3}
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -538,7 +544,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1487602979
 GameObject:
@@ -895,7 +901,7 @@ PrefabInstance:
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
