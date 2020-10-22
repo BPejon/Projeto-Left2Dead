@@ -56,8 +56,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
     [Header("Dash : ")]
+    public ParticleSystem dashParticle;
     public float dashSpeed; // valocidade do dash
     public float dashTime;  // tempo entre dash
+    public float dashDuration; // tempo que um dash dura
     public float startDashTime; // tempo inicial do dash
     public bool isOnDash = false;
 
@@ -68,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
                                    player.transform.localScale.y,
                                    player.transform.localScale.z);
         weapon_sprite_render.sprite = weapon_sprites[weapon_equip];
+        startDashTime = -2;
     }   
 
 
@@ -155,10 +158,9 @@ public class PlayerMovement : MonoBehaviour
         // movement  / fisics
         // movimenta o personagem
         
+        movement_all();
+        movement_dash();
         
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        
-    
         // essas parte é para definir para onde o personagem está atirando
         Vector2 auxVector = (firePoint.position);
         Vector2 lookDir = mousePos - auxVector;
@@ -178,7 +180,28 @@ public class PlayerMovement : MonoBehaviour
    
 
     }
+    void movement_all(){
 
+        if(isOnDash){
+            rb.velocity = (movement * dashSpeed * Time.fixedDeltaTime);
+        }else{
+            rb.velocity = (movement * moveSpeed * Time.fixedDeltaTime);
+        }
+
+    }
+
+    void movement_dash(){
+        // verificando se foi apertado o shift e se o tempo é permitido
+        if( Input.GetKeyDown(KeyCode.LeftShift) && !isOnDash && (Time.time - startDashTime) >= dashTime) {
+            startDashTime = Time.time;
+            Instantiate(dashParticle, transform.position, Quaternion.identity);
+            isOnDash = true;            
+        }
+        if(isOnDash && (Time.time - startDashTime) > dashDuration){
+            isOnDash = false;
+        }
+
+    }
 
     // função de tiro do player
     void Shoot(){
@@ -249,7 +272,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
    
-
     // inverte a arma caso ela seja apontada para a esquerda
     void rotateGun(){
 

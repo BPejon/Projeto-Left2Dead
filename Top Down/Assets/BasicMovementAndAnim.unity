@@ -1002,52 +1002,14 @@ PrefabInstance:
       objectReference: {fileID: 1522514228}
     - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
         type: 3}
-      propertyPath: dashSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: dashTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: BULLET_BASE_SPEED
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
       propertyPath: weapon_sprite.Array.data[0]
       value: 
       objectReference: {fileID: 1793084563}
     - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
         type: 3}
-      propertyPath: weapon_sprite_render
+      propertyPath: dashParticle
       value: 
-      objectReference: {fileID: 1793084563}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: weapon_sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: -93006566689803346, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
-        type: 3}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: weapon_sprites.Array.data[1]
-      value: 
-      objectReference: {fileID: -7485147203578233895, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
-        type: 3}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: weapon_sprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
-        type: 3}
-    - target: {fileID: 8369403181377191431, guid: 347bfcc341c3e644ca9e3a52e4853129,
-        type: 3}
-      propertyPath: weapon_sprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      objectReference: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
         type: 3}
     - target: {fileID: 8369403181377191482, guid: 347bfcc341c3e644ca9e3a52e4853129,
         type: 3}

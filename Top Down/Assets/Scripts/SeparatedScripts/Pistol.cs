@@ -44,9 +44,13 @@ public class Pistol : Gun
        //se temos munição, atiramos; Tiro de pistóla é basico
        else{
            curammo--;
+           //Vector3.Normalize(aimvec);
+
            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
-           rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
+           rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
+           
+           //rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
            Destroy(nbullet, 2.0f);
 
            
