@@ -194,7 +194,11 @@ public class PlayerMovement : MonoBehaviour
         // verificando se foi apertado o shift e se o tempo é permitido
         if( Input.GetKeyDown(KeyCode.LeftShift) && !isOnDash && (Time.time - startDashTime) >= dashTime) {
             startDashTime = Time.time;
-            Instantiate(dashParticle, transform.position, Quaternion.identity);
+            ParticleSystem dashParticleClone = (ParticleSystem)Instantiate(dashParticle, transform.position, Quaternion.identity);
+            float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
+            float duration = GetComponent<ParticleSystem>().main.duration;
+            float totalDuration = startTime + duration;
+            Destroy(dashParticleClone.gameObject, totalDuration);
             isOnDash = true;            
         }
         if(isOnDash && (Time.time - startDashTime) > dashDuration){
