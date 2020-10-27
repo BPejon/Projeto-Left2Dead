@@ -155,8 +155,8 @@ public class EnemyAI : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
         
-
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+        rb.velocity = (direction* speed * Time.fixedDeltaTime);
+        // rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -187,6 +187,7 @@ public class EnemyAI : MonoBehaviour
                 lastTime = Time.time;
             }
         }else{
+            speed = 0.0f;
             target = null;
         }
 

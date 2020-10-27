@@ -371,7 +371,7 @@ MonoBehaviour:
   onChase: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  speed: 5
+  speed: 310
   health: 4
   nextWaypointDistance: 1
 --- !u!95 &8488597463513257603
