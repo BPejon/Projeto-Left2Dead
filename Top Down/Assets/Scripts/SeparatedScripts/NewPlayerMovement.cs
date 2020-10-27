@@ -16,6 +16,15 @@ public class NewPlayerMovement : MonoBehaviour
 
     Vector2 movement; //Guardamos os inputs de movimento;
 
+    [Space]
+    [Header("Dash : ")]
+    public ParticleSystem dashParticle;
+    public float dashSpeed; // valocidade do dash
+    public float dashTime;  // tempo entre dash
+    public float dashDuration; // tempo que um dash dura
+    public float startDashTime; // tempo inicial do dash
+    public bool isOnDash = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +40,9 @@ public class NewPlayerMovement : MonoBehaviour
         //1 - Movimento na direção X para direita, -1 - Para esquerda, 0 - Nenhum movimento
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement_dash();
+
+
 
         //Colocamos tais valores na máquina de estados do nosso animator
         animator.SetFloat("Horizontal", movement.x);
@@ -41,7 +53,32 @@ public class NewPlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         //move o personagem conforme o movimento.
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(isOnDash){
+            rb.velocity = (movement * dashSpeed * Time.fixedDeltaTime);
+        }else{
+            rb.velocity = (movement * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    void movement_dash(){
+        // verificando se foi apertado o shift e se o tempo é permitido
+        if( Input.GetKeyDown(KeyCode.LeftShift) && !isOnDash && (Time.time - startDashTime) >= dashTime && movement.sqrMagnitude > 0) {
+            startDashTime = Time.time;
+            ParticleSystem dashParticleClone = (ParticleSystem)Instantiate(dashParticle, 
+                                                                           new Vector3(transform.position.x,
+                                                                                       transform.position.y,
+                                                                                        - 2),
+                                                                            Quaternion.identity);
+            float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
+            float duration = GetComponent<ParticleSystem>().main.duration;
+            float totalDuration = startTime + duration;
+            Destroy(dashParticleClone.gameObject, totalDuration);
+            isOnDash = true;            
+        }
+        if(isOnDash && (Time.time - startDashTime) > dashDuration){
+            isOnDash = false;
+        }
+
     }
     
 

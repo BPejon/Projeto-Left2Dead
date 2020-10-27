@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7026476679029886081}
-  health: 4
+  health: 6
   move_speed: 4
   healthBarG: {fileID: 7026476678479673033}
   healthBarR: {fileID: 7026476678548856569}

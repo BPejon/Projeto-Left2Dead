@@ -31,6 +31,9 @@ public class GeneralWeaponScript : MonoBehaviour
     //Vetor de posição do mouse, usado na mira.
     public Vector3 camvec;
 
+    public Transform player;
+    private Vector3 player_scale_ini;
+
     void Start()
     {
         //Ao iniciar pegamos o sprite da arma e o holster.
@@ -38,7 +41,10 @@ public class GeneralWeaponScript : MonoBehaviour
 
         //Pegar a imagem da arma empunhada (no caso a 0 no inicio);
         wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
-
+        player = GameObject.Find("player").transform;
+        player_scale_ini = new Vector3(player.localScale.x, 
+                                   player.localScale.y,
+                                   player.localScale.z);
         UpdateWeapon();
     }
 
@@ -49,6 +55,10 @@ public class GeneralWeaponScript : MonoBehaviour
         wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
         //definimos o angulo que vamos usar para a mira.
         AimAngle();
+        //invertendo o personagem
+        
+
+
         //Se estamos atirando, vamos atirar
         if(Input.GetButtonUp("Fire1")){
             //Atirar será chamado da arma em si
@@ -70,7 +80,7 @@ public class GeneralWeaponScript : MonoBehaviour
         }
 
         //Se estamos recarregando
-        if(Input.GetButtonUp("Reload")){
+        if(Input.GetKeyDown(KeyCode.R)){
             Debug.Log("R pressed" + held);
             int fevent = gunBelt[held].GetComponent<Gun>().Reload();
             if(fevent == 0){
@@ -114,19 +124,25 @@ public class GeneralWeaponScript : MonoBehaviour
             invert = true;
         }
 
-        //Basicamente vemos se damos o flipzinho ou não.
-        /*if(invert){
-           wpimg.flipY = invert; 
-           holster.transform.eulerAngles = new Vector3(holster.transform.eulerAngles.x,holster.transform.eulerAngles.y,angle); 
+
+        if(invert){
+            player.localScale = new Vector3(-player_scale_ini.x, player_scale_ini.y, player_scale_ini.z);
+        }else{
+            player.localScale = new Vector3(player_scale_ini.x, player_scale_ini.y, player_scale_ini.z);
         }
-        else{
-            wpimg.flipY = invert; 
-            holster.transform.eulerAngles = new Vector3(holster.transform.eulerAngles.x,holster.transform.eulerAngles.y,angle); 
-        }*/
+
+        //Basicamente vemos se damos o flipzinho ou não.
         
-        //gunBelt[held].GetComponent<SpriteRenderer>().flipY = invert;
-        wpimg.flipY = invert; 
-        holster.transform.eulerAngles = new Vector3(holster.transform.eulerAngles.x,holster.transform.eulerAngles.y,angle);
+        if(invert){
+            // wpimg.flipY = invert; 
+            holster.transform.eulerAngles = new Vector3(holster.transform.eulerAngles.x,
+                                                        holster.transform.eulerAngles.y,
+                                                        angle + 180);            
+        }else{
+            holster.transform.eulerAngles = new Vector3(holster.transform.eulerAngles.x,
+                                                        holster.transform.eulerAngles.y,
+                                                        angle);
+        }
     }
 
     //Atualiza quanto que arma estamos usando, mudando o sprite e tal;

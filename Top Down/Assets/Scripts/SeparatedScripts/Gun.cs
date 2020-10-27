@@ -14,7 +14,7 @@ public abstract class Gun : MonoBehaviour
     public int ammo;
 
     //Quantas balas temos no pente
-    public int curammo;
+    public int curammo=10;
 
     //somos nós!
     GameObject gun;
