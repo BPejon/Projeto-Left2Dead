@@ -105,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         endOfAiming = Input.GetButtonUp("Fire1");
         // recebe onde está o mouse
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        // crosshair.transform.position = mousePos;  
     
 
         animator1.SetFloat("Horizontal", movement.x);
@@ -115,6 +116,8 @@ public class PlayerMovement : MonoBehaviour
         // movimenta a arma
         weapon.transform.position = new Vector2(rb.position.x + off_set_x, rb.position.y + off_set_y); 
         cam.transform.position = new Vector3(rb.position.x, rb.position.y, -10);
+        // a mira segue a posição do mouse
+
 
         // faz a transformação do ângulo da arma caso o personagem olhe para a esquerda
         if(is_invert){
@@ -174,8 +177,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         
-        // a mira segue a posição do mouse
-        crosshair.transform.position = mousePos;  
+        
         rotateGun();
    
 
