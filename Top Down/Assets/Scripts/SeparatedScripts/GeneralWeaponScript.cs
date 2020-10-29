@@ -8,11 +8,17 @@ public class GeneralWeaponScript : MonoBehaviour
     //Tais controles incluem: Mira, Relações de Munição, armas equipadas.
     //Este Script estará ligado a um objeto chamdo "holster", filho do player
     //Tal objeto exsiste para facilitar a troca de armas e coisas assim.
-    
-    //Array de Armas: Array guarda apenas dois itens do tipo gun e seus herdeiros.
-    public GameObject[] gunBelt = new GameObject[2];
+
+    //Atualizacao do GunBelt - Agora com "Array Ilimitada" de armas
+    //Usamos uma array de 2 ints - "belt" que guarda o index da arma.
+    //Como só temos 2 armas, por enquanto, nao temos grande diferenca.
+    //Permite criar a arma "vazia" - Depois precisamos especificar sua posicao.
+    public GameObject[] gunTypes;
+    public int[] Belt = new int[2];
+
 
     //Qual arma estamos empunhando;
+    //Agora usado como indice de "Belt"
     //0 - gunBelt[0]
     //1 - gunBelt[1]
     private int held = 0;
@@ -39,8 +45,13 @@ public class GeneralWeaponScript : MonoBehaviour
         //Ao iniciar pegamos o sprite da arma e o holster.
         holster = this.gameObject;
 
+        //Nova versao
+        wpimg = gunTypes[Belt[held]].GetComponent<SpriteRenderer>();
+        
+        CleanAllSprites();
+
         //Pegar a imagem da arma empunhada (no caso a 0 no inicio);
-        wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
+        //wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
         player = GameObject.Find("player").transform;
         player_scale_ini = new Vector3(player.localScale.x, 
                                    player.localScale.y,
@@ -52,37 +63,36 @@ public class GeneralWeaponScript : MonoBehaviour
     void Update()
     {
         UpdateWeapon();
-        wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
+        
+        wpimg = gunTypes[Belt[held]].GetComponent<SpriteRenderer>();
+        //wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
         //definimos o angulo que vamos usar para a mira.
         AimAngle();
         //invertendo o personagem
-        
-
-
-        //Se estamos atirando, vamos atirar
-        if(Input.GetButtonUp("Fire1")){
-            //Atirar será chamado da arma em si
-            //Desse modo, desse handler podemos atirar com todas as armas
-            //Parte de lidar com munição ainda não criada.
-            //Esta função é herdada da classe Gun - Mas como chamar "genericamente" ainda não ficou
-            //Claro pra mim, estou vendo como será.
-            //int fevent = weapon.GetComponent<Pistol>().Shoot(camvec);
+        //Como temos tiros por segundo, devemos usar o botão pressionado.
+        if(Input.GetButton("Fire1")){
             
-            //Atirar com o cinto
-            int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
+            int fevent = gunTypes[Belt[held]].GetComponent<Gun>().Shoot(camvec);
+            //int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
 
             if(fevent == 1){
                 Debug.Log("Shot Fired");
             }
+            if(fevent == 2){
+               // Debug.Log("Gun -resting-");
+            }
             else{
                 Debug.Log("Must Reload");
             }
+
+
         }
 
         //Se estamos recarregando
         if(Input.GetKeyDown(KeyCode.R)){
             Debug.Log("R pressed" + held);
-            int fevent = gunBelt[held].GetComponent<Gun>().Reload();
+            int fevent = gunTypes[Belt[held]].GetComponent<Gun>().Reload();
+            //int fevent = gunBelt[held].GetComponent<Gun>().Reload();
             if(fevent == 0){
                 Debug.Log("No ammo");
             }
@@ -148,7 +158,8 @@ public class GeneralWeaponScript : MonoBehaviour
     //Atualiza quanto que arma estamos usando, mudando o sprite e tal;
     public void UpdateWeapon(){
         
-        gunBelt[held].GetComponent<SpriteRenderer>().enabled = true;
+        gunTypes[Belt[held]].GetComponent<SpriteRenderer>().enabled = true;
+        //gunBelt[held].GetComponent<SpriteRenderer>().enabled = true;
         
         int other;
         if(held == 0){
@@ -157,8 +168,17 @@ public class GeneralWeaponScript : MonoBehaviour
         else{
             other = 0;
         }
+        gunTypes[Belt[other]].GetComponent<SpriteRenderer>().enabled = false;
+        //gunBelt[other].GetComponent<SpriteRenderer>().enabled = false;
+    }
 
-        gunBelt[other].GetComponent<SpriteRenderer>().enabled = false;
+    //Desabilita todos os spirtes de arma, para que apenas as "selecionadas" possam ser habilitadas.
+    void CleanAllSprites(){
+
+        Debug.Log(gunTypes.Length);
+        for(int i = 0; i < gunTypes.Length; i++){
+            gunTypes[i].GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
 

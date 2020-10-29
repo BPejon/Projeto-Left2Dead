@@ -270,6 +270,10 @@ MonoBehaviour:
   clipsize: 5
   ammo: 10
   curammo: 5
+  tpm: 60
+  elapsed: 0
+  past: 0
+  timer: 0
   bullet: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9, type: 3}
   bulletspeed: 10
 --- !u!4 &377316156 stripped
@@ -480,6 +484,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5286470251916239725, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5286470251916239726, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -516,6 +525,16 @@ PrefabInstance:
       propertyPath: bulletspeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5286470251916239727, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: tpm
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: gunTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: gunBelt.Array.data[0]
@@ -526,6 +545,31 @@ PrefabInstance:
       propertyPath: gunBelt.Array.data[1]
       value: 
       objectReference: {fileID: 340702205}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: gunTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2107143665}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: gunTypes.Array.data[1]
+      value: 
+      objectReference: {fileID: 340702205}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: Belt.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: Belt.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: gunTypes.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7872384499675160094, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: m_Layer

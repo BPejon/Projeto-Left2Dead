@@ -27,7 +27,8 @@ public class ShotGun : Gun
     
     void Start()
     {
-        
+        timer = 60.0f/tpm;
+        Debug.Log("Timer = " + timer);
     }
 
     // Update is called once per frame
@@ -37,14 +38,20 @@ public class ShotGun : Gun
     }
 
     public override int Shoot(Vector3 aimvec){
+        //elapsed = tempo desde o ultimo tiro
+        //Se esse valor for menor que timer, nao atiramos
+        elapsed = Time.time - past;
+        
         int numberOfbullets = 5;
         float[] anglesBet = new float[numberOfbullets];
         int max_angle = 70;
 
-
        //Primeiro checamos a questão da munição
        if(curammo == 0){
            return 0;
+       }
+       else if(elapsed < timer){
+           return 2;
        }
        //se temos munição, atiramos; Tiro de pistóla é basico
        else{
@@ -78,7 +85,7 @@ public class ShotGun : Gun
        
     //    Debug.Log(curammo);
     //    Debug.Log(ammo);
-
+       past = Time.time;
        return 1;
     }
 
@@ -86,7 +93,7 @@ public class ShotGun : Gun
     //Se não = 0
     public override int Reload(){
         //se não tivermos municão guardada
-        if(ammo == 0){
+        if(ammo <= 0){
             return 0;
         }
         //se temos, mas é menor q o tamanho do clipe;

@@ -14,7 +14,19 @@ public abstract class Gun : MonoBehaviour
     public int ammo;
 
     //Quantas balas temos no pente
-    public int curammo=10;
+    public int curammo;
+
+    //Quantos tiros por minuto
+    public int tpm;
+
+    //Medimos quanto tempo se passou
+    public float elapsed = 0;
+
+    //Tempo desde a ultima vez que atiramos
+    public float past = 0;
+
+    //timer define o "tempo minimo" para outro tiro ocorrer.
+    public float timer;
 
     //somos nós!
     GameObject gun;
