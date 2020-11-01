@@ -274,6 +274,8 @@ MonoBehaviour:
   elapsed: 0
   past: 0
   timer: 0
+  kbspeed: 15
+  kbdur: 0.5
   bullet: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9, type: 3}
   bulletspeed: 10
 --- !u!4 &377316156 stripped
@@ -530,6 +532,16 @@ PrefabInstance:
       propertyPath: tpm
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 5286470251916239727, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: kbspeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286470251916239727, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: kbdur
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: gunTypes.Array.size
@@ -563,12 +575,27 @@ PrefabInstance:
     - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: Belt.Array.data[1]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: gunTypes.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: kbspeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: kbtime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872384499429440944, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: kbdur
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7872384499675160094, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}

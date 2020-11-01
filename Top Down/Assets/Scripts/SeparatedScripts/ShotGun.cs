@@ -27,6 +27,9 @@ public class ShotGun : Gun
     
     void Start()
     {
+        kb = new KBReport();
+        this.kb.kbspeed = kbspeed;
+        this.kb.kbdur = kbdur;
         timer = 60.0f/tpm;
         Debug.Log("Timer = " + timer);
     }
@@ -37,7 +40,7 @@ public class ShotGun : Gun
         
     }
 
-    public override int Shoot(Vector3 aimvec){
+    public override KBReport Shoot(Vector3 aimvec){
         //elapsed = tempo desde o ultimo tiro
         //Se esse valor for menor que timer, nao atiramos
         elapsed = Time.time - past;
@@ -48,10 +51,12 @@ public class ShotGun : Gun
 
        //Primeiro checamos a questão da munição
        if(curammo == 0){
-           return 0;
+          this.kb.status = 0;
+           return kb;
        }
        else if(elapsed < timer){
-           return 2;
+          this.kb.status = 2;
+           return kb;
        }
        //se temos munição, atiramos; Tiro de pistóla é basico
        else{
@@ -86,7 +91,8 @@ public class ShotGun : Gun
     //    Debug.Log(curammo);
     //    Debug.Log(ammo);
        past = Time.time;
-       return 1;
+       this.kb.status = 1;
+       return kb;
     }
 
     //Se foi possivel recarregar = 1

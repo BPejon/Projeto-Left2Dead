@@ -13,6 +13,8 @@ public class GeneralWeaponScript : MonoBehaviour
     //Usamos uma array de 2 ints - "belt" que guarda o index da arma.
     //Como só temos 2 armas, por enquanto, nao temos grande diferenca.
     //Permite criar a arma "vazia" - Depois precisamos especificar sua posicao.
+   
+    [Header("Gun Types & Gun Belt")]
     public GameObject[] gunTypes;
     public int[] Belt = new int[2];
 
@@ -22,29 +24,43 @@ public class GeneralWeaponScript : MonoBehaviour
     //0 - gunBelt[0]
     //1 - gunBelt[1]
     private int held = 0;
-  
-    //Gameobject da arma
-    //Na versão final provavelmente teremos uma lista
-    //que começara vazia, e vamos instanciando objetos para dentro dela.
-    //public GameObject weapon;
 
     //Sprite da Arma, tiramos do gameobject da arma
     SpriteRenderer wpimg;
 
     //basicamente this.gameObject
     GameObject holster;
-
+    [Space]
+    [Header("Camera & Aim")]
     //Vetor de posição do mouse, usado na mira.
     public Vector3 camvec;
 
     public Transform player;
     private Vector3 player_scale_ini;
 
+
+    //Knoockback testing Related.
+    [Space]
+    [Header("KnockBack & Testing")]
+    public float kbspeed;
+    public float kbtime;
+
+    public float kbdur;
+
+    public bool knockd;
+    
+    public bool kill;
+
+    public KBReport fevent;
+
+    //public bool fired;
+    public Vector2 pastaux;
+
     void Start()
     {
         //Ao iniciar pegamos o sprite da arma e o holster.
         holster = this.gameObject;
-
+        fevent = new KBReport();
         //Nova versao
         wpimg = gunTypes[Belt[held]].GetComponent<SpriteRenderer>();
         
@@ -57,13 +73,20 @@ public class GeneralWeaponScript : MonoBehaviour
                                    player.localScale.y,
                                    player.localScale.z);
         UpdateWeapon();
+
+        //kb test
+        knockd = false;
+        kill = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateWeapon();
-        
+
+        DealKnockback(0);
+
         wpimg = gunTypes[Belt[held]].GetComponent<SpriteRenderer>();
         //wpimg = gunBelt[held].GetComponent<SpriteRenderer>();
         //definimos o angulo que vamos usar para a mira.
@@ -72,13 +95,16 @@ public class GeneralWeaponScript : MonoBehaviour
         //Como temos tiros por segundo, devemos usar o botão pressionado.
         if(Input.GetButton("Fire1")){
             
-            int fevent = gunTypes[Belt[held]].GetComponent<Gun>().Shoot(camvec);
+            fevent = gunTypes[Belt[held]].GetComponent<Gun>().Shoot(camvec);
             //int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
 
-            if(fevent == 1){
+            if(fevent.status == 1){
                 Debug.Log("Shot Fired");
+
+                //test for knockback:
+                DealKnockback(1);
             }
-            if(fevent == 2){
+            if(fevent.status == 2){
                // Debug.Log("Gun -resting-");
             }
             else{
@@ -91,9 +117,9 @@ public class GeneralWeaponScript : MonoBehaviour
         //Se estamos recarregando
         if(Input.GetKeyDown(KeyCode.R)){
             Debug.Log("R pressed" + held);
-            int fevent = gunTypes[Belt[held]].GetComponent<Gun>().Reload();
+            int fevent2 = gunTypes[Belt[held]].GetComponent<Gun>().Reload();
             //int fevent = gunBelt[held].GetComponent<Gun>().Reload();
-            if(fevent == 0){
+            if(fevent2 == 0){
                 Debug.Log("No ammo");
             }
             else{
@@ -118,6 +144,38 @@ public class GeneralWeaponScript : MonoBehaviour
             Debug.Log(held);
         }
 
+    }
+
+    void FixedUpdate(){
+        if(knockd){ 
+            Vector2 aux;
+            aux.x = -camvec.x;
+            aux.y = -camvec.y;
+            player.GetComponent<Rigidbody2D>().velocity += fevent.kbspeed * aux;
+            pastaux = aux;
+        }
+        else if(kill){
+            Vector2 aux;
+            aux.x = 0;
+            aux.y = 0;
+            //player.GetComponent<Rigidbody2D>().velocity -= kbspeed * pastaux;
+            player.GetComponent<Rigidbody2D>().velocity = aux;
+            kill = false;
+        }
+    }
+
+    public void DealKnockback(int f){
+        //start knockback
+        if(f == 1){
+            knockd = true;
+            kbtime = Time.time;
+        }
+        else if((Time.time - kbtime) >= fevent.kbdur){
+            if(knockd){
+                kill = true;
+            }
+            knockd = false;
+        }
     }
 
     public void AimAngle(){

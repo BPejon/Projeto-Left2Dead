@@ -28,6 +28,12 @@ public abstract class Gun : MonoBehaviour
     //timer define o "tempo minimo" para outro tiro ocorrer.
     public float timer;
 
+    public KBReport kb;
+
+    public float kbspeed;
+    public float kbdur;
+
+
     //somos nós!
     GameObject gun;
 
@@ -63,7 +69,7 @@ public abstract class Gun : MonoBehaviour
     //Return 1 = atirou normalmente
     //Return 2 = Não pode atirar ainda (cooldown da arma - Fire rate, a implementar)
     //Return 0 = Munição acabou, precisa recarregar
-    public abstract int Shoot(Vector3 aimvec);
+    public abstract KBReport Shoot(Vector3 aimvec);
 
     //Precisamos, também, recarregar;
     public abstract int Reload();

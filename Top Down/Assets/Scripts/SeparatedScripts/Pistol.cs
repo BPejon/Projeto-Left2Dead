@@ -17,7 +17,6 @@ public class Pistol : Gun
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
 
-
         self = this.gameObject;
 
         //self.GetComponent<SpriteRenderer>().sprite = GetSprite("Pistol");  
@@ -27,6 +26,9 @@ public class Pistol : Gun
     
     void Start()
     {
+        kb = new KBReport();
+        this.kb.kbdur = kbdur;
+        this.kb.kbspeed = kbspeed;
         timer = 60.0f/tpm;
         Debug.Log("Timer = " + timer);
     }
@@ -37,17 +39,19 @@ public class Pistol : Gun
         
     }
 
-    public override int Shoot(Vector3 aimvec){
+    public override KBReport Shoot(Vector3 aimvec){
        //elapsed = tempo desde o ultimo tiro
        //Se esse valor for menor que timer, nao atiramos
        elapsed = Time.time - past;
        //Primeiro checamos a questão da munição
        if(curammo == 0){
-           return 0;
+          this.kb.status = 0;
+           return kb;
        }
        //se temos munição, atiramos; Tiro de pistóla é basico
        else if(elapsed < timer){
-           return 2;
+           this.kb.status = 2;
+           return kb;
        }
        else{
            curammo--;
@@ -77,7 +81,8 @@ public class Pistol : Gun
        Debug.Log(curammo);
        Debug.Log(ammo);
        past = Time.time;
-       return 1;
+       this.kb.status = 1;
+       return kb;
     }
 
     //Se foi possivel recarregar = 1
