@@ -107,7 +107,7 @@ public class GeneralWeaponScript : MonoBehaviour
             if(fevent.status == 2){
                // Debug.Log("Gun -resting-");
             }
-            else{
+            if(fevent.status == 0){
                 Debug.Log("Must Reload");
             }
 
@@ -140,8 +140,8 @@ public class GeneralWeaponScript : MonoBehaviour
                 held = 0;
             }
 
-            Debug.Log("Scroll Moved");
-            Debug.Log(held);
+            //Debug.Log("Scroll Moved");
+            //Debug.Log(held);
         }
 
     }

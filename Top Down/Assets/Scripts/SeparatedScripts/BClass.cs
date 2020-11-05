@@ -13,15 +13,15 @@ public abstract class BClass : MonoBehaviour
     public float kbdur;
     public int damage;
 
+    public Vector2 dir;
+
     public GameObject bullet;
 
     // Start is called before the first frame update
     void Instance(){
         bullet = this.gameObject;
-        kb = new KBReport();
+        
 
-        kb.kbdur = kbdur;
-        kb.kbspeed = kbspeed;
     }
     
     void Start()
@@ -34,4 +34,22 @@ public abstract class BClass : MonoBehaviour
     {
         
     }
+
+    public void setAngle(Vector2 v){
+        dir = v;
+    }
+
+    public void setFactors(float kbs, float kbd){
+        kbdur = kbd;
+        kbspeed = kbs;
+    }
+
+    public KBReport GetKBReport(){
+        kb = new KBReport();
+        kb.dir = dir;
+        kb.kbspeed = kbspeed;
+        kb.kbdur = kbdur;
+        return kb;
+    }
+
 }

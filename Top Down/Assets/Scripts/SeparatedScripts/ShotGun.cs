@@ -80,12 +80,14 @@ public class ShotGun : Gun
                 Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * tip.transform.up;
                 rbb[i].AddForce(directorShot.normalized * bulletspeed, ForceMode2D.Impulse);
                 // depois de 2 segundos o projétil é destruido
+                //nbullet[i].GetComponent<StandardBullet>().setFactors(kbdur,kbspeed);
+                nbullet[i].GetComponent<StandardBullet>().setAngle(directorShot.normalized);
                 Destroy(nbullet[i], 1.2f);
             }
-            for (int i = 0; i < numberOfbullets; i++)
+            /*for (int i = 0; i < numberOfbullets; i++)
             {
                 Debug.Log(anglesBet[i]);
-            }
+            }*/
        }
        
     //    Debug.Log(curammo);

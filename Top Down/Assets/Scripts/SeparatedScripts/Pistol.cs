@@ -30,7 +30,7 @@ public class Pistol : Gun
         this.kb.kbdur = kbdur;
         this.kb.kbspeed = kbspeed;
         timer = 60.0f/tpm;
-        Debug.Log("Timer = " + timer);
+        Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
     }
 
     // Update is called once per frame
@@ -60,7 +60,8 @@ public class Pistol : Gun
            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
            rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
-           
+           //nbullet.GetComponent<StandardBullet>().setFactors(kbspeed, kbdur);
+           nbullet.GetComponent<StandardBullet>().setAngle(tip.transform.up);
            //rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
            Destroy(nbullet, 2.0f);
 
@@ -78,8 +79,8 @@ public class Pistol : Gun
 
        }
        
-       Debug.Log(curammo);
-       Debug.Log(ammo);
+       //Debug.Log(curammo);
+       //Debug.Log(ammo);
        past = Time.time;
        this.kb.status = 1;
        return kb;
@@ -87,6 +88,7 @@ public class Pistol : Gun
 
     //Se foi possivel recarregar = 1
     //Se não = 0
+    //Se na espera = 2
     public override int Reload(){
         //se não tivermos municão guardada
         if(ammo <= 0){
