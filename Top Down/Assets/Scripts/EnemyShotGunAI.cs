@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyChargeAI : MonoBehaviour
+
+public class EnemyShotGunAI : MonoBehaviour
 {
-     [Space]
+    
+
+    [Space]
     [Header("player")]
     // alvo
     public Transform target;
@@ -17,48 +20,48 @@ public class EnemyChargeAI : MonoBehaviour
     [Header("Patroling")]
     public float timeChangePoint = 1.5f; 
     public float walkPointRange = 10f;
-    public float lastTime = 0f;
+    float lastTime = 0f;
+
 
 
 
     [Space]
     [Header("States")]
-    public bool onChase = false;
     public float sightRange = 10;
     public float attackRange;
     // verifica o inimigo está persguindo o player
-    [Space]
-    [Header("Charge")]
-    Vector2 directionCharge;
-    public bool onAttack = false;
-    public bool onCharge = false;
-    public float forceCharge;
-    private float startTimeCharge = -2;
-    private float lasTimeAttack = -2;
-    public float time_charging;
-    public float time_attacking;
-    public float time_between_attacks = 5;
-
-    private float inicial_speed;
+    public bool onChase = false;
     public bool playerInSightRange, playerInAttackRange;
 
+
+    [Space]
+    [Header ("gun : ")]
+    Vector2 lookDir;
+    public float timeBetweenShoots;
+    public float lastTimeShoot;
+    public Transform weapon;       // define a arma
+    private float angle;    // define o ângulo da arma
+    private bool is_invert = false;    // verifica se a mira está invertida ( do lado esquerdo)
+
+
+    [Space]
+    [Header("Prefabs :")]
+    public GameObject bulletPrefab; // define o objeto da bala
+    public Transform firePoint;     // define de onde sai a bala
+    public float BULLET_BASE_SPEED = 19.0f; // define a velocidade do projetil.
 
 
     [Space]
     [Header("atributes")]
     // script do basico do inimigo
     private simple_enemy enemyScript;
-
     // speed
     public float speed = 5f;
     public int health = 4;
     // proximo ponto de escolha
     public float nextWaypointDistance = 5f;
-
     Path path;
     int currentWaypoint = 0;
-   
-
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -66,14 +69,13 @@ public class EnemyChargeAI : MonoBehaviour
 
     void Awake() {
         player = GameObject.Find("player").transform;
-        
         enemyScript = gameObject.GetComponent<simple_enemy>();
 
-
+        lastTimeShoot = -20.0f;
         GameObject newEmptyGO = new GameObject();
         
         target = newEmptyGO.transform;
-        inicial_speed = speed;
+
         target.position = new Vector2(transform.position.x , transform.position.y);
     }
 
@@ -125,6 +127,7 @@ public class EnemyChargeAI : MonoBehaviour
     
     bool checkIfInSight(){
         /* verificando se está na área de alcance de visão do inimigo */
+        // transform.LookAt(player);
         float distance = Vector2.Distance(transform.position, player.position);
         playerInSightRange = distance <= sightRange;
     
@@ -136,37 +139,18 @@ public class EnemyChargeAI : MonoBehaviour
         return playerInSightRange;
     }
 
-    
-
-
-    bool checkIfInAttackRange(){
-        float distance = Vector2.Distance(transform.position, player.position);
-        playerInAttackRange = distance <= attackRange;
-     
-        if (Time.time - lasTimeAttack > time_between_attacks && playerInAttackRange)
-        {
-            startTimeCharge = Time.time;
-            onAttack = true;
-            onChase = false;
-            speed = 0.0f;
-            target = player;
-        }
-        return playerInAttackRange;
-    }
-
-    
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
 
         if(target == null)
         {
             return;
         }
 
+        roateWeapon();
         if(path == null)
             return;
         if ( currentWaypoint >= path.vectorPath.Count){
@@ -174,11 +158,8 @@ public class EnemyChargeAI : MonoBehaviour
         } 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        if(!onCharge){
-            rb.velocity = (direction* speed * Time.fixedDeltaTime);
-        }else{
-            rb.AddForce(direction * forceCharge );
-        }
+        
+        rb.velocity = (direction* speed * Time.fixedDeltaTime);
         // rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -198,34 +179,24 @@ public class EnemyChargeAI : MonoBehaviour
         }
         
         if (enemyScript.health > 0){
-            if (!onChase && !onAttack)
+            if (!onChase)
             {
                 checkIfInSight();
             }
-            if (!onAttack){
-                checkIfInAttackRange();
-            }if(onAttack && Time.time - startTimeCharge < time_charging){
-                directionCharge = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            }
-            if (onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
-                /*podemos atacar adicionar a forca*/
-                Debug.Log("get ready");
-                onCharge = true;
-            }else
-            if (onAttack && Time.time - startTimeCharge > time_charging + time_attacking){
-           
-                /*paramos de adicionar força  e paramos de atacar*/
-                lastTime = Time.time;
-                Debug.Log("atacar");
-                onCharge = false;
-                onAttack = false;
-                onChase = true;
-                speed = inicial_speed;
+            if (onChase){
+                roateWeapon();
+                if(Time.time - lastTimeShoot > timeBetweenShoots && Random.Range(0,10) == 2)
+                {   
+                    Debug.Log("atirei");
+                    Shoot();
+                    lastTimeShoot = Time.time;
+                }
             }
 
+            
 
             /* verificando tempo de troca pontos para se andar (para fazer patroling) */
-            if (Time.time - lastTime >= timeChangePoint && !onChase && !onAttack)
+            if (Time.time - lastTime >= timeChangePoint && !onChase)
             {
                 getRandomPoint();
                 lastTime = Time.time;
@@ -233,6 +204,60 @@ public class EnemyChargeAI : MonoBehaviour
         }else{
             speed = 0.0f;
             target = null;
-        }        
+        }
+    }
+
+
+    void Shoot(){
+
+        float auxAng = Random.Range(-30.0f,30.0f);
+
+        
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position,
+         firePoint.rotation);
+        Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
+        // adiciona uma força que define a movimentaçao da bala
+        
+        rbb.AddForce(firePoint.up * Quaternion.Euler(0.0f,0.0f, auxAng) * BULLET_BASE_SPEED, ForceMode2D.Impulse);
+        // depois de 2 segundos o projétil é destruido
+        Destroy(bullet, 8.0f);
+
+
+        
+
+
+
+    }
+    void roateWeapon(){
+        // essas parte é para definir para onde o personagem está atirando
+        Vector2 auxVector = (firePoint.position);
+        Vector2 auxVector2 = (player.position);
+        lookDir =  auxVector2 - auxVector;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+        if ( -90.0 <= angle && angle <= 90.0){
+            is_invert = false;
+        }else{
+            is_invert = true;
+        }
+
+
+        if(is_invert){
+            //rotaciona a arma caso esteja invertido
+            weapon.eulerAngles = new Vector3(
+                weapon.eulerAngles.x,
+                weapon.eulerAngles.y,
+                angle + 180
+            );
+        }else{
+            weapon.eulerAngles = new Vector3(
+                weapon.eulerAngles.x,
+                weapon.eulerAngles.y,
+                angle
+            );
+        }
     }
 }
+
+
