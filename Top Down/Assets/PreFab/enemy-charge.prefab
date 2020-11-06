@@ -21,9 +21,10 @@ MonoBehaviour:
   attackRange: 5
   onAttack: 0
   onCharge: 0
-  forceCharge: 20000
+  forceCharge: 2000
   time_charging: 1
   time_attacking: 0.5
+  time_between_attacks: 5
   playerInSightRange: 0
   playerInAttackRange: 0
   speed: 300

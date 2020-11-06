@@ -174,19 +174,14 @@ public class EnemyChargeAI : MonoBehaviour
         } 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        if(!onCharge){
+        if (!onCharge)
             rb.velocity = (direction* speed * Time.fixedDeltaTime);
-        }else{
-            rb.AddForce(direction * forceCharge );
-        }
-        // rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+        else 
+            rb.velocity = (directionCharge * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
+        
 
         if (direction.x >= 0.01f)
         {
@@ -205,11 +200,13 @@ public class EnemyChargeAI : MonoBehaviour
             if (!onAttack){
                 checkIfInAttackRange();
             }if(onAttack && Time.time - startTimeCharge < time_charging){
+                speed = 0;
+                onAttack = true;
                 directionCharge = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             }
             if (onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
                 /*podemos atacar adicionar a forca*/
-                Debug.Log("get ready");
+                speed = forceCharge;
                 onCharge = true;
             }else
             if (onAttack && Time.time - startTimeCharge > time_charging + time_attacking){
@@ -222,7 +219,10 @@ public class EnemyChargeAI : MonoBehaviour
                 onChase = true;
                 speed = inicial_speed;
             }
-
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
 
             /* verificando tempo de troca pontos para se andar (para fazer patroling) */
             if (Time.time - lastTime >= timeChangePoint && !onChase && !onAttack)
