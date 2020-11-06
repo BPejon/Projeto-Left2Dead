@@ -219,11 +219,6 @@ public class EnemyShotGunAI : MonoBehaviour
     void ShootShotgun(){
         int numberOfbullets = 5;
         float[] anglesBet = new float[5];
-
-
-        
-
-        
         GameObject[] bullet = new GameObject[numberOfbullets];
         Rigidbody2D[] rbb = new Rigidbody2D[numberOfbullets];
         for (int i = 0; i < numberOfbullets; i++)
