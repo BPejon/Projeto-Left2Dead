@@ -150,6 +150,11 @@ public class EnemyShotGunAI : MonoBehaviour
             return;
         }
 
+         // essas parte é para definir para onde o personagem está atirando
+        Vector2 auxVector = (firePoint.position);
+        Vector2 auxVector2 = (player.position);
+        lookDir =  auxVector2 - auxVector;
+
         roateWeapon();
         if(path == null)
             return;
@@ -177,6 +182,7 @@ public class EnemyShotGunAI : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f,1f,1f);
         }
+        
         
         if (enemyScript.health > 0){
             if (!onChase)
@@ -208,21 +214,7 @@ public class EnemyShotGunAI : MonoBehaviour
     }
 
 
-    void Shoot(){
-
-        float auxAng = Random.Range(-30.0f,30.0f);
-
-        
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position,
-         firePoint.rotation);
-        Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
-        // adiciona uma força que define a movimentaçao da bala
-        
-        rbb.AddForce(firePoint.up  * BULLET_BASE_SPEED, ForceMode2D.Impulse);
-        // depois de 2 segundos o projétil é destruido
-        Destroy(bullet, 8.0f);
-    }
+  
 
     void ShootShotgun(){
         int numberOfbullets = 5;
@@ -242,6 +234,8 @@ public class EnemyShotGunAI : MonoBehaviour
             anglesBet[i] = Random.Range(-70,70);
             // adiciona uma força que define a movimentaçao da bala
             Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * lookDir;
+            Debug.Log(bullet[i]);
+            
             rbb[i].AddForce(directorShot.normalized * BULLET_BASE_SPEED, ForceMode2D.Impulse);
             // depois de 2 segundos o projétil é destruido
             Destroy(bullet[i], 1.2f);
@@ -251,10 +245,7 @@ public class EnemyShotGunAI : MonoBehaviour
 
 
     void roateWeapon(){
-        // essas parte é para definir para onde o personagem está atirando
-        Vector2 auxVector = (firePoint.position);
-        Vector2 auxVector2 = (player.position);
-        lookDir =  auxVector2 - auxVector;
+       
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
         if ( -90.0 <= angle && angle <= 90.0){
