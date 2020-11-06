@@ -20,7 +20,7 @@ MonoBehaviour:
   onChase: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  timeBetweenShoots: 10
+  timeBetweenShoots: 4
   lastTimeShoot: -10
   weapon: {fileID: 1072220114074905299}
   bulletPrefab: {fileID: 1010095771815063330, guid: e6148e29462a0b143b71cbb50802cdd4,

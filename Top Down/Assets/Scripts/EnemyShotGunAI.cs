@@ -193,7 +193,7 @@ public class EnemyShotGunAI : MonoBehaviour
                 roateWeapon();
                 if(Time.time - lastTimeShoot > timeBetweenShoots && Random.Range(0,10) == 2)
                 {   
-                    Debug.Log("atirei");
+      
                     ShootShotgun();
                     lastTimeShoot = Time.time;
                 }
@@ -229,7 +229,6 @@ public class EnemyShotGunAI : MonoBehaviour
             anglesBet[i] = Random.Range(-70,70);
             // adiciona uma força que define a movimentaçao da bala
             Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * lookDir;
-            Debug.Log(bullet[i]);
             
             rbb[i].AddForce(directorShot.normalized * BULLET_BASE_SPEED, ForceMode2D.Impulse);
             // depois de 2 segundos o projétil é destruido
