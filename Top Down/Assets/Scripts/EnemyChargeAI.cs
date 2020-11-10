@@ -33,11 +33,11 @@ public class EnemyChargeAI : MonoBehaviour
     public bool onAttack = false;
     public bool onCharge = false;
     public float forceCharge;
-    private float startTimeCharge = -2;
-    private float lasTimeAttack = -2;
+    float startTimeCharge = -2;
+    float lasTimeAttack = -2;
     public float time_charging;
     public float time_attacking;
-    public float time_between_attacks = 5;
+    public float time_between_attacks;
 
     private float inicial_speed;
     public bool playerInSightRange, playerInAttackRange;
@@ -51,7 +51,6 @@ public class EnemyChargeAI : MonoBehaviour
 
     // speed
     public float speed = 5f;
-    public int health = 4;
     // proximo ponto de escolha
     public float nextWaypointDistance = 5f;
 
@@ -69,7 +68,7 @@ public class EnemyChargeAI : MonoBehaviour
         
         enemyScript = gameObject.GetComponent<simple_enemy>();
 
-
+        lasTimeAttack = -20;
         GameObject newEmptyGO = new GameObject();
         
         target = newEmptyGO.transform;
@@ -155,23 +154,43 @@ public class EnemyChargeAI : MonoBehaviour
     }
 
     
+    void checkIfOnCharge(){
+        if(onAttack && Time.time - startTimeCharge < time_charging){
+            speed = 0;
+            onAttack = true;
+            directionCharge = ((Vector2)player.position - rb.position).normalized;
+        }
+    }
 
+    void checkIfCanCharge(){
+        if (onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
+            /*podemos atacar adicionar a forca*/
+            speed = forceCharge;
+            onCharge = true;
+        }
+    }
+
+    void resetAfterCharge(){
+        if (onAttack && Time.time - startTimeCharge > time_charging + time_attacking){
+           
+            /*paramos de adicionar força  e paramos de atacar*/
+            lasTimeAttack = Time.time;
+            onCharge = false;
+            onAttack = false;
+            onChase = true;
+            speed = inicial_speed;
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         
 
-        if(target == null)
-        {
-            return;
-        }
-
+        if(target == null) return;
         if(path == null)
             return;
-        if ( currentWaypoint >= path.vectorPath.Count){
-            return;
-        } 
+        if ( currentWaypoint >= path.vectorPath.Count) return;
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
         if (!onCharge)
@@ -181,49 +200,25 @@ public class EnemyChargeAI : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
-        
-
         if (direction.x >= 0.01f)
-        {
             transform.localScale = new Vector3(1f,1f,1f);
-        }
         else if (direction.x <=  -0.01f)
-        {
             transform.localScale = new Vector3(-1f,1f,1f);
-        }
         
         if (enemyScript.health > 0){
-            if (!onChase && !onAttack)
-            {
+            if (!onChase && !onAttack && !onCharge)
                 checkIfInSight();
-            }
-            if (!onAttack){
+            // checkando se está em um range para atacar
+            if (!onAttack && !onCharge)
                 checkIfInAttackRange();
-            }if(onAttack && Time.time - startTimeCharge < time_charging){
-                speed = 0;
-                onAttack = true;
-                directionCharge = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            }
-            if (onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
-                /*podemos atacar adicionar a forca*/
-                speed = forceCharge;
-                onCharge = true;
-            }else
-            if (onAttack && Time.time - startTimeCharge > time_charging + time_attacking){
-           
-                /*paramos de adicionar força  e paramos de atacar*/
-                lastTime = Time.time;
-                Debug.Log("atacar");
-                onCharge = false;
-                onAttack = false;
-                onChase = true;
-                speed = inicial_speed;
-            }
-            if (distance < nextWaypointDistance)
-            {
-                currentWaypoint++;
-            }
+            checkIfOnCharge();
+            checkIfCanCharge();
+            resetAfterCharge();
+            
+            
 
+            if (distance < nextWaypointDistance)
+                currentWaypoint++;
             /* verificando tempo de troca pontos para se andar (para fazer patroling) */
             if (Time.time - lastTime >= timeChangePoint && !onChase && !onAttack)
             {

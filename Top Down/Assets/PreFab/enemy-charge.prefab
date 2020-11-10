@@ -23,12 +23,11 @@ MonoBehaviour:
   onCharge: 0
   forceCharge: 2000
   time_charging: 1
-  time_attacking: 0.5
+  time_attacking: 0.3
   time_between_attacks: 5
   playerInSightRange: 0
   playerInAttackRange: 0
   speed: 300
-  health: 4
   nextWaypointDistance: 5
 --- !u!1001 &1248138251424373903
 PrefabInstance:

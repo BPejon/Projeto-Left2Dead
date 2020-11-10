@@ -44,7 +44,6 @@ public class EnemyAI : MonoBehaviour
 
     // speed
     public float speed = 5f;
-    public int health = 4;
     // proximo ponto de escolha
     public float nextWaypointDistance = 5f;
 

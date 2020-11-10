@@ -56,8 +56,8 @@ public class EnemyShotAI : MonoBehaviour
     private simple_enemy enemyScript;
     // speed
     public float speed = 5f;
-    public int health = 4;
     // proximo ponto de escolha
+    float speedIni = 0;
     public float nextWaypointDistance = 5f;
     Path path;
     int currentWaypoint = 0;
@@ -74,7 +74,7 @@ public class EnemyShotAI : MonoBehaviour
         GameObject newEmptyGO = new GameObject();
         
         target = newEmptyGO.transform;
-
+        speedIni = speed;
         target.position = new Vector2(transform.position.x , transform.position.y);
     }
 
@@ -138,7 +138,12 @@ public class EnemyShotAI : MonoBehaviour
         return playerInSightRange;
     }
 
-
+    void slow_when_preper_to_shoot(){
+        if (Time.time - lastTimeShoot > timeBetweenShoots/2 && onChase)
+        {
+            speed = speedIni/2;
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -182,13 +187,13 @@ public class EnemyShotAI : MonoBehaviour
             {
                 checkIfInSight();
             }
-
+            slow_when_preper_to_shoot();
             if (onChase){
                 roateWeapon();
-                if(Time.time - lastTimeShoot > timeBetweenShoots && Random.Range(0,10) == 2)
+                if(Time.time - lastTimeShoot > timeBetweenShoots && Random.Range(0,10) == 2 && onChase)
                 {   
-                    Debug.Log("atirei");
                     Shoot();
+                    speed = speedIni;
                     lastTimeShoot = Time.time;
                 }
             }
