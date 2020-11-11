@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7026476679029886086}
   - component: {fileID: 7026476679029886085}
+  - component: {fileID: 8777008500401855385}
   - component: {fileID: 7026476679029886084}
   - component: {fileID: 7026476679029886083}
   - component: {fileID: 7026476679029886082}
@@ -254,6 +255,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8777008500401855385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15936c49fdd8743408e140dce31f02db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 3170143882592776544, guid: 5fe2051377fa7a847b67c96279053ea4, type: 3}
 --- !u!50 &7026476679029886084
 Rigidbody2D:
   serializedVersion: 4
@@ -318,9 +332,16 @@ MonoBehaviour:
   move_speed: 4
   healthBarG: {fileID: 7026476678479673033}
   healthBarR: {fileID: 7026476678548856569}
+  isDead: 0
   animator: {fileID: 8488597463513257603}
   bloodParticle: {fileID: 1068871189053294826, guid: d01e8f88e54d3c747aa7b3426726c15e,
     type: 3}
+  kbspeed: 0
+  kbtime: 0
+  kbdur: 0
+  knockd: 0
+  kill: 0
+  hit: 0
 --- !u!114 &2931220610143109905
 MonoBehaviour:
   m_ObjectHideFlags: 0

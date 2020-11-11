@@ -38,12 +38,15 @@ public class MaskOnShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-        UpdateCorners();
+        
     }
 
     void OnCollisionEnter2D(Collision2D other){
         
+        
+
         if(other.gameObject.tag.Equals("playerBullet")){
+            UpdateCorners();
 
             KBReport kb = other.gameObject.GetComponent<BClass>().GetKBReport();
 
