@@ -60,6 +60,8 @@ public class EnemyChargeAI : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    Animator animator;
+
 
     
 
@@ -67,6 +69,7 @@ public class EnemyChargeAI : MonoBehaviour
         player = GameObject.Find("player").transform;
         
         enemyScript = gameObject.GetComponent<simple_enemy>();
+        animator = enemyScript.animator;
 
         lasTimeAttack = -20;
         GameObject newEmptyGO = new GameObject();
@@ -156,8 +159,7 @@ public class EnemyChargeAI : MonoBehaviour
     
     void checkIfOnCharge(){
         if(onAttack && Time.time - startTimeCharge < time_charging){
-            speed = 0;
-            onAttack = true;
+            speed = 0.0f;
             directionCharge = ((Vector2)player.position - rb.position).normalized;
         }
     }
@@ -188,6 +190,9 @@ public class EnemyChargeAI : MonoBehaviour
         
 
         if(target == null) return;
+        animator.SetBool("onAttack", onAttack);
+        animator.SetBool("onCharge", onCharge);
+        
         if(path == null)
             return;
         if ( currentWaypoint >= path.vectorPath.Count) return;
