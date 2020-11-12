@@ -160,7 +160,7 @@ public class EnemyChargeAI : MonoBehaviour
     void checkIfOnCharge(){
         if(onAttack && Time.time - startTimeCharge < time_charging){
             speed = 0.0f;
-            directionCharge = ((Vector2)player.position - rb.position).normalized;
+            directionCharge = (((Vector2)player.position - rb.position) * 1000.0f).normalized;
         }
     }
 
@@ -189,7 +189,10 @@ public class EnemyChargeAI : MonoBehaviour
     {
         
 
-        if(target == null) return;
+        if(target == null){
+          speed = 0;
+          return;  
+        } 
         animator.SetBool("onAttack", onAttack);
         animator.SetBool("onCharge", onCharge);
         
