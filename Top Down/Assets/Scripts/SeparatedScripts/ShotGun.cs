@@ -70,10 +70,6 @@ public class ShotGun : Gun
                 // depois de 2 segundos o projétil é destruido
                 Destroy(nbullet[i], 1.2f);
             }
-            for (int i = 0; i < numberOfbullets; i++)
-            {
-                Debug.Log(anglesBet[i]);
-            }
        }
        
     //    Debug.Log(curammo);

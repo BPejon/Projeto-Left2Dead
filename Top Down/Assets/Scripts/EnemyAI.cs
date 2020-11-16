@@ -36,15 +36,15 @@ public class EnemyAI : MonoBehaviour
     public bool onChase = false;
     public bool playerInSightRange, playerInAttackRange;
 
+    
+
+
 
     [Space]
     [Header("atributes")]
-    // script do basico do inimigo
-    private simple_enemy enemyScript;
-
+    
     // speed
     public float speed = 5f;
-    // proximo ponto de escolha
     public float nextWaypointDistance = 5f;
 
     Path path;
@@ -55,11 +55,15 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
 
     
+    private simple_enemy enemyScript;
+    private enemyMeleeR enemyScriptHit;
+    
 
     void Awake() {
         player = GameObject.Find("player").transform;
         
         enemyScript = gameObject.GetComponent<simple_enemy>();
+        enemyScriptHit = gameObject.GetComponent<enemyMeleeR>();
 
 
         GameObject newEmptyGO = new GameObject();
@@ -154,8 +158,9 @@ public class EnemyAI : MonoBehaviour
         // }
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        
-        rb.velocity = (direction* speed * Time.fixedDeltaTime);
+        if (!enemyScriptHit.isHit){
+            rb.velocity = (direction* speed * Time.fixedDeltaTime);
+        }
         // rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

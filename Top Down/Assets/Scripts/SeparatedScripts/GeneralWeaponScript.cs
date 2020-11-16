@@ -72,22 +72,22 @@ public class GeneralWeaponScript : MonoBehaviour
             int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
 
             if(fevent == 1){
-                Debug.Log("Shot Fired");
+                // Debug.Log("Shot Fired");
             }
             else{
-                Debug.Log("Must Reload");
+                // Debug.Log("Must Reload");
             }
         }
 
         //Se estamos recarregando
         if(Input.GetKeyDown(KeyCode.R)){
-            Debug.Log("R pressed" + held);
+            // Debug.Log("R pressed" + held);
             int fevent = gunBelt[held].GetComponent<Gun>().Reload();
             if(fevent == 0){
-                Debug.Log("No ammo");
+                // Debug.Log("No ammo");
             }
             else{
-                Debug.Log("Reloaded");
+                // Debug.Log("Reloaded");
             }
         }
 
@@ -104,7 +104,7 @@ public class GeneralWeaponScript : MonoBehaviour
                 held = 0;
             }
 
-            Debug.Log("Scroll Moved");
+            // Debug.Log("Scroll Moved");
             Debug.Log(held);
         }
 

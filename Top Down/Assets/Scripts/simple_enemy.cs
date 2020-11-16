@@ -27,14 +27,6 @@ public class simple_enemy : MonoBehaviour
     [Header("dead")]
     public ParticleSystem bloodParticle;
 
-
-
-
-
-
-
-    
-
     private void Start() {
         // define o scale da barra de vida inicial
         iniHealthScale = new Vector3(healthBarG.transform.localScale.x, 
@@ -47,14 +39,6 @@ public class simple_enemy : MonoBehaviour
         
     }
 
-    private void Update() {
-        // faz a barra de vida ficar em cima do inimigo
-
-
-        
-        
-        
-    }
 
     private void FixedUpdate() {
       
@@ -63,6 +47,21 @@ public class simple_enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (health >= 0)
+        {
+            healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
+                                                            iniHealthScale.y,
+                                                            iniHealthScale.z);
+        }
+        if (health <= 0)
+        {
+            if (!isDead)
+            {
+                isDead = true;
+                timedied = Time.time;
+            }
+            
+        }
 
         movement = (  transform.position - prevLoc)/ Time.deltaTime;
 
@@ -88,25 +87,6 @@ public class simple_enemy : MonoBehaviour
         {
             health = health - 1;
             // se a vida for maior igual a zero, re-escala a vida verde
-            if (health >= 0)
-            {
-                healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
-                                                            iniHealthScale.y,
-                                                            iniHealthScale.z);
-            }
-        }
-        
-        
-        // se a vida for menor que zero, fala que o inimigo morreu e troca de sprite.
-        if (health <= 0)
-        {
-            if (!isDead)
-            {
-                isDead = true;
-                timedied = Time.time;
-            }
-            
-            Debug.Log("squirtle Died");
         }
     }
 
