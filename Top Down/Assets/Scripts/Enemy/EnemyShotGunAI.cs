@@ -50,6 +50,9 @@ public class EnemyShotGunAI : MonoBehaviour
     public Transform firePoint;     // define de onde sai a bala
     public float BULLET_BASE_SPEED = 19.0f; // define a velocidade do projetil.
 
+    [Space]
+    [Header("got Hit")]
+    MeleeS enemyScriptHit; 
 
     [Space]
     [Header("atributes")]
@@ -70,6 +73,8 @@ public class EnemyShotGunAI : MonoBehaviour
     void Awake() {
         player = GameObject.Find("player").transform;
         enemyScript = gameObject.GetComponent<simple_enemy>();
+        enemyScriptHit = gameObject.GetComponent<MeleeS>();
+
 
         lastTimeShoot = -20.0f;
         GameObject newEmptyGO = new GameObject();
@@ -169,8 +174,9 @@ public class EnemyShotGunAI : MonoBehaviour
         } 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        
-        rb.velocity = (direction* speed * Time.fixedDeltaTime);
+        if (!enemyScriptHit.isHit){
+            rb.velocity = (direction* speed * Time.fixedDeltaTime);
+        }
         // rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

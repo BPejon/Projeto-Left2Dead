@@ -28,8 +28,22 @@ MonoBehaviour:
   firePoint: {fileID: 1072220113177251405}
   BULLET_BASE_SPEED: 19
   speed: 300
-  health: 6
   nextWaypointDistance: 5
+--- !u!114 &5831578602724570471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547871485481592353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2c312257d8f3c4690b5c605c5c02ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceBackEnemy: 1000
+  TimeBetHit: 0.1
+  isHit: 0
 --- !u!1001 &4778130859437577560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2503110582845390475, guid: 54dcb64ffa0741943a8da7f14ef4f56b, type: 3}
+    - {fileID: 653430004944214407, guid: 54dcb64ffa0741943a8da7f14ef4f56b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54dcb64ffa0741943a8da7f14ef4f56b, type: 3}
 --- !u!1 &3547871485481592353 stripped
 GameObject:

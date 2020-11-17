@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2931220610143109905}
   - component: {fileID: 4633537914780359827}
   - component: {fileID: 8488597463513257603}
+  - component: {fileID: 2336322481413049866}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -372,7 +373,6 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   speed: 310
-  health: 4
   nextWaypointDistance: 1
 --- !u!95 &8488597463513257603
 Animator:
@@ -393,3 +393,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2336322481413049866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735b0e730b3c6464cb32a40b0d95d39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceBackEnemy: 1000
+  TimeBetHit: 0.2
+  isHit: 0
