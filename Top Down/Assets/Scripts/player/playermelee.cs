@@ -17,6 +17,12 @@ public class playermelee : MonoBehaviour
     public int Damage;
     public float ForceBackEnemy;
     
+
+    [Space]
+    [Header("animation")]
+    public Animator animator1;
+    
+
     float TimeStart; 
     float TimeEnd;
     public bool isAttackingMelee;
@@ -36,12 +42,13 @@ public class playermelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if(Input.GetMouseButton(1) && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
             isAttackingMelee = true;
             TimeStart = Time.time;
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y)) * newHitSize;
         }
+        
     }
     
     void FixedUpdate()
@@ -52,7 +59,7 @@ public class playermelee : MonoBehaviour
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y));
         }
 
-
+        animator1.SetBool("isMelee",isAttackingMelee);
     }
 
     
