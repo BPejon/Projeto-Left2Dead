@@ -47,12 +47,16 @@ public class simple_enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (health >= 0)
+
+        if (health < 0)
         {
-            healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
+            health = 0;
+        }
+
+        healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
                                                             iniHealthScale.y,
                                                             iniHealthScale.z);
-        }
+        
         if (health <= 0)
         {
             if (!isDead)
@@ -63,7 +67,7 @@ public class simple_enemy : MonoBehaviour
             
         }
 
-        movement = (  transform.position - prevLoc)/ Time.deltaTime;
+        movement = (transform.position - prevLoc)/ Time.deltaTime;
 
         
         // Debug.Log(movement.sqrMagnitude);
