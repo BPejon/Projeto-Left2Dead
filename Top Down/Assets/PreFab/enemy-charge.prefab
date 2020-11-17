@@ -29,6 +29,21 @@ MonoBehaviour:
   playerInAttackRange: 0
   speed: 300
   nextWaypointDistance: 5
+--- !u!114 &2773157923742485470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129358447157088270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db8fe21b9583054ea1cfd317547bec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceBackEnemy: 20
+  TimeBetHit: 0.3
+  isHit: 0
 --- !u!1001 &1248138251424373903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51,11 +66,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy-charge
       objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886081, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886083, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886083, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.625
+      objectReference: {fileID: 0}
     - target: {fileID: 7026476679029886084, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: m_Mass
       value: 1.3079002
       objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886085, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 724286271415707661, guid: 6bcf66c8163f2444f9cbe9f2d26b2005,
+        type: 3}
     - target: {fileID: 7026476679029886086, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
       propertyPath: m_LocalPosition.x

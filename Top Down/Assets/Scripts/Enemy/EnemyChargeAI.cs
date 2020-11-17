@@ -42,7 +42,9 @@ public class EnemyChargeAI : MonoBehaviour
     private float inicial_speed;
     public bool playerInSightRange, playerInAttackRange;
 
-
+    [Space]
+    [Header("got Hit")]
+    MeleeC enemyScriptHit; 
 
     [Space]
     [Header("atributes")]
@@ -69,6 +71,8 @@ public class EnemyChargeAI : MonoBehaviour
         player = GameObject.Find("player").transform;
         
         enemyScript = gameObject.GetComponent<simple_enemy>();
+        enemyScriptHit = gameObject.GetComponent<MeleeC>();
+
         animator = enemyScript.animator;
 
         lasTimeAttack = -20;
@@ -201,10 +205,14 @@ public class EnemyChargeAI : MonoBehaviour
         if ( currentWaypoint >= path.vectorPath.Count) return;
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        if (!onCharge)
+
+        if (!onCharge && !enemyScriptHit.isHit)
             rb.velocity = (direction* speed * Time.fixedDeltaTime);
-        else 
+        else if(!enemyScriptHit.isHit) 
             rb.velocity = (directionCharge * speed * Time.fixedDeltaTime);
+
+
+
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
