@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 4633537914780359827}
   - component: {fileID: 8488597463513257603}
   - component: {fileID: 2336322481413049866}
+  - component: {fileID: 7095765478989353040}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -408,3 +409,24 @@ MonoBehaviour:
   ForceBackEnemy: 1000
   TimeBetHit: 0.2
   isHit: 0
+--- !u!114 &7095765478989353040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c478bfcfd212fb842a6258d4142133c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 6304793198711897419, guid: c70cbe3d6b4e3ad4aa3ef0c4749623a4, type: 3}
+  - {fileID: 450990069417826819, guid: dd2934cf05745094a93b059e38dde3fc, type: 3}
+  - {fileID: 2743461654536312664, guid: 6207f2cd69c1b564b85f9f9429399332, type: 3}
+  - {fileID: 1992106475766075944, guid: a87980a5fbe68eb40a88777f7582ee2c, type: 3}
+  - {fileID: 2186515391702288402, guid: 7230a1ece268d874aa53bc9da3c5f989, type: 3}
+  bloodPool: {fileID: 0}
+  forcePart: 7
+  GravityS: 1
