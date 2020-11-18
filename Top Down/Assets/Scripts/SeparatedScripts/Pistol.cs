@@ -14,6 +14,8 @@ public class Pistol : Gun
 
     GameObject tip;
 
+    public AudioSource pistolSound;
+
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
 
@@ -31,6 +33,9 @@ public class Pistol : Gun
         this.kb.kbspeed = kbspeed;
         timer = 60.0f/tpm;
         Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
+
+        //Audio da bala
+        pistolSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,7 +60,11 @@ public class Pistol : Gun
        }
        else{
            curammo--;
-           //Vector3.Normalize(aimvec);
+            //Vector3.Normalize(aimvec);
+
+            //Som do tiro
+            pistolSound.Play();
+
 
            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
