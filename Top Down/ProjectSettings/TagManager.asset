@@ -23,8 +23,8 @@ TagManager:
   - whatIsPlayer
   - front_player
   - top
-  - 
-  - 
+  - enemy
+  - behind_part
   - 
   - 
   - 
@@ -46,14 +46,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: whatIsGround
-    uniqueID: 2402839255
-    locked: 0
   - name: behind_player
     uniqueID: 637676957
     locked: 0
+  - name: whatIsGround
+    uniqueID: 2402839255
+    locked: 0
+  - name: behind_part
+    uniqueID: 508232669
+    locked: 0
   - name: whatIsPlayer
     uniqueID: 3965179369
+    locked: 0
+  - name: enemy
+    uniqueID: 2638140317
     locked: 0
   - name: front_player
     uniqueID: 3273331529

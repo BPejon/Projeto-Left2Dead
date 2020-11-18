@@ -10,12 +10,13 @@ public class gore : MonoBehaviour
     public GameObject bloodPool;
     public float forcePart;
     public float GravityS;
-    
+    public float timeMoving;
     
 
 
     Transform player;
     GameObject part;
+    GameObject blood;
     simple_enemy simpleScript;
     int inicialHealth;
     bool drop2=false;
@@ -34,24 +35,29 @@ public class gore : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(drop2 && Time.time - startTime < 1f){
-            rbb.transform.Rotate(0f, 0f, 5f, Space.Self);
-        }
+        
 
-        if(drop2 && Time.time - startTime > 1f && Time.time - startTime < TotalTime){
+        if(drop2 && Time.time - startTime > timeMoving && Time.time - startTime < TotalTime){
             
             if (rbb.gravityScale > 0)
             {
-                Debug.Log("enrew");
                 rbb.gravityScale=0;
                 rbb.velocity = Vector2.zero;
                 rbb.angularVelocity = 0f;
+                blood = Instantiate(bloodPool, part.transform.position - new Vector3(0f,0.3f,0f)
+                                    , new Quaternion(0f, 0f , 0f, 0f));
+                Destroy(blood, TotalTime - timeMoving );
             }
-
         }
-        
+        if(drop2 && Time.time - startTime < timeMoving){
+            rbb.transform.Rotate(0f, 0f, 20f, Space.Self);
+        }
+        if(Time.time - startTime > timeMoving && Time.time - startTime < TotalTime){
+            blood.transform.localScale += new Vector3(0.005f,0.005f,0.005f);
+        }
+
 
         if (simpleScript.health <= (int)(inicialHealth/2) && !drop2)
         {
@@ -64,9 +70,9 @@ public class gore : MonoBehaviour
             
 
             // joga a parte para cima;
-            Vector2 m_NewPosition = new Vector2(0.0f, 0.7f);
-            Vector2 direction = ((Vector2)transform.position - (Vector2)player.position + m_NewPosition).normalized;
-
+            Vector2 m_NewPosition = new Vector2(0.0f, 3f);
+            Vector2 direction = ((Vector2)transform.position - (Vector2)player.position ).normalized;
+            direction = (m_NewPosition + direction).normalized;
             
             rbb.AddForce(direction * forcePart, ForceMode2D.Impulse);
             startTime = Time.time;

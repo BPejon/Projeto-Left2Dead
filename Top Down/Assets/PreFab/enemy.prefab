@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: -1264772288087964892, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -1246487339369159825, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -427,6 +427,8 @@ MonoBehaviour:
   - {fileID: 2743461654536312664, guid: 6207f2cd69c1b564b85f9f9429399332, type: 3}
   - {fileID: 1992106475766075944, guid: a87980a5fbe68eb40a88777f7582ee2c, type: 3}
   - {fileID: 2186515391702288402, guid: 7230a1ece268d874aa53bc9da3c5f989, type: 3}
-  bloodPool: {fileID: 0}
-  forcePart: 7
-  GravityS: 1
+  bloodPool: {fileID: 970535268612870823, guid: 968b5f8cc7871c44faf7e0d4bea31f64,
+    type: 3}
+  forcePart: 11
+  GravityS: 1.6
+  timeMoving: 1
