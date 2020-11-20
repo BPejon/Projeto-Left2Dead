@@ -14,7 +14,6 @@ public class Pistol : Gun
 
     GameObject tip;
 
-    public AudioSource pistolSound;
 
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
@@ -33,9 +32,6 @@ public class Pistol : Gun
         this.kb.kbspeed = kbspeed;
         timer = 60.0f/tpm;
         Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
-
-        //Audio da bala
-        pistolSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,10 +59,12 @@ public class Pistol : Gun
             //Vector3.Normalize(aimvec);
 
             //Som do tiro
-            pistolSound.Play();
+            //Debug.Log(SoundManager.Sound.PistolShot);
+            //SoundManager.PlaySound(SoundManager.Sound.PistolShot);
+            //Debug.Log("Apssou");
 
 
-           GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
+            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
            rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
            //nbullet.GetComponent<StandardBullet>().setFactors(kbspeed, kbdur);
@@ -74,23 +72,25 @@ public class Pistol : Gun
            //rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
            Destroy(nbullet, 2.0f);
 
-           
+            
+
+
             //Quando Atiramos, temos também que sofrer um "recoil"
-        //    GameObject rb = this.transform.parent.gameObject;
-           //Precisamos pegar o Gameobject do pai do pai, isto é, do player;
-        //    GameObject rb2 = rb.transform.parent.gameObject;
-           
-          
-           //Fazemos o Knockback por meio da posição da bala, em comparação com a posição do jogador.
+            //    GameObject rb = this.transform.parent.gameObject;
+            //Precisamos pegar o Gameobject do pai do pai, isto é, do player;
+            //    GameObject rb2 = rb.transform.parent.gameObject;
+
+
+            //Fazemos o Knockback por meio da posição da bala, em comparação com a posição do jogador.
             // Vector2 diference = rb2.transform.position - nbullet.transform.position;
             // float smoothener = 0.2f;
             // rb2.transform.position = new Vector2(rb2.transform.position.x + (diference.x* smoothener), rb2.transform.position.y + (diference.y*smoothener));
 
-       }
-       
-       //Debug.Log(curammo);
-       //Debug.Log(ammo);
-       past = Time.time;
+        }
+
+        //Debug.Log(curammo);
+        //Debug.Log(ammo);
+        past = Time.time;
        this.kb.status = 1;
        return kb;
     }
