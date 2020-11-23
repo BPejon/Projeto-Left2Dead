@@ -59,12 +59,10 @@ public class Pistol : Gun
             //Vector3.Normalize(aimvec);
 
             //Som do tiro
-            //Debug.Log(SoundManager.Sound.PistolShot);
-            //SoundManager.PlaySound(SoundManager.Sound.PistolShot);
-            //Debug.Log("Apssou");
+            SoundManager.PlaySound(SoundManager.Sound.pistolShot);
 
 
-            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
+           GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
            rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
            //nbullet.GetComponent<StandardBullet>().setFactors(kbspeed, kbdur);
@@ -100,26 +98,36 @@ public class Pistol : Gun
     //Se na espera = 2
     public override int Reload(){
         //se não tivermos municão guardada
-        if(ammo <= 0){
+        if (ammo <= 0)
+        {
             return 0;
         }
-        //se temos, mas é menor q o tamanho do clipe;
-        else if(ammo < clipsize){
-            curammo = ammo;
-            ammo = 0;
-            return 1;
-        }
         //Se a arma já esta recarregada, e não precisamos fazer isso.
-        else if(curammo == clipsize){
-            return 1;
-        }
-        //se não, recarregamos normalmente
-        else{
-            curammo = clipsize;
-            ammo = ammo - clipsize;
+        else if (curammo == clipsize)
+        {
             return 1;
         }
 
+        //Recarrega a Arma
+        else
+        {
+            SoundManager.PlaySound(SoundManager.Sound.pistolReload);
+            //se temos, mas é menor q o tamanho do clipe;
+            if (ammo < clipsize)
+            {
+                curammo = ammo;
+                ammo = 0;
+                return 1;
+            }
+
+            //se não, recarregamos normalmente
+            else
+            {
+                curammo = clipsize;
+                ammo = ammo - clipsize;
+                return 1;
+            }
+        }
     }
 
     //Sera usada com pacotes de munição.
