@@ -279,6 +279,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3225827614418070264, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: enemyBulletHitDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3225827614418070264, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: enemyHitDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4153200423096084467, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: m_SortingLayer
@@ -503,31 +513,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872384499868384599, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
-      propertyPath: moveSpeed
-      value: 500
+      propertyPath: DASHF
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7872384499868384599, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: dashSpeed
-      value: 1300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7872384499868384599, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: dashParticle
-      value: 
-      objectReference: {fileID: 7698752985244832829, guid: ad9a9f9fdd6d0bb4285c156796cb9bce,
-        type: 3}
-    - target: {fileID: 7872384499868384599, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: durationParticle
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7872384499868384599, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: dashExplosionParticle
-      value: 
-      objectReference: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
-        type: 3}
     - target: {fileID: 7872384500354830362, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: m_Layer
@@ -639,6 +627,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2503110582845390475, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8319211614536856441, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
         type: 3}
       propertyPath: m_Name
@@ -701,57 +694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54dcb64ffa0741943a8da7f14ef4f56b, type: 3}
---- !u!1 &1625258770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7872384499868384593, guid: fea7782bdf8622d49833800444d2f727,
-    type: 3}
-  m_PrefabInstance: {fileID: 818314276}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1625258771
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625258770}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.013224602, y: -0.033061504}
-  m_Size: {x: 0.82445526, y: 1.5420284}
-  m_Direction: 0
---- !u!95 &1625258773 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7872384499868384592, guid: fea7782bdf8622d49833800444d2f727,
-    type: 3}
-  m_PrefabInstance: {fileID: 818314276}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1625258777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625258770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dfb6e10b56b6046a060776f48a61cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newHitSize: 3
-  ForceBack: 20
-  TimeAttacking: 0.4
-  TimeBTWAttackig: 0.5
-  m_collider: {fileID: 1625258771}
-  bulletPrefab: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9,
-    type: 3}
-  Damage: 2
-  ForceBackEnemy: 20
-  animator1: {fileID: 1625258773}
-  isAttackingMelee: 0
 --- !u!1001 &1967395286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -817,6 +759,11 @@ PrefabInstance:
     - target: {fileID: 3547871485481592358, guid: 9f4aa1df14866684ab884b5182de36d8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892595359802836333, guid: 9f4aa1df14866684ab884b5182de36d8,
+        type: 3}
+      propertyPath: speed
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

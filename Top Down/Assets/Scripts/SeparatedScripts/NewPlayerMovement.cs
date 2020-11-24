@@ -21,6 +21,7 @@ public class NewPlayerMovement : MonoBehaviour
     public ParticleSystem dashParticle;
     public ParticleSystem dashExplosionParticle;
 
+    public int DASHF;
     public float dashSpeed; // valocidade do dash
     public float dashTime;  // tempo entre dash
     public float dashDuration; // tempo que um dash dura
@@ -29,12 +30,17 @@ public class NewPlayerMovement : MonoBehaviour
     public float durationParticle;
     int counter_aux;
 
+    [Space]
+    [Header("PlayerGotHit")]
+    PlayerGotHit playerHitScript;
+
     // Start is called before the first frame update
     void Start()
     {
         //Setamos todos para os componentes deste Rigidbody
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         animator = this.gameObject.GetComponent<Animator>();
+        playerHitScript = gameObject.GetComponent<PlayerGotHit>();
     }
 
     // Update is called once per frame
@@ -58,10 +64,12 @@ public class NewPlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         //move o personagem conforme o movimento.
-        if(isOnDash){
-            rb.velocity = (movement * dashSpeed * Time.fixedDeltaTime);
-        }else{
-            rb.velocity = (movement * moveSpeed * Time.fixedDeltaTime);
+        if(!playerHitScript.isBack){
+            if(isOnDash){
+                rb.velocity = (movement * dashSpeed * Time.fixedDeltaTime);
+            }else{
+                rb.velocity = (movement * moveSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 
@@ -85,7 +93,7 @@ public class NewPlayerMovement : MonoBehaviour
         if (isOnDash)
         {
             counter_aux ++;
-            if (counter_aux % 10 == 0)
+            if (counter_aux % DASHF == 0)
             {
                 ParticleSystem dashParticleClone = (ParticleSystem)Instantiate(dashParticle, 
                                                                            new Vector3(transform.position.x,
