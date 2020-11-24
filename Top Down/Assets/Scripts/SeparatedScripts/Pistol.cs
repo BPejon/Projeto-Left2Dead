@@ -66,12 +66,10 @@ public class Pistol : Gun
             //Vector3.Normalize(aimvec);
 
             //Som do tiro
-            //Debug.Log(SoundManager.Sound.PistolShot);
-            //SoundManager.PlaySound(SoundManager.Sound.PistolShot);
-            //Debug.Log("Apssou");
+            SoundManager.PlaySound(SoundManager.Sound.pistolShot);
 
 
-            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
+           GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
            rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
            //nbullet.GetComponent<StandardBullet>().setFactors(kbspeed, kbdur);
@@ -107,7 +105,8 @@ public class Pistol : Gun
     //Se na espera = 2
     public override int Reload(){
         //se não tivermos municão guardada
-        if(ammo <= 0){
+        if (ammo <= 0)
+        {
             return 0;
         }
         //se temos, mas é menor q o tamanho do clipe;
@@ -118,6 +117,7 @@ public class Pistol : Gun
             //reloading = true;
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
+            SoundManager.PlaySound(SoundManager.Sound.pistolReload);
             return 1;
         }
         //Se a arma já esta recarregada, e não precisamos fazer isso.
@@ -126,6 +126,7 @@ public class Pistol : Gun
         }
         //se não, recarregamos normalmente
         else{
+            SoundManager.PlaySound(SoundManager.Sound.pistolReload);
             curammo = clipsize;
             ammo = ammo - clipsize;
             //Estamos recarregando;

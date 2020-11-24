@@ -69,6 +69,9 @@ public class ShotGun : Gun
             curammo--;
             //Vector3.Normalize(aimvec);
 
+            //Som da 12
+            SoundManager.PlaySound(SoundManager.Sound.shotgunShot);
+
             GameObject[] nbullet = new GameObject[numberOfbullets];
             Rigidbody2D[] rbb = new Rigidbody2D[numberOfbullets];
             for (int i = 0; i < numberOfbullets; i++)
@@ -107,19 +110,25 @@ public class ShotGun : Gun
     //Se não = 0
     public override int Reload(){
         //se não tivermos municão guardada
-        if(ammo <= 0){
+        if (ammo <= 0)
+        {
             return 0;
+        }
+        else if(curammo == clipsize){
+            return 1;
         }
         //se temos, mas é menor q o tamanho do clipe;
         else if(ammo < clipsize){
             curammo = ammo;
             ammo = 0;
             //Marcamos o tempo que comecamos a recarregar;
+            SoundManager.PlaySound(SoundManager.Sound.shotgunReload);
             pastreload = Time.time;
             return 1;
         }
         //Se a arma já esta recarregada, e não precisamos fazer isso.
-        else if(curammo == clipsize){
+        else if (curammo == clipsize)
+        {
             return 1;
         }
         //se não, recarregamos normalmente
@@ -128,6 +137,7 @@ public class ShotGun : Gun
             ammo = ammo - clipsize;
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
+            SoundManager.PlaySound(SoundManager.Sound.shotgunReload);
             return 1;
         }
 
