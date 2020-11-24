@@ -54,10 +54,10 @@ MonoBehaviour:
   - {fileID: 539024001648285149}
   Belt: 0000000001000000
   camvec: {x: 0, y: 0, z: 0}
-  player: {fileID: 7872384499868384597}
-  kbspeed: 0
+  player: {fileID: 0}
+  kbspeed: 10
   kbtime: 0
-  kbdur: 0
+  kbdur: 0.2
   knockd: 0
   kill: 0
   pastaux: {x: 0, y: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812295d67d768a547950854f7bd00ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
+  moveSpeed: 500
   dashParticle: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
     type: 3}
   dashSpeed: 1000

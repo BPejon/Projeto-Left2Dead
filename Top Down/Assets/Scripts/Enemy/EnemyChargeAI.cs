@@ -48,6 +48,8 @@ public class EnemyChargeAI : MonoBehaviour
     [Header("atributes")]
     // script do basico do inimigo
     private simple_enemy enemyScript;
+    MeleeC enemyScriptHit; 
+
 
     // speed
     public float speed = 5f;
@@ -69,6 +71,8 @@ public class EnemyChargeAI : MonoBehaviour
         player = GameObject.Find("player").transform;
         
         enemyScript = gameObject.GetComponent<simple_enemy>();
+        enemyScriptHit = gameObject.GetComponent<MeleeC>();
+
         animator = enemyScript.animator;
 
         lasTimeAttack = -20;
@@ -201,9 +205,9 @@ public class EnemyChargeAI : MonoBehaviour
         if ( currentWaypoint >= path.vectorPath.Count) return;
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-        if (!onCharge)
+        if (!onCharge && !enemyScriptHit.isHit)
             rb.velocity = (direction* speed * Time.fixedDeltaTime);
-        else 
+        else if(!enemyScriptHit.isHit) 
             rb.velocity = (directionCharge * speed * Time.fixedDeltaTime);
 
         //Parte experimental knockback.

@@ -14,13 +14,19 @@ public class playermelee : MonoBehaviour
     public float TimeBTWAttackig;
     public CapsuleCollider2D m_collider;
     public GameObject bulletPrefab; 
+    public int Damage;
+    public float ForceBackEnemy;
     
+
+    [Space]
+    [Header("animation")]
+    public Animator animator1;
     
+
     float TimeStart; 
     float TimeEnd;
     public bool isAttackingMelee;
     Vector2 inicial_size;
-
 
 
     
@@ -36,12 +42,13 @@ public class playermelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Input.GetKeyDown("e") && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
+        
+        if(Input.GetMouseButton(1) && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
             isAttackingMelee = true;
             TimeStart = Time.time;
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y)) * newHitSize;
         }
+        
     }
     
     void FixedUpdate()
@@ -52,19 +59,19 @@ public class playermelee : MonoBehaviour
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y));
         }
 
-
+        animator1.SetBool("isMelee",isAttackingMelee);
     }
+
+    
 
     // se a bala entrar em contato com algo ela é destruida.
     void OnCollisionEnter2D(Collision2D  other) {
         if (isAttackingMelee)
         {
-            
-            
             if (other.gameObject.CompareTag("enemyBullet")){
                 
                 Transform enemyBulletT = other.gameObject.GetComponent<Transform>();
-                Debug.Log("instanciando balas");
+          
 
                 GameObject bullet = Instantiate(bulletPrefab, enemyBulletT.position, enemyBulletT.rotation);
                 Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
