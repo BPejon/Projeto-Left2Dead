@@ -99,7 +99,7 @@ public class GeneralWeaponScript : MonoBehaviour
             //int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
 
             if(fevent.status == 1){
-                Debug.Log("Shot Fired");
+              //  Debug.Log("Shot Fired");
 
                 //test for knockback:
                 DealKnockback(1);
@@ -108,7 +108,7 @@ public class GeneralWeaponScript : MonoBehaviour
                // Debug.Log("Gun -resting-");
             }
             if(fevent.status == 0){
-                Debug.Log("Must Reload");
+              //  Debug.Log("Must Reload");
             }
 
 
@@ -116,14 +116,14 @@ public class GeneralWeaponScript : MonoBehaviour
 
         //Se estamos recarregando
         if(Input.GetKeyDown(KeyCode.R)){
-            Debug.Log("R pressed" + held);
+           // Debug.Log("R pressed" + held);
             int fevent2 = gunTypes[Belt[held]].GetComponent<Gun>().Reload();
             //int fevent = gunBelt[held].GetComponent<Gun>().Reload();
             if(fevent2 == 0){
-                Debug.Log("No ammo");
+               // Debug.Log("No ammo");
             }
             else{
-                Debug.Log("Reloaded");
+               // Debug.Log("Reloaded");
             }
         }
 
@@ -145,6 +145,8 @@ public class GeneralWeaponScript : MonoBehaviour
         }
 
     }
+
+    
 
     void FixedUpdate(){
         if(knockd){ 
@@ -213,6 +215,36 @@ public class GeneralWeaponScript : MonoBehaviour
         }
     }
 
+    //Pegar Itens e armas - 
+    public void ChangeWeapon(GameObject other){
+        Debug.Log("Other!");
+        //se eh um item droppado (inicalmente faremos para armas)
+        if(other.gameObject.CompareTag("DroppedItem")){
+            
+                //eh uma arma, nos queremos ela.
+                //2 Casos: 1 - Arma nova, 2 - Arma ja equipada
+                //1 - Substituimos a arma empunhada pela nova
+                //1 - Jogamos a antiga "fora" (eliminamos seus valores de municao e clipe)
+                //2 - Aumentamos o valor de municao da arma especifica. 
+
+                //Caso 1:
+                DroppedGun weaponInfo = other.gameObject.GetComponent<DroppedGun>();
+                //Se nao for nenhuma das armas que temos atualmente.
+                if(weaponInfo.indexvalue != Belt[0] && weaponInfo.indexvalue != Belt[1] ){
+                    Belt[held] = weaponInfo.indexvalue;
+                    gunTypes[Belt[held]].GetComponent<Gun>().ammo = weaponInfo.curammo;
+                    gunTypes[Belt[held]].GetComponent<Gun>().curammo = weaponInfo.curclip;
+                    CleanAllSprites();
+                    UpdateWeapon();
+                }
+                else{
+                    gunTypes[weaponInfo.indexvalue].GetComponent<Gun>().Refill(weaponInfo.curammo);
+                }
+
+            
+        }
+    }
+
     //Atualiza quanto que arma estamos usando, mudando o sprite e tal;
     public void UpdateWeapon(){
         
@@ -233,7 +265,7 @@ public class GeneralWeaponScript : MonoBehaviour
     //Desabilita todos os spirtes de arma, para que apenas as "selecionadas" possam ser habilitadas.
     void CleanAllSprites(){
 
-        Debug.Log(gunTypes.Length);
+        //Debug.Log(gunTypes.Length);
         for(int i = 0; i < gunTypes.Length; i++){
             gunTypes[i].GetComponent<SpriteRenderer>().enabled = false;
         }

@@ -100,18 +100,16 @@ public class simple_enemy : MonoBehaviour
         
     }
 
-   
-
-    // define colisor
-    void OnCollisionEnter2D(Collision2D  other) {
-
+    //Teste usando trigger ao inves de collisao.
+    void OnTriggerEnter2D(Collider2D other){
+       // Debug.Log("Zombie Side collision");
         // de colidir com bala então diminui a vida
         if (other.gameObject.tag.Equals("playerBullet"))
         {
             health = health - other.gameObject.GetComponent<BClass>().damage;
             //Parte experimental Knockback
             KBReport kb = other.gameObject.GetComponent<BClass>().GetKBReport();
-            Debug.Log("Hit - Kb from:" + kb.dir);
+           // Debug.Log("Hit - Kb from:" + kb.dir);
             fevent = new KBReport();
             fevent = kb;
             //gameObject.transform.position = gameObject.transform.position + kb.dir*2;
@@ -141,6 +139,47 @@ public class simple_enemy : MonoBehaviour
         }
     }
 
+   /*
+    // define colisor - Por fisica
+    void OnCollisionEnter2D(Collision2D  other) {
+
+        // de colidir com bala então diminui a vida
+        if (other.gameObject.tag.Equals("playerBullet"))
+        {
+            health = health - other.gameObject.GetComponent<BClass>().damage;
+            //Parte experimental Knockback
+            KBReport kb = other.gameObject.GetComponent<BClass>().GetKBReport();
+            Debug.Log("Hit - Kb from:" + kb.dir);
+            fevent = new KBReport();
+            fevent = kb;
+            //gameObject.transform.position = gameObject.transform.position + kb.dir*2;
+            //DealKnockback(1);
+            hit = true;
+
+            // se a vida for maior igual a zero, re-escala a vida verde
+            if (health >= 0)
+            {
+                healthBarG.transform.localScale = new Vector3( iniHealthScale.x * ((float) health/ (float)fullHealth),
+                                                            iniHealthScale.y,
+                                                            iniHealthScale.z);
+            }
+            //Destroy(other.gameObject);
+        }
+        
+        
+        // se a vida for menor que zero, fala que o inimigo morreu e troca de sprite.
+        if (health <= 0)
+        {
+            if (!isDead)
+            {
+                isDead = true;
+                timedied = Time.time;
+            }
+            
+            Debug.Log("squirtle Died");
+        }
+    }*/
+    
     //Knockback and friends; 
     public void DealKnockback(int f){
         //start knockback
@@ -164,17 +203,24 @@ public class simple_enemy : MonoBehaviour
             Vector2 aux;
             aux.x = fevent.dir.x;
             aux.y = fevent.dir.y;
-            gameObject.GetComponent<Rigidbody2D>().velocity += fevent.kbspeed * aux;
+            //Crazy change incoming:
+            gameObject.GetComponent<Rigidbody2D>().velocity = fevent.kbspeed * aux;
+            //gameObject.GetComponent<Rigidbody2D>().velocity += fevent.kbspeed * aux;
             
         }
         else if(kill){
             Vector2 aux;
             aux.x = 0;
             aux.y = 0;
+            
             //player.GetComponent<Rigidbody2D>().velocity -= kbspeed * pastaux;
             gameObject.GetComponent<Rigidbody2D>().velocity = aux;
             kill = false;
         }
+    }
+
+    public void SingleKBFunc(int f){
+
     }
 
 }

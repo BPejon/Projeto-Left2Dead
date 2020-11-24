@@ -31,7 +31,7 @@ public class ShotGun : Gun
         this.kb.kbspeed = kbspeed;
         this.kb.kbdur = kbdur;
         timer = 60.0f/tpm;
-        Debug.Log("Timer = " + timer);
+       // Debug.Log("Timer = " + timer);
     }
 
     // Update is called once per frame
@@ -49,6 +49,8 @@ public class ShotGun : Gun
         float[] anglesBet = new float[numberOfbullets];
         int max_angle = 70;
 
+        elapsedreload = Time.time - pastreload;
+
        //Primeiro checamos a questão da munição
        if(curammo == 0){
           this.kb.status = 0;
@@ -56,6 +58,10 @@ public class ShotGun : Gun
        }
        else if(elapsed < timer){
           this.kb.status = 2;
+           return kb;
+       }
+       else if(elapsedreload < reloadtime){
+           this.kb.status = 2;
            return kb;
        }
        //se temos munição, atiramos; Tiro de pistóla é basico
@@ -108,6 +114,8 @@ public class ShotGun : Gun
         else if(ammo < clipsize){
             curammo = ammo;
             ammo = 0;
+            //Marcamos o tempo que comecamos a recarregar;
+            pastreload = Time.time;
             return 1;
         }
         //Se a arma já esta recarregada, e não precisamos fazer isso.
@@ -118,6 +126,8 @@ public class ShotGun : Gun
         else{
             curammo = clipsize;
             ammo = ammo - clipsize;
+            //Marcamos o tempo que comecamos a recarregar;
+            pastreload = Time.time;
             return 1;
         }
 

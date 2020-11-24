@@ -206,6 +206,25 @@ public class EnemyChargeAI : MonoBehaviour
         else 
             rb.velocity = (directionCharge * speed * Time.fixedDeltaTime);
 
+        //Parte experimental knockback.
+        //Feito aqui pois este script lida com velocidade.
+        //Coma o knockback se nao tinha comecado já, e temos um hit.
+        if(enemyScript.hit){
+            enemyScript.DealKnockback(1);
+        }
+
+        //lida com o timer do knockback
+        enemyScript.DealKnockback(0);
+
+        //Faz as modificacoes de velocidade necessarias
+        //Adiciona o knockback se tiver, faz nada caso o contrário - ja que a velocidade "base" é definida acima.
+        enemyScript.KnockBackProgrssion();
+
+        if(enemyScript.isDead)
+        {
+            rb.velocity = new Vector2(0,0);
+        }
+        
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
         if (direction.x >= 0.01f)
@@ -213,6 +232,9 @@ public class EnemyChargeAI : MonoBehaviour
         else if (direction.x <=  -0.01f)
             transform.localScale = new Vector3(-1f,1f,1f);
         
+        
+
+
         if (enemyScript.health > 0){
             if (!onChase && !onAttack && !onCharge)
                 checkIfInSight();

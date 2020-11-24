@@ -29,6 +29,41 @@ public class LightMask : MonoBehaviour
         
     }
 
+    void OnTriggerEnter2D(Collider2D other){
+        //Debug.Log("Collision - Mask");
+
+        
+        if(other.gameObject.tag.Equals("playerBullet")){
+
+            KBReport kb = other.gameObject.GetComponent<BClass>().GetKBReport();
+
+
+            float anglerad = Mathf.Atan2(kb.dir.y, kb.dir.x);
+
+            float angle = anglerad * Mathf.Rad2Deg;
+            
+            goreindextest = Random.Range(0,4);
+
+
+            //Add blood splatter
+            GameObject splatter = Instantiate(mask,this.gameObject.transform.position, other.gameObject.transform.rotation);
+           
+            splatter.GetComponent<SpriteMask>().sprite = goresets.GetComponent<GoreSprites>().splatters[goreindextest];
+
+            splatter.transform.rotation = Quaternion.Euler(0,0,angle);
+        
+            //Add blood pool:
+            GameObject pool = Instantiate(mask,this.gameObject.transform.position, other.gameObject.transform.rotation);
+
+            goreindextest = Random.Range(0,2);
+
+            pool.GetComponent<SpriteMask>().sprite = goresets.GetComponent<GoreSprites>().splatters[goreindextest];
+
+            pool.transform.rotation = Quaternion.Euler(0,0,angle);
+
+        }
+    }
+    /*
     void OnCollisionEnter2D(Collision2D other){
         
         
@@ -63,6 +98,6 @@ public class LightMask : MonoBehaviour
             pool.transform.rotation = Quaternion.Euler(0,0,angle);
 
         }
-    }
+    }*/
 
 }

@@ -33,6 +33,15 @@ public abstract class Gun : MonoBehaviour
     public float kbspeed;
     public float kbdur;
 
+    //Referencias para o processo de reload
+    public bool reloading;
+
+    public float reloadtime;
+
+    public float elapsedreload;
+
+    public float pastreload;
+
 
     //somos nós!
     GameObject gun;
