@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SoundManager{ 
+public static class SoundManager{
 
 
-    //Para usar o script adicione SoundManager.PlaySound(SoundManager.Sound."Som",local do som);
+    //Para usar o script adicione SoundManager.PlaySound(SoundManager.Sound."Som");
+    //3D SoundManager.PlaySound(SoundManager.Sound."Som", GetPosition());
     public enum Sound{
         pistolShot,
         pistolReload,
@@ -18,6 +19,9 @@ public static class SoundManager{
 
     //Dicionário para analisar casos especificos de tempo para reproduzir um som
     private static Dictionary<Sound, float> soundTimerDictionary;
+    //Criar apenas um game object pra sons
+    private static GameObject oneShotGameObject;
+    private static AudioSource oneShotAudioSource;
 
     public static void Initialize()
     {
@@ -25,11 +29,32 @@ public static class SoundManager{
         soundTimerDictionary[Sound.playerMove] = 0f;
     }
 
-    public static void PlaySound(Sound sound) {
+    //Som em 3D
+    public static void PlaySound(Sound sound, Vector3 position)
+    {
         if (CanPlaySound(sound) == true){
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            audioSource.PlayOneShot(GetAudioClip(sound));
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.maxDistance = 100f;
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.dopplerLevel = 0f;
+            audioSource.Play();
+
+            Object.Destroy(soundGameObject, audioSource.clip.length);
+        }
+    }
+    
+    public static void PlaySound(Sound sound) {
+        if (CanPlaySound(sound) == true){
+            if(oneShotGameObject == null)
+            {
+                oneShotGameObject = new GameObject("One Shot Sound");
+                oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+            }
+            
+            oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
 
