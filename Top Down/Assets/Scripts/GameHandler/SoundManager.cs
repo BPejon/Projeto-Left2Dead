@@ -46,6 +46,7 @@ public static class SoundManager{
         }
     }
     
+    //Som em 2D
     public static void PlaySound(Sound sound) {
         if (CanPlaySound(sound) == true){
             if(oneShotGameObject == null)

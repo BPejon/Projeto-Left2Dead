@@ -26,5 +26,13 @@ public class GameAssets : MonoBehaviour
         public SoundManager.Sound sound;
         public AudioClip audioClip;
     }
+    
+    public ImageGunsUI[] imageGunsUIArray;
 
+    [System.Serializable]
+    public class ImageGunsUI{
+        public UIManager.GunImage gunType;
+        public Sprite gunSprite;
+    }
+    
 }
