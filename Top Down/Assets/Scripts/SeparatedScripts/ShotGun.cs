@@ -13,7 +13,9 @@ public class ShotGun : Gun
     public float bulletspeed;
 
     GameObject tip;
-
+    [Space]
+    [Header("shootEffect")]
+    public GameObject ShootEffectPreFab;
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
 
@@ -93,14 +95,9 @@ public class ShotGun : Gun
                 nbullet[i].GetComponent<StandardBullet>().setAngle(directorShot.normalized);
                 Destroy(nbullet[i], 1.2f);
             }
-            /*for (int i = 0; i < numberOfbullets; i++)
-            {
-                Debug.Log(anglesBet[i]);
-            }*/
        }
        
-    //    Debug.Log(curammo);
-    //    Debug.Log(ammo);
+   
        past = Time.time;
        this.kb.status = 1;
        return kb;

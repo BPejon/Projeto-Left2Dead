@@ -13,7 +13,9 @@ public class Pistol : Gun
     public float bulletspeed;
 
     GameObject tip;
-
+    [Space]
+    [Header("shootEffect")]
+    public GameObject ShootEffectPreFab;
 
     //Ao criar uma pistola, setamos então sua munição, e armas;
     void Awake(){
@@ -71,11 +73,15 @@ public class Pistol : Gun
 
            GameObject nbullet = Instantiate(bullet,tip.transform.position,transform.rotation);
            Rigidbody2D rbb = nbullet.GetComponent<Rigidbody2D>();
+           
+           
+           
            rbb.AddForce(tip.transform.up * bulletspeed, ForceMode2D.Impulse);
            //nbullet.GetComponent<StandardBullet>().setFactors(kbspeed, kbdur);
            nbullet.GetComponent<StandardBullet>().setAngle(tip.transform.up);
            //rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
            Destroy(nbullet, 2.0f);
+
 
             
 
