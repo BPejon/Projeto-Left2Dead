@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    // se a bala entrar em contato com algo ela é destruida.
-    void OnCollisionEnter2D(Collision2D  other) {
+
+    void OnTriggerEnter2D(Collider2D other){
+        //Debug.Log("Collision");
         if (!other.gameObject.CompareTag("playerBullet") && 
-        !other.gameObject.CompareTag("Player")){
+            !other.gameObject.CompareTag("DroppedItem") && 
+            !other.gameObject.CompareTag("Player") )
+        {
             Destroy(gameObject);
         }
     }
+   
 }

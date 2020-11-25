@@ -47,6 +47,7 @@ public class PlayerGotHit : MonoBehaviour
         moveScript =  gameObject.GetComponent<NewPlayerMovement>();
         meleeScript = gameObject.GetComponent<playermelee>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        isBackBullet = false;
     }
 
     // Update is called once per frame
@@ -89,10 +90,7 @@ public class PlayerGotHit : MonoBehaviour
             (other.gameObject.CompareTag("Enemy") ||
             other.gameObject.CompareTag("enemyBullet")))
         {
-            if (!isBackBullet && other.gameObject.CompareTag("enemyBullet") ){
-                isBackBullet = true;
-                health -= enemyBulletHitDamage;
-            }
+            
             if (!isBackEnemy && other.gameObject.CompareTag("Enemy") ){
                 isBackEnemy = true;
                 health -= enemyHitDamage;
@@ -111,4 +109,17 @@ public class PlayerGotHit : MonoBehaviour
         }
         
     }
+    public void gotHitByBuleet(Transform bbPosition){
+        if (!isBackBullet && !isImune && !moveScript.isOnDash){
+            isBackBullet = true;
+            isBack = true;
+            health -= enemyBulletHitDamage;
+            direction = ((Vector2)(transform.position) - (Vector2)bbPosition.position).normalized;
+            isImune = true;
+            timeStartHit = Time.time;
+        }
+
+    }    
+
+
 }

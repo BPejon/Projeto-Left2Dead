@@ -66,22 +66,6 @@ public class playermelee : MonoBehaviour
 
     // se a bala entrar em contato com algo ela é destruida.
     void OnCollisionEnter2D(Collision2D  other) {
-        if (isAttackingMelee)
-        {
-            if (other.gameObject.CompareTag("enemyBullet")){
-                
-                Transform enemyBulletT = other.gameObject.GetComponent<Transform>();
-          
-
-                GameObject bullet = Instantiate(bulletPrefab, enemyBulletT.position, enemyBulletT.rotation);
-                Rigidbody2D rbb = bullet.GetComponent<Rigidbody2D>();
-                // adiciona uma força que define a movimentaçao da bala
-                rbb.AddForce(enemyBulletT.up * (-ForceBack), ForceMode2D.Impulse);
-                // depois de 2 segundos o projétil é destruido
-                Destroy(bullet, 8.0f);
-            }
-        }
-        
     }
 
 }

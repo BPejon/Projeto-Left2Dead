@@ -24,7 +24,9 @@ public class StandardBullet : BClass
     }*/
     void OnTriggerEnter2D(Collider2D other){
         //Debug.Log("Collision");
-        if (!other.gameObject.CompareTag("playerBullet") && !other.gameObject.CompareTag("DroppedItem")){
+        if (!other.gameObject.CompareTag("playerBullet") &&
+            !other.gameObject.CompareTag("DroppedItem") && 
+            !other.gameObject.CompareTag("Player")){
             Destroy(gameObject);
         }
     }
