@@ -76,7 +76,7 @@ public class EnemyShotGunAI : MonoBehaviour
         enemyScriptHit = gameObject.GetComponent<MeleeG>();
 
 
-        lastTimeShoot = -20.0f;
+        lastTimeShoot = 1.0f;
         GameObject newEmptyGO = new GameObject();
         speedIni = speed;
         target = newEmptyGO.transform;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492147666501617369}
   - component: {fileID: 5994740593028175269}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: blood_pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -645523905
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -905720648666261847, guid: aeb95136a77db9f4eb5ea53967a14b2b,
     type: 3}

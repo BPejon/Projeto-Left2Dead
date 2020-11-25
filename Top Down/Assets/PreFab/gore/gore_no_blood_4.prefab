@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2745863569075084328}
   - component: {fileID: 8245951070473146568}
   - component: {fileID: -2981604956260942576}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: gore_no_blood_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 13484647
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3767715668089879747, guid: 99a29fdc719ced54f8ef8ce1901269d9,
     type: 3}

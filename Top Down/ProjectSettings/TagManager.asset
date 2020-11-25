@@ -23,9 +23,9 @@ TagManager:
   - whatIsPlayer
   - front_player
   - top
-  - 
-  - 
-  - 
+  - part
+  - blood
+  - enemy
   - 
   - 
   - 
@@ -48,6 +48,15 @@ TagManager:
     locked: 0
   - name: whatIsGround
     uniqueID: 2402839255
+    locked: 0
+  - name: blood
+    uniqueID: 3649443391
+    locked: 0
+  - name: part
+    uniqueID: 13484647
+    locked: 0
+  - name: enemy
+    uniqueID: 2685534195
     locked: 0
   - name: behind_player
     uniqueID: 637676957

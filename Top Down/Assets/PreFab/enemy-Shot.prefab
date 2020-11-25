@@ -29,8 +29,22 @@ MonoBehaviour:
   firePoint: {fileID: 5525386985980451605}
   BULLET_BASE_SPEED: 19
   speed: 300
-  health: 4
   nextWaypointDistance: 5
+--- !u!114 &8849490999007313453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319211614536856441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2c312257d8f3c4690b5c605c5c02ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceBackEnemy: 1000
+  TimeBetHit: 0.3
+  isHit: 0
 --- !u!1001 &1364812432695984120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,6 +56,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemy-Shot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026476679029886081, guid: bcd0de8956907d040b9245c8aeaf76a5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7026476679029886083, guid: bcd0de8956907d040b9245c8aeaf76a5,
         type: 3}
@@ -125,6 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4633537914780359827, guid: bcd0de8956907d040b9245c8aeaf76a5, type: 3}
+    - {fileID: 1365655724769117018, guid: bcd0de8956907d040b9245c8aeaf76a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bcd0de8956907d040b9245c8aeaf76a5, type: 3}
 --- !u!1 &8319211614536856441 stripped
 GameObject:

@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: -1264772288087964892, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -1246487339369159825, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -181,9 +181,11 @@ GameObject:
   - component: {fileID: 2931220610143109905}
   - component: {fileID: 4633537914780359827}
   - component: {fileID: 8488597463513257603}
+  - component: {fileID: 8876944242640130921}
+  - component: {fileID: 1365655724769117018}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,8 +242,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1609433101
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -7698422013590585130, guid: 6830c3be38476c648ab8600e9fc962d0,
     type: 3}
@@ -268,6 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mask: {fileID: 3170143882592776544, guid: 5fe2051377fa7a847b67c96279053ea4, type: 3}
+  goresets: {fileID: 0}
+  goreindextest: 0
 --- !u!50 &7026476679029886084
 Rigidbody2D:
   serializedVersion: 4
@@ -414,3 +418,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8876944242640130921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c478bfcfd212fb842a6258d4142133c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 6304793198711897419, guid: c70cbe3d6b4e3ad4aa3ef0c4749623a4, type: 3}
+  - {fileID: 450990069417826819, guid: dd2934cf05745094a93b059e38dde3fc, type: 3}
+  - {fileID: 2743461654536312664, guid: 6207f2cd69c1b564b85f9f9429399332, type: 3}
+  - {fileID: 1992106475766075944, guid: a87980a5fbe68eb40a88777f7582ee2c, type: 3}
+  - {fileID: 2186515391702288402, guid: 7230a1ece268d874aa53bc9da3c5f989, type: 3}
+  bloodPool: {fileID: 970535268612870823, guid: 968b5f8cc7871c44faf7e0d4bea31f64,
+    type: 3}
+  forcePart: 15
+  GravityS: 2
+  timeMoving: 1.3
+--- !u!114 &1365655724769117018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735b0e730b3c6464cb32a40b0d95d39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceBackEnemy: 1000
+  TimeBetHit: 0.3
+  isHit: 0

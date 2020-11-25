@@ -50,9 +50,9 @@ MonoBehaviour:
   gunTypes:
   - {fileID: 2059893637951528857}
   - {fileID: 122766937725860012}
-  - {fileID: 3688337495728277608}
   - {fileID: 539024001648285149}
-  Belt: 0000000001000000
+  - {fileID: 3688337495728277608}
+  Belt: 02000000
   camvec: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   kbspeed: 10
@@ -73,8 +73,10 @@ GameObject:
   - component: {fileID: 7872384499868384594}
   - component: {fileID: 7872384499868384595}
   - component: {fileID: 7872384499868384592}
-  - component: {fileID: 7872384499868384596}
   - component: {fileID: 7872384499868384599}
+  - component: {fileID: 3340751363490373584}
+  - component: {fileID: 6214380300665507040}
+  - component: {fileID: 2241615088010993170}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -154,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -329787927
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -3167689046128837550, guid: ad827de350a72144eacf66a45b52244c,
     type: 3}
@@ -188,32 +190,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &7872384499868384596
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7872384499868384593}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.11417365, y: -0.30045712}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0625, y: 1.6875}
-    newSize: {x: 1.0625, y: 1.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.66110563, y: 0.60101426}
-  m_EdgeRadius: 0
 --- !u!114 &7872384499868384599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,13 +203,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 500
-  dashParticle: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
+  dashParticle: {fileID: 7698752985244832829, guid: ad9a9f9fdd6d0bb4285c156796cb9bce,
     type: 3}
-  dashSpeed: 1000
+  dashExplosionParticle: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
+    type: 3}
+  DASHF: 3
+  dashSpeed: 1300
   dashTime: 0.5
   dashDuration: 0.2
   startDashTime: -2
   isOnDash: 0
+  durationParticle: 0.5
+--- !u!114 &3340751363490373584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872384499868384593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61fe7ed6b795a74c92dd3bb29034d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 6
+  moveScript: {fileID: 0}
+  meleeScript: {fileID: 0}
+  ForceBackBulletHit: 10
+  ForceBackEnemyHit: 20
+  TimeBack: 0.3
+  isBackEnemy: 0
+  isBackBullet: 0
+  isBack: 0
+  enemyHitDamage: 2
+  enemyBulletHitDamage: 1
+  TimeImune: 1.5
+  isImune: 0
+--- !u!114 &6214380300665507040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872384499868384593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19dfb6e10b56b6046a060776f48a61cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newHitSize: 3
+  ForceBack: 20
+  TimeAttacking: 0.3
+  TimeBTWAttackig: 0.5
+  m_collider: {fileID: 2241615088010993170}
+  bulletPrefab: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9,
+    type: 3}
+  Damage: 2
+  ForceBackEnemy: 20
+  animator1: {fileID: 7872384499868384592}
+  isAttackingMelee: 0
+--- !u!70 &2241615088010993170
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7872384499868384593}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.041795254, y: -0.067917466}
+  m_Size: {x: 0.74903774, y: 1.4471781}
+  m_Direction: 0
 --- !u!1001 &2162710900255985986
 PrefabInstance:
   m_ObjectHideFlags: 0
