@@ -19,6 +19,7 @@ public class GameAssets : MonoBehaviour
         }
     }
 
+    //Clipes de audio
     public SoundAudioClip[] soundAudioClipArray;
 
     [System.Serializable]
@@ -27,12 +28,16 @@ public class GameAssets : MonoBehaviour
         public AudioClip audioClip;
     }
     
+
+
+    //Sprites Armas do Menu
     public ImageGunsUI[] imageGunsUIArray;
 
     [System.Serializable]
     public class ImageGunsUI{
-        public UIManager.GunImage gunType;
+        public UIManager.GunImage gunImage ;
         public Sprite gunSprite;
+
     }
     
 }
