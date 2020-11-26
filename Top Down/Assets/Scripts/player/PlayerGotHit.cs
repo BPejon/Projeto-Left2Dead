@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerGotHit : MonoBehaviour
 {
     [Space]
-    [Header ("status")]
+    [Header("status")]
+    public int maxHealth = 20;
     public int health;
 
 
@@ -35,8 +36,10 @@ public class PlayerGotHit : MonoBehaviour
 
     float timeStartHit;
 
-    
-    
+
+
+    public HealthBar healthBar;
+
     Vector2 direction;
     Rigidbody2D rb;
 
@@ -48,6 +51,9 @@ public class PlayerGotHit : MonoBehaviour
         meleeScript = gameObject.GetComponent<playermelee>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         isBackBullet = false;
+
+        //vida maxima na Barra de Vida
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -94,6 +100,7 @@ public class PlayerGotHit : MonoBehaviour
             if (!isBackEnemy && other.gameObject.CompareTag("Enemy") ){
                 isBackEnemy = true;
                 health -= enemyHitDamage;
+                healthBar.SetHealth(health);
             }
             
             
@@ -114,6 +121,10 @@ public class PlayerGotHit : MonoBehaviour
             isBackBullet = true;
             isBack = true;
             health -= enemyBulletHitDamage;
+
+            //muda a barra de vida
+            healthBar.SetHealth(health);
+
             direction = ((Vector2)(transform.position) - (Vector2)bbPosition.position).normalized;
             isImune = true;
             timeStartHit = Time.time;

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour{
     public Image GunImage2;
 
     public Sprite spriteteste;
+
     public enum GunImage{
         Pistol,
         Shotgun,
@@ -68,4 +69,6 @@ public class UIManager : MonoBehaviour{
         Debug.LogError("Sprite" + gunImage + "not found!");
         return null;
     }
+
+
 }
