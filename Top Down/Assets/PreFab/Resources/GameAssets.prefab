@@ -52,3 +52,16 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
   - sound: 3
     audioClip: {fileID: 8300000, guid: b3f4100606bad4634ae89b9e4670bb30, type: 3}
+  imageGunsUIArray:
+  - gunImage: 0
+    gunSprite: {fileID: -93006566689803346, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      type: 3}
+  - gunImage: 1
+    gunSprite: {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      type: 3}
+  - gunImage: 2
+    gunSprite: {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      type: 3}
+  - gunImage: 3
+    gunSprite: {fileID: -7485147203578233895, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      type: 3}

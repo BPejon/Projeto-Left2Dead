@@ -7,7 +7,7 @@ public class GeneralWeaponScript : MonoBehaviour
     //Neste Script fazemos todos os controles que qualquer arma terá
     //Tais controles incluem: Mira, Relações de Munição, armas equipadas.
     //Este Script estará ligado a um objeto chamdo "holster", filho do player
-    //Tal objeto exsiste para facilitar a troca de armas e coisas assim.
+    //Tal objeto existe para facilitar a troca de armas e coisas assim.
 
     //Atualizacao do GunBelt - Agora com "Array Ilimitada" de armas
     //Usamos uma array de 2 ints - "belt" que guarda o index da arma.
@@ -270,6 +270,4 @@ public class GeneralWeaponScript : MonoBehaviour
             gunTypes[i].GetComponent<SpriteRenderer>().enabled = false;
         }
     }
-
-
 }
