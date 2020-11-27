@@ -50,9 +50,6 @@ public class UIManager : MonoBehaviour
         ShowGun1(GetSpriteGun(arma1));
         ShowGun2(GetSpriteGun(arma2));
 
-        Debug.Log(arma1);
-        Debug.Log(arma2);
-
     }
 
     //Mostra a imagem de arma na ui ao pegar a arma 1
@@ -88,7 +85,7 @@ public class UIManager : MonoBehaviour
 
     //Setar a Bala da Arma 
     public void SetBulletGun(int bullets, int gun){
-        if (arma1 ==(GunImage) gun){
+        if (gun == 0){
             BulletGun1.SetText(bullets.ToString());
         }else{
             BulletGun2.SetText(bullets.ToString());
@@ -100,7 +97,7 @@ public class UIManager : MonoBehaviour
 
     //Setar Bala no Coldre da Arma 1
     public void SetBulletColdre(int bullets, int gun){
-        if (arma1 == (GunImage)gun){
+        if (gun == 0){
             BulletColdre1.SetText(bullets.ToString());
         }else{
             BulletColdre2.SetText(bullets.ToString());

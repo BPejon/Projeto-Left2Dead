@@ -6,8 +6,6 @@ public class Pistol : Gun
 {
     // Start is called before the first frame update
 
-    public UIManager UI;
-    private int pistol = 0;
 
     GameObject self;
     public GameObject bullet;
@@ -36,8 +34,6 @@ public class Pistol : Gun
         timer = 60.0f/tpm;
         // Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
 
-        UI.SetBulletGun(curammo, pistol);
-        UI.SetBulletColdre(ammo, pistol);
     }
 
     // Update is called once per frame
@@ -70,8 +66,7 @@ public class Pistol : Gun
        else{
 
             curammo--;
-            UI.SetBulletGun(curammo, pistol);
-
+      
             //Vector3.Normalize(aimvec);
 
             //Som do tiro
@@ -126,8 +121,7 @@ public class Pistol : Gun
         else if(ammo < clipsize){
             curammo = ammo;
             ammo = 0;
-            UI.SetBulletGun(curammo, pistol);
-            UI.SetBulletColdre(ammo, pistol);
+
 
             //Estamos recarregando;
             //reloading = true;
@@ -150,8 +144,6 @@ public class Pistol : Gun
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
 
-            UI.SetBulletGun(curammo, pistol);
-            UI.SetBulletColdre(ammo, pistol);
 
             return 1;
         }
@@ -163,7 +155,5 @@ public class Pistol : Gun
     public override void Refill(int Ammount)
     {
         ammo = ammo + Ammount;
-        UI.SetBulletGun(curammo, pistol);
-        UI.SetBulletColdre(ammo, pistol);
     }
 }

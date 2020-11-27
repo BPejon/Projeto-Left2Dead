@@ -18,12 +18,14 @@ public class GeneralWeaponScript : MonoBehaviour
     public GameObject[] gunTypes;
     public int[] Belt = new int[2];
 
+    public UIManager UI;
 
     //Qual arma estamos empunhando;
     //Agora usado como indice de "Belt"
     //0 - gunBelt[0]
     //1 - gunBelt[1]
     private int held = 0;
+    private int _other = 1;
 
     //Sprite da Arma, tiramos do gameobject da arma
     SpriteRenderer wpimg;
@@ -56,6 +58,7 @@ public class GeneralWeaponScript : MonoBehaviour
     //public bool fired;
     public Vector2 pastaux;
 
+   
     void Start()
     {
         //Ao iniciar pegamos o sprite da arma e o holster.
@@ -74,9 +77,17 @@ public class GeneralWeaponScript : MonoBehaviour
                                    player.localScale.z);
         UpdateWeapon();
 
+        
         //kb test
         knockd = false;
         kill = false;
+        //Mun~ição na arma
+        UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);
+        UI.SetBulletColdre(gunTypes[Belt[held]].GetComponent<Gun>().ammo, held);
+
+
+        UI.SetBulletGun(gunTypes[Belt[_other]].GetComponent<Gun>().curammo, _other);
+        UI.SetBulletColdre(gunTypes[Belt[_other]].GetComponent<Gun>().ammo, _other);
 
     }
 
@@ -111,6 +122,7 @@ public class GeneralWeaponScript : MonoBehaviour
               //  Debug.Log("Must Reload");
             }
 
+            UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);         
 
         }
 
@@ -125,6 +137,9 @@ public class GeneralWeaponScript : MonoBehaviour
             else{
                // Debug.Log("Reloaded");
             }
+
+            UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);
+            UI.SetBulletColdre(gunTypes[Belt[held]].GetComponent<Gun>().ammo, held);
         }
 
         //Setamos qual eh a arma que estamos usando.
@@ -241,8 +256,14 @@ public class GeneralWeaponScript : MonoBehaviour
                     gunTypes[weaponInfo.indexvalue].GetComponent<Gun>().Refill(weaponInfo.curammo);
                 }
 
+
             
         }
+
+        //Quando troca de arma
+        UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);
+        UI.SetBulletColdre(gunTypes[Belt[held]].GetComponent<Gun>().ammo, held);
+
     }
 
     //Atualiza quanto que arma estamos usando, mudando o sprite e tal;
@@ -251,15 +272,15 @@ public class GeneralWeaponScript : MonoBehaviour
         gunTypes[Belt[held]].GetComponent<SpriteRenderer>().enabled = true;
         //gunBelt[held].GetComponent<SpriteRenderer>().enabled = true;
         
-        int other;
+        
         if(held == 0){
-            other = 1;
+           _other = 1;
         }
         else{
-            other = 0;
+            _other = 0;
         }
-        gunTypes[Belt[other]].GetComponent<SpriteRenderer>().enabled = false;
-        //gunBelt[other].GetComponent<SpriteRenderer>().enabled = false;
+        gunTypes[Belt[_other]].GetComponent<SpriteRenderer>().enabled = false;
+        //gunBelt[_other].GetComponent<SpriteRenderer>().enabled = false;
     }
 
     //Desabilita todos os spirtes de arma, para que apenas as "selecionadas" possam ser habilitadas.
