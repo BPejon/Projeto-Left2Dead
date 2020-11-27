@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class UIManager : MonoBehaviour{
+public class UIManager : MonoBehaviour
+{
 
 
     public Canvas canvas;
@@ -14,18 +16,26 @@ public class UIManager : MonoBehaviour{
     public Image GunImage1;
     public Image GunImage2;
 
+    public TextMeshProUGUI BulletGun1;
+    public TextMeshProUGUI BulletGun2;
+    public TextMeshProUGUI BulletColdre1;
+    public TextMeshProUGUI BulletColdre2;
+
+
     public Sprite spriteteste;
 
-    public enum GunImage{
+    public enum GunImage
+    {
         Pistol,
         Shotgun,
         SniperRifle,
-        AssaultRifle,        
+        AssaultRifle,
 
         //Quando n tiver segurando nenhuma arma
     }
 
-
+    //Armazenar quais armas estao em quais locais
+    GunImage arma1, arma2;
 
     //Começa com as armas que estão na mao
     private void Start(){
@@ -33,18 +43,21 @@ public class UIManager : MonoBehaviour{
         //Pega a Referencia do cinto
         Belt = GameObject.Find("player").transform.GetChild(0).GetComponent<GeneralWeaponScript>();
         //Pega as armas dos cintos
-        GunImage arma1 = (GunImage)Belt.Belt[0];
-        GunImage arma2 = (GunImage)Belt.Belt[1];
+        arma1 = (GunImage)Belt.Belt[0];
+        arma2 = (GunImage)Belt.Belt[1];
 
 
         ShowGun1(GetSpriteGun(arma1));
         ShowGun2(GetSpriteGun(arma2));
 
+        Debug.Log(arma1);
+        Debug.Log(arma2);
 
     }
 
     //Mostra a imagem de arma na ui ao pegar a arma 1
-    public void ShowGun1(Sprite gunImage){
+    public void ShowGun1(Sprite gunImage)
+    {
         GunImage1.sprite = gunImage;
     }
 
@@ -61,14 +74,36 @@ public class UIManager : MonoBehaviour{
     {
         foreach (GameAssets.ImageGunsUI imageGunsUI in GameAssets.Instance.imageGunsUIArray)
         {
-            if(imageGunsUI.gunImage == gunImage)
+            if (imageGunsUI.gunImage == gunImage)
             {
                 return imageGunsUI.gunSprite;
-            }            
+            }
         }
         Debug.LogError("Sprite" + gunImage + "not found!");
         return null;
     }
 
 
+
+
+    //Setar a Bala da Arma 
+    public void SetBulletGun(int bullets, int gun){
+        if (arma1 ==(GunImage) gun){
+            BulletGun1.SetText(bullets.ToString());
+        }else{
+            BulletGun2.SetText(bullets.ToString());
+        }
+        
+    }
+
+
+
+    //Setar Bala no Coldre da Arma 1
+    public void SetBulletColdre(int bullets, int gun){
+        if (arma1 == (GunImage)gun){
+            BulletColdre1.SetText(bullets.ToString());
+        }else{
+            BulletColdre2.SetText(bullets.ToString());
+        }
+    }
 }

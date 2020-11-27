@@ -5,7 +5,9 @@ using UnityEngine;
 public class Pistol : Gun
 {
     // Start is called before the first frame update
-    
+
+    public UIManager UI;
+    private int pistol = 0;
 
     GameObject self;
     public GameObject bullet;
@@ -21,7 +23,6 @@ public class Pistol : Gun
     void Awake(){
 
         self = this.gameObject;
-
         //self.GetComponent<SpriteRenderer>().sprite = GetSprite("Pistol");  
         //Tip = Ponta da arma - Usada para determinar a posição de onde sai o tiro.
         tip = self.transform.Find("Tip").gameObject;  
@@ -33,7 +34,10 @@ public class Pistol : Gun
         this.kb.kbdur = kbdur;
         this.kb.kbspeed = kbspeed;
         timer = 60.0f/tpm;
-       // Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
+        // Debug.Log("Timer = " + timer + "Pistol - KB speed:" + this.kbspeed);
+
+        UI.SetBulletGun(curammo, pistol);
+        UI.SetBulletColdre(ammo, pistol);
     }
 
     // Update is called once per frame
@@ -64,7 +68,10 @@ public class Pistol : Gun
            return kb;
        }
        else{
-           curammo--;
+
+            curammo--;
+            UI.SetBulletGun(curammo, pistol);
+
             //Vector3.Normalize(aimvec);
 
             //Som do tiro
@@ -102,8 +109,8 @@ public class Pistol : Gun
         //Debug.Log(curammo);
         //Debug.Log(ammo);
         past = Time.time;
-       this.kb.status = 1;
-       return kb;
+        this.kb.status = 1;
+        return kb;
     }
 
     //Se foi possivel recarregar = 1
@@ -119,6 +126,9 @@ public class Pistol : Gun
         else if(ammo < clipsize){
             curammo = ammo;
             ammo = 0;
+            UI.SetBulletGun(curammo, pistol);
+            UI.SetBulletColdre(ammo, pistol);
+
             //Estamos recarregando;
             //reloading = true;
             //Marcamos o tempo que comecamos a recarregar;
@@ -139,6 +149,10 @@ public class Pistol : Gun
             reloading = true;
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
+
+            UI.SetBulletGun(curammo, pistol);
+            UI.SetBulletColdre(ammo, pistol);
+
             return 1;
         }
 
@@ -149,5 +163,7 @@ public class Pistol : Gun
     public override void Refill(int Ammount)
     {
         ammo = ammo + Ammount;
+        UI.SetBulletGun(curammo, pistol);
+        UI.SetBulletColdre(ammo, pistol);
     }
 }
