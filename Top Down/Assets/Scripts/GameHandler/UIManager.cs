@@ -28,10 +28,10 @@ public class UIManager : MonoBehaviour
     {
         Pistol,
         Shotgun,
-        SniperRifle,
         AssaultRifle,
-
+        SniperRifle,
         //Quando n tiver segurando nenhuma arma
+        Mellee,
     }
 
     //Armazenar quais armas estao em quais locais
@@ -46,6 +46,17 @@ public class UIManager : MonoBehaviour
         arma1 = (GunImage)Belt.Belt[0];
         arma2 = (GunImage)Belt.Belt[1];
 
+
+        ShowGun1(GetSpriteGun(arma1));
+        ShowGun2(GetSpriteGun(arma2));
+
+    }
+
+    public void setGunImages(int a1, int a2){
+        arma1 = (GunImage) a1;
+        arma2 = (GunImage) a2;
+        
+        Debug.Log(a1+ " " + a2);
 
         ShowGun1(GetSpriteGun(arma1));
         ShowGun2(GetSpriteGun(arma2));
@@ -67,7 +78,7 @@ public class UIManager : MonoBehaviour
 
 
     //Função que pega o Sprite que será utilizado
-    private static Sprite GetSpriteGun(GunImage gunImage)
+    public static Sprite GetSpriteGun(GunImage gunImage)
     {
         foreach (GameAssets.ImageGunsUI imageGunsUI in GameAssets.Instance.imageGunsUIArray)
         {

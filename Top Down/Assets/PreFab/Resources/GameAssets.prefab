@@ -60,8 +60,11 @@ MonoBehaviour:
     gunSprite: {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
       type: 3}
   - gunImage: 2
-    gunSprite: {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+    gunSprite: {fileID: -7485147203578233895, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
       type: 3}
   - gunImage: 3
-    gunSprite: {fileID: -7485147203578233895, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+    gunSprite: {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      type: 3}
+  - gunImage: 4
+    gunSprite: {fileID: 246200477909967752, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
       type: 3}

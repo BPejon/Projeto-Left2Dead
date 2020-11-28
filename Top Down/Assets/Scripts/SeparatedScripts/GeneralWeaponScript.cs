@@ -149,10 +149,12 @@ public class GeneralWeaponScript : MonoBehaviour
             //Como temos duas armas, ambas fazem a mesma coisa, mas esse codigo serve se tivermos mais armas no futuro
             if(held == 0){
                 held = 1;
+                _other = 0;
             }
             //scroll pra baixo;
             else{
                 held = 0;
+                _other = 1;
             }
 
             //Debug.Log("Scroll Moved");
@@ -264,23 +266,31 @@ public class GeneralWeaponScript : MonoBehaviour
         UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);
         UI.SetBulletColdre(gunTypes[Belt[held]].GetComponent<Gun>().ammo, held);
 
+        UI.setGunImages(Belt[held], Belt[_other]);
+        
     }
 
     //Atualiza quanto que arma estamos usando, mudando o sprite e tal;
     public void UpdateWeapon(){
         
-        gunTypes[Belt[held]].GetComponent<SpriteRenderer>().enabled = true;
-        //gunBelt[held].GetComponent<SpriteRenderer>().enabled = true;
-        
-        
-        if(held == 0){
-           _other = 1;
+        if(Belt[held] != Belt[_other])
+        { 
+            gunTypes[Belt[held]].GetComponent<SpriteRenderer>().enabled = true;
+            //gunBelt[held].GetComponent<SpriteRenderer>().enabled = true;
+            
+            
+            if(held == 0){
+            _other = 1;
+            }
+            else{
+                _other = 0;
+            }
+            gunTypes[Belt[_other]].GetComponent<SpriteRenderer>().enabled = false;
+            //gunBelt[_other].GetComponent<SpriteRenderer>().enabled = false;
         }
         else{
-            _other = 0;
+            gunTypes[Belt[held]].GetComponent<SpriteRenderer>().enabled = true;
         }
-        gunTypes[Belt[_other]].GetComponent<SpriteRenderer>().enabled = false;
-        //gunBelt[_other].GetComponent<SpriteRenderer>().enabled = false;
     }
 
     //Desabilita todos os spirtes de arma, para que apenas as "selecionadas" possam ser habilitadas.
