@@ -28,11 +28,13 @@ public class playermelee : MonoBehaviour
     public bool isAttackingMelee;
     Vector2 inicial_size;
 
+    GameObject WeaponH;
 
     
     // Start is called before the first frame update
     void Start()
     {
+        WeaponH = gameObject.transform.GetChild(0).gameObject;
         TimeStart = -10;
         TimeEnd = -10;
         isAttackingMelee = false;
@@ -45,6 +47,7 @@ public class playermelee : MonoBehaviour
         
         if(Input.GetMouseButton(1) && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
             isAttackingMelee = true;
+            WeaponH.SetActive(false);
             TimeStart = Time.time;
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y)) * newHitSize;
         }
@@ -55,6 +58,7 @@ public class playermelee : MonoBehaviour
     {
         if(isAttackingMelee && Time.time - TimeStart > TimeAttacking){
             isAttackingMelee = false;
+            WeaponH.SetActive(true);
             TimeEnd = Time.time;
             m_collider.size = (new Vector2(inicial_size.x,inicial_size.y));
         }

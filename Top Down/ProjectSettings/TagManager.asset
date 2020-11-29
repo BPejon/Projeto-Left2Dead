@@ -26,7 +26,7 @@ TagManager:
   - part
   - blood
   - enemy
-  - 
+  - BehindDF
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BehindDF
+    uniqueID: 78253341
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
