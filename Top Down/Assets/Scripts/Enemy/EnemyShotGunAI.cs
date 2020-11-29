@@ -38,6 +38,7 @@ public class EnemyShotGunAI : MonoBehaviour
     [Header ("gun : ")]
     Vector2 lookDir;
     public float timeBetweenShoots;
+    public float timeChagingShot;
     public float lastTimeShoot;
     public Transform weapon;       // define a arma
     private float angle;    // define o ângulo da arma
@@ -56,6 +57,7 @@ public class EnemyShotGunAI : MonoBehaviour
 
     [Space]
     [Header("atributes")]
+    public Animator animator;
     // script do basico do inimigo
     private simple_enemy enemyScript;
     // speed
@@ -67,7 +69,7 @@ public class EnemyShotGunAI : MonoBehaviour
     int currentWaypoint = 0;
     Seeker seeker;
     Rigidbody2D rb;
-
+    bool isCharging;
     
 
     void Awake() {
@@ -145,9 +147,12 @@ public class EnemyShotGunAI : MonoBehaviour
     }
 
     void slow_when_preper_to_shoot(){
-        if (Time.time - lastTimeShoot > timeBetweenShoots/2  && onChase)
+        if (Time.time - lastTimeShoot > (timeBetweenShoots - timeChagingShot) && onChase)
         {
             speed = speedIni/2;
+            isCharging = true;
+        }else if (isCharging == true ){
+            isCharging = false;
         }
     }
 
@@ -155,7 +160,7 @@ public class EnemyShotGunAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        animator.SetBool("isCharging", isCharging);
         if(target == null)
         {
             return;

@@ -36,12 +36,14 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   timeBetweenShoots: 4
+  timeChagingShot: 1.03
   lastTimeShoot: -10
   weapon: {fileID: 1072220114074905299}
-  bulletPrefab: {fileID: 1010095771815063330, guid: e6148e29462a0b143b71cbb50802cdd4,
+  bulletPrefab: {fileID: 625558136131214051, guid: 1dc4e62ba13a58e43a0736e6aa4ff3ef,
     type: 3}
   firePoint: {fileID: 1072220113177251405}
   BULLET_BASE_SPEED: 19
+  animator: {fileID: 2698240522011016227}
   speed: 300
   nextWaypointDistance: 5
 --- !u!1001 &4778130859437577560
@@ -55,8 +57,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525386985334472587, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.148
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525386985334472587, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.169
+      objectReference: {fileID: 0}
     - target: {fileID: 5525386985980451605, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,11 +78,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 7439181075451750779, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 825dbc88e1829274bbb20af1088f1b20, type: 2}
     - target: {fileID: 8319211614536856441, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
         type: 3}
       propertyPath: m_Name
       value: enemy-Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 8319211614536856445, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 976334460279031067, guid: 3f0a3048f04ab514394bbdb9d3cd1923,
+        type: 3}
     - target: {fileID: 8319211614536856446, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,6 +167,12 @@ PrefabInstance:
 --- !u!1 &3547871485481592353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8319211614536856441, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4778130859437577560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2698240522011016227 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7439181075451750779, guid: 54dcb64ffa0741943a8da7f14ef4f56b,
     type: 3}
   m_PrefabInstance: {fileID: 4778130859437577560}
   m_PrefabAsset: {fileID: 0}

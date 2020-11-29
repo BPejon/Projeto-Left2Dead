@@ -37,6 +37,7 @@ public class EnemyShotAI : MonoBehaviour
     [Space]
     [Header ("gun : ")]
     public float timeBetweenShoots;
+    public float timeChagingShot;
     public float lastTimeShoot;
     public Transform weapon;       // define a arma
     private float angle;    // define o ângulo da arma
@@ -45,6 +46,7 @@ public class EnemyShotAI : MonoBehaviour
 
     [Space]
     [Header("Prefabs :")]
+    public Animator animator;
     public GameObject bulletPrefab; // define o objeto da bala
     public Transform firePoint;     // define de onde sai a bala
     public float BULLET_BASE_SPEED = 19.0f; // define a velocidade do projetil.
@@ -63,6 +65,7 @@ public class EnemyShotAI : MonoBehaviour
     int currentWaypoint = 0;
     Seeker seeker;
     Rigidbody2D rb;
+    public bool isCharging;
 
     [Space]
     [Header("got Hit")]
@@ -75,7 +78,7 @@ public class EnemyShotAI : MonoBehaviour
         enemyScript = gameObject.GetComponent<simple_enemy>();
         enemyScriptHit = gameObject.GetComponent<MeleeS>();
 
-
+        isCharging = false;
         lastTimeShoot = 1.0f;
         GameObject newEmptyGO = new GameObject();
         
@@ -145,15 +148,19 @@ public class EnemyShotAI : MonoBehaviour
     }
 
     void slow_when_preper_to_shoot(){
-        if (Time.time - lastTimeShoot > timeBetweenShoots/2 && onChase)
+        if (Time.time - lastTimeShoot > (timeBetweenShoots - timeChagingShot) && onChase)
         {
             speed = speedIni/2;
+            isCharging = true;
+        }else if (isCharging == true ){
+            isCharging = false;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        animator.SetBool("isCharging", isCharging);
 
         if(target == null)
         {
