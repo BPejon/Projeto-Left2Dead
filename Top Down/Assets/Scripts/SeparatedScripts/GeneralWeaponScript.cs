@@ -266,7 +266,7 @@ public class GeneralWeaponScript : MonoBehaviour
         UI.SetBulletGun(gunTypes[Belt[held]].GetComponent<Gun>().curammo, held);
         UI.SetBulletColdre(gunTypes[Belt[held]].GetComponent<Gun>().ammo, held);
 
-        UI.setGunImages(Belt[held], Belt[_other]);
+        UI.setGunImages(Belt[0], Belt[1]);
         
     }
 
