@@ -49,7 +49,7 @@ public class ShotGun : Gun
         
         int numberOfbullets = 5;
         float[] anglesBet = new float[numberOfbullets];
-        int max_angle = 70;
+        int max_angle = 30;
 
         elapsedreload = Time.time - pastreload;
 
@@ -88,7 +88,9 @@ public class ShotGun : Gun
                 rbb[i] = nbullet[i].GetComponent<Rigidbody2D>();
                 anglesBet[i] = Random.Range(-max_angle,max_angle);
                 // adiciona uma força que define a movimentaçao da bala
-                Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * tip.transform.up;
+                Vector2 directorShot = Quaternion.Euler(tip.transform.rotation.x,
+                                                        tip.transform.rotation.y,
+                                                        anglesBet[i] ) * tip.transform.up;
                 rbb[i].AddForce(directorShot.normalized * bulletspeed, ForceMode2D.Impulse);
                 // depois de 2 segundos o projétil é destruido
                 //nbullet[i].GetComponent<StandardBullet>().setFactors(kbdur,kbspeed);

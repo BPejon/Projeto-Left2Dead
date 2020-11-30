@@ -21,16 +21,16 @@ MonoBehaviour:
   onChase: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  timeBetweenShoots: 5
-  timeChagingShot: 1
+  timeBetweenShoots: 3
+  timeChagingShot: 1.03
   lastTimeShoot: -10
   weapon: {fileID: 5525386985334472587}
   animator: {fileID: 7439181075451750779}
   bulletPrefab: {fileID: 3802818934192948229, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
     type: 3}
   firePoint: {fileID: 5525386985980451605}
-  BULLET_BASE_SPEED: 19
-  speed: 300
+  BULLET_BASE_SPEED: 23
+  speed: 310
   nextWaypointDistance: 5
   isCharging: 0
 --- !u!114 &8849490999007313453
