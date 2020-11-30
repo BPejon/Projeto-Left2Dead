@@ -27,7 +27,7 @@ TagManager:
   - blood
   - enemy
   - BehindDF
-  - 
+  - enemyCheeta
   - 
   - 
   - 
@@ -60,6 +60,9 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 2685534195
+    locked: 0
+  - name: enemyCheeta
+    uniqueID: 163480353
     locked: 0
   - name: behind_player
     uniqueID: 637676957
