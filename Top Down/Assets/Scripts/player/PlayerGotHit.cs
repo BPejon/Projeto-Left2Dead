@@ -52,8 +52,17 @@ public class PlayerGotHit : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         isBackBullet = false;
 
+        int default_ = PlayerPrefs.GetInt("use_default");
+        if(default_ != 1){
+            health = PlayerPrefs.GetInt("hp");
+        }
+        else{
+            health = maxHealth;
+        
+        }
         //vida maxima na Barra de Vida
         healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(health);
     }
 
     // Update is called once per frame

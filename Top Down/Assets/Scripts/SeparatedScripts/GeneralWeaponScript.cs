@@ -24,8 +24,8 @@ public class GeneralWeaponScript : MonoBehaviour
     //Agora usado como indice de "Belt"
     //0 - gunBelt[0]
     //1 - gunBelt[1]
-    private int held = 0;
-    private int _other = 1;
+    public int held = 0;
+    public int _other = 1;
 
     //Sprite da Arma, tiramos do gameobject da arma
     SpriteRenderer wpimg;
@@ -75,6 +75,26 @@ public class GeneralWeaponScript : MonoBehaviour
         player_scale_ini = new Vector3(player.localScale.x, 
                                    player.localScale.y,
                                    player.localScale.z);
+        
+        //Estamos na primeira cena ou nao - carregar estado do player;
+        int default_ = PlayerPrefs.GetInt("use_default");
+        if(default_ != 1){
+            Debug.Log("Here");
+            held = PlayerPrefs.GetInt("held");
+            _other = PlayerPrefs.GetInt("_other");
+
+            Belt[0] = PlayerPrefs.GetInt("weaponindex_1");
+            Belt[1] = PlayerPrefs.GetInt("weaponindex_2");
+            
+
+            gunTypes[Belt[0]].GetComponent<Gun>().ammo = PlayerPrefs.GetInt("ammo_weapon_1");
+            gunTypes[Belt[0]].GetComponent<Gun>().curammo = PlayerPrefs.GetInt("curammo_weapon_1");
+            
+            
+            gunTypes[Belt[1]].GetComponent<Gun>().ammo = PlayerPrefs.GetInt("ammo_weapon_2");
+            gunTypes[Belt[1]].GetComponent<Gun>().curammo = PlayerPrefs.GetInt("curammo_weapon_2");
+        }
+
         UpdateWeapon();
 
         

@@ -36,8 +36,8 @@ public class DroppedHealth : MonoBehaviour
             //Se o jogador tomou dano;
             if(_player.GetComponent<PlayerGotHit>().health < _player.GetComponent<PlayerGotHit>().maxHealth){
                 _player.GetComponent<PlayerGotHit>().health += health;
-                if(_player.GetComponent<PlayerGotHit>().health > 20){
-                    _player.GetComponent<PlayerGotHit>().health = 20;
+                if(_player.GetComponent<PlayerGotHit>().health > _player.GetComponent<PlayerGotHit>().maxHealth){
+                    _player.GetComponent<PlayerGotHit>().health = _player.GetComponent<PlayerGotHit>().maxHealth;
                 }
 
                 _player.GetComponent<PlayerGotHit>().healthBar.SetHealth( _player.GetComponent<PlayerGotHit>().health);
