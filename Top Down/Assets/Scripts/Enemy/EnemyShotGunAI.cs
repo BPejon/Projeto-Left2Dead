@@ -257,21 +257,21 @@ public class EnemyShotGunAI : MonoBehaviour
 
     void ShootShotgun(){
         int numberOfbullets = 5;
-        float[] anglesBet = new float[5];
+        float[] anglesBet = { 45, 135 ,0, 120 , 60  };
         GameObject[] bullet = new GameObject[numberOfbullets];
         Rigidbody2D[] rbb = new Rigidbody2D[numberOfbullets];
         for (int i = 0; i < numberOfbullets; i++)
         {
             bullet[i] = Instantiate(bulletPrefab, firePoint.position, 
-                                    firePoint.rotation ); 
+                                    firePoint.rotation); 
             rbb[i] = bullet[i].GetComponent<Rigidbody2D>();
-            anglesBet[i] = Random.Range(-70,70);
+            // anglesBet[i] += Random.Range(-20,20);
             // adiciona uma força que define a movimentaçao da bala
-            Vector2 directorShot = Quaternion.AngleAxis(anglesBet[i],Vector2.up) * lookDir;
+            Vector2 directorShot =   Quaternion.AngleAxis(anglesBet[i],Vector2.up) * lookDir;
             
             rbb[i].AddForce(directorShot.normalized * BULLET_BASE_SPEED, ForceMode2D.Impulse);
             // depois de 2 segundos o projétil é destruido
-            Destroy(bullet[i], 1.2f);
+            Destroy(bullet[i], 2f);
         }
         
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7026476678479673034}
   - component: {fileID: 7026476678479673035}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: greeHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Sprite: {fileID: -1264772288087964892, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7026476678548856570}
   - component: {fileID: 7026476678548856571}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: redHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1021635767
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -1246487339369159825, guid: 264d0efbe8a504b4cb23bc0e05d89682,
     type: 3}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8488597463513257603}
   - component: {fileID: 8876944242640130921}
   - component: {fileID: 1365655724769117018}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557093004928933935}
   - component: {fileID: 3446843109980132883}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
