@@ -5,7 +5,6 @@ using UnityEngine;
 public class Sniper : Gun
 {
     // Start is called before the first frame update
-    
 
     GameObject self;
     public GameObject bullet;
@@ -85,16 +84,6 @@ public class Sniper : Gun
             
 
 
-            //Quando Atiramos, temos também que sofrer um "recoil"
-            //    GameObject rb = this.transform.parent.gameObject;
-            //Precisamos pegar o Gameobject do pai do pai, isto é, do player;
-            //    GameObject rb2 = rb.transform.parent.gameObject;
-
-
-            //Fazemos o Knockback por meio da posição da bala, em comparação com a posição do jogador.
-            // Vector2 diference = rb2.transform.position - nbullet.transform.position;
-            // float smoothener = 0.2f;
-            // rb2.transform.position = new Vector2(rb2.transform.position.x + (diference.x* smoothener), rb2.transform.position.y + (diference.y*smoothener));
 
         }
 

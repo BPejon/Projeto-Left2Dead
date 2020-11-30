@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotGun : Gun
 {
     // Start is called before the first frame update
-    
+
 
     GameObject self;
     public GameObject bullet;
@@ -134,9 +134,14 @@ public class ShotGun : Gun
         else{
             curammo = clipsize;
             ammo = ammo - clipsize;
+            
+
+
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
             SoundManager.PlaySound(SoundManager.Sound.shotgunReload);
+
+
             return 1;
         }
 
