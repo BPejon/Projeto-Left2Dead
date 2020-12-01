@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MilkShake;
 
 public class GeneralWeaponScript : MonoBehaviour
 {
@@ -12,13 +13,13 @@ public class GeneralWeaponScript : MonoBehaviour
     //Atualizacao do GunBelt - Agora com "Array Ilimitada" de armas
     //Usamos uma array de 2 ints - "belt" que guarda o index da arma.
     //Como só temos 2 armas, por enquanto, nao temos grande diferenca.
-    //Permite criar a arma "vazia" - Depois precisamos especificar sua posicao.
-   
+    //Permite criar a arma "vazia" - Depois precisamos especificar sua posicao
     [Header("Gun Types & Gun Belt")]
     public GameObject[] gunTypes;
     public int[] Belt = new int[2];
 
     public UIManager UI;
+
 
     //Qual arma estamos empunhando;
     //Agora usado como indice de "Belt"
@@ -128,10 +129,13 @@ public class GeneralWeaponScript : MonoBehaviour
             
             fevent = gunTypes[Belt[held]].GetComponent<Gun>().Shoot(camvec);
             //int fevent = gunBelt[held].GetComponent<Gun>().Shoot(camvec);
+            
 
             if(fevent.status == 1){
-              //  Debug.Log("Shot Fired");
-
+                //Debug.Log("Shot Fired");
+                //Debug.Log("Segurando" +  gunTypes[Belt[held]].GetComponent<Gun>());
+                //Debug.Log("Gun Type" + Belt[held]);
+                ShakeHandler.PlayShake((ShakeHandler.Shake)Belt[held]);
                 //test for knockback:
                 DealKnockback(1);
             }

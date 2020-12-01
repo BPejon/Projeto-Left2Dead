@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MilkShake;
 
 public class GameAssets : MonoBehaviour
 {
@@ -39,5 +40,16 @@ public class GameAssets : MonoBehaviour
         public Sprite gunSprite;
 
     }
-    
+
+    //Shakes das Armas
+    public ShakePresets[] ShakePresetArray;
+
+    [System.Serializable]
+    public class ShakePresets
+    {
+        public ShakeHandler.Shake shake ;
+        public ShakePreset shakePreset;
+
+    }
+
 }

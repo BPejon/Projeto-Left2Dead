@@ -68,3 +68,14 @@ MonoBehaviour:
   - gunImage: 4
     gunSprite: {fileID: 246200477909967752, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
       type: 3}
+  ShakePresetArray:
+  - shake: 0
+    shakePreset: {fileID: 11400000, guid: 33432352258a4f6408bd51016d4094bd, type: 2}
+  - shake: 1
+    shakePreset: {fileID: 11400000, guid: e2601e075ecfdc24db46f1926b0c382f, type: 2}
+  - shake: 2
+    shakePreset: {fileID: 11400000, guid: 2b9b1d95f2a9ab54dbc27e51fc7658d8, type: 2}
+  - shake: 3
+    shakePreset: {fileID: 11400000, guid: 7313eb0a8105323449bce80ea47dc6f3, type: 2}
+  - shake: 4
+    shakePreset: {fileID: 11400000, guid: 17e6e3539fb4c1340a29d5987d91770d, type: 2}
