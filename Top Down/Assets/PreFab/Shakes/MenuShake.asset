@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: Blood
+  m_Script: {fileID: 11500000, guid: 955f6c9be248dc249a31bad716cc6963, type: 3}
+  m_Name: MenuShake
   m_EditorClassIdentifier: 
-  colorMode: 2
-  topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 1, g: 1, b: 1, a: 1}
-  bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-  bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  shakeType: 1
+  strength: 1
+  roughness: 10
+  fadeIn: 0
+  fadeOut: 0
+  positionInfluence: {x: 2, y: 2, z: 2}
+  rotationInfluence: {x: 2, y: 2, z: 2}

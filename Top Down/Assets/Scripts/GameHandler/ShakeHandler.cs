@@ -15,10 +15,6 @@ public class ShakeHandler: MonoBehaviour {
         onHitShake,
     }
 
-    //public void Start()
-    //{
-    //    Shaker Myshaker = GameObject.Find("CameraContainer").transform.GetChild(0).GetComponent<Shaker>();
-    //}
     public static void PlayShake(Shake shake)
     {
         Debug.Log(shake);
