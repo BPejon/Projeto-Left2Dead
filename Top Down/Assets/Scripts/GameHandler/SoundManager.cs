@@ -12,7 +12,13 @@ public static class SoundManager{
         pistolReload,
         shotgunShot,
         shotgunReload,
+        sniperShot,
+        sniperReload,
+        sniperClick,
         playerMove,
+        dash,
+        grabLife,
+        meleeHit,
     }
 
    

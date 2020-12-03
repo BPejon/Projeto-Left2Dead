@@ -140,5 +140,5 @@ MonoBehaviour:
   elapsedreload: 0
   pastreload: 0
   bullet: {fileID: 7529815327157080593, guid: 18f5236f0e457d44c8023b326e998382, type: 3}
-  bulletspeed: 15
+  bulletspeed: 50
   ShootEffectPreFab: {fileID: 0}

@@ -68,7 +68,7 @@ public class Sniper : Gun
 
             //Som do tiro
             //Debug.Log(SoundManager.Sound.PistolShot);
-            //SoundManager.PlaySound(SoundManager.Sound.PistolShot);
+            SoundManager.PlaySound(SoundManager.Sound.sniperShot);
             //Debug.Log("Apssou");
 
 
@@ -80,11 +80,11 @@ public class Sniper : Gun
            nbullet.GetComponent<SniperBullet>().setAngle(tip.transform.up);
            //rbb.AddForce(aimvec * bulletspeed, ForceMode2D.Impulse);
            Destroy(nbullet, 2.0f);
-           
-            
 
 
 
+
+            SoundManager.PlaySound(SoundManager.Sound.sniperClick);
         }
 
         //Debug.Log(curammo);
@@ -108,6 +108,8 @@ public class Sniper : Gun
             ammo = 0;
             //Estamos recarregando;
             //reloading = true;
+            SoundManager.PlaySound(SoundManager.Sound.sniperReload);
+
             //Marcamos o tempo que comecamos a recarregar;
             pastreload = Time.time;
             return 1;
@@ -118,6 +120,7 @@ public class Sniper : Gun
         }
         //se não, recarregamos normalmente
         else{
+            SoundManager.PlaySound(SoundManager.Sound.sniperReload);
             curammo = clipsize;
             ammo = ammo - clipsize;
             //Estamos recarregando;
