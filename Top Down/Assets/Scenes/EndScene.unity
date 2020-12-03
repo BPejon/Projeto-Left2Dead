@@ -2225,12 +2225,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 160
       objectReference: {fileID: 0}
-    - target: {fileID: 672767284479464391, guid: fa528397472e7d54cb4e896d1d4d76e5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5fd52c5f2eadf8445900b44a009a2fe3,
-        type: 3}
     - target: {fileID: 672767284481878998, guid: fa528397472e7d54cb4e896d1d4d76e5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2271,12 +2265,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 370
       objectReference: {fileID: 0}
-    - target: {fileID: 672767284680890715, guid: fa528397472e7d54cb4e896d1d4d76e5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5fd52c5f2eadf8445900b44a009a2fe3,
-        type: 3}
     - target: {fileID: 672767284983093166, guid: fa528397472e7d54cb4e896d1d4d76e5,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -2488,12 +2476,6 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 1301577668}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1301577677 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 672767284983093166, guid: fa528397472e7d54cb4e896d1d4d76e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1301577668}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1301577678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 672767284481878997, guid: fa528397472e7d54cb4e896d1d4d76e5,
@@ -2521,11 +2503,11 @@ MonoBehaviour:
   BulletColdre1: {fileID: 1301577671}
   BulletColdre2: {fileID: 1301577670}
   spriteteste: {fileID: 21300000, guid: 0f1d79a96aae6d24cbd4a567ba0e30c4, type: 3}
---- !u!114 &1301577680
+--- !u!114 &1301577680 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2635305237078136420, guid: fa528397472e7d54cb4e896d1d4d76e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301577668}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301577678}
   m_Enabled: 1
@@ -2533,44 +2515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 1301577677}
-  m_HandleRect: {fileID: 0}
-  m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 10
-  m_WholeNumbers: 0
-  m_Value: 4.07
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1301577681
 MonoBehaviour:
   m_ObjectHideFlags: 0

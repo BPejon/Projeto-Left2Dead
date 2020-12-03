@@ -152,6 +152,8 @@ MonoBehaviour:
   - {fileID: 5553673564805185159}
   Belt: 0400000004000000
   UI: {fileID: 0}
+  held: 0
+  _other: 1
   camvec: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   kbspeed: 10
@@ -327,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  health: 6
+  health: 20
   moveScript: {fileID: 0}
   meleeScript: {fileID: 0}
   ForceBackBulletHit: 10

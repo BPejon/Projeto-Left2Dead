@@ -4091,11 +4091,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340751363490373584, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3340751363490373584, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 177238740}
@@ -4365,11 +4360,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7872384499868384595, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7872384499868384597, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
@@ -38629,7 +38619,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5176471, g: 0.73333335, b: 0.40392157, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
