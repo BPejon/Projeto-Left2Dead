@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8369403181377191482}
   - component: {fileID: 8369403181377191481}
   - component: {fileID: 8369403181377191480}
-  - component: {fileID: 8369403181377191431}
   - component: {fileID: 8369403181377191430}
   - component: {fileID: 8369403181377191429}
+  - component: {fileID: 2069849093}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -329787927
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3167689046128837550, guid: ad827de350a72144eacf66a45b52244c,
+  m_Sprite: {fileID: -7524282997415197609, guid: 25ed682b990253e488d60d0d90a3d50d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,46 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8369403181377191431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369403181377191428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a46dda060943674aa56f4d6c28456f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 300
-  rb: {fileID: 8369403181377191480}
-  animator1: {fileID: 8369403181377191430}
-  player: {fileID: 8369403181377191428}
-  cam: {fileID: 0}
-  crosshair: {fileID: 0}
-  endOfAiming: 0
-  weapon: {fileID: 0}
-  weapon_sprite_render: {fileID: 0}
-  weapon_sprites:
-  - {fileID: -93006566689803346, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc, type: 3}
-  - {fileID: -7485147203578233895, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc, type: 3}
-  - {fileID: 273572961323770473, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc, type: 3}
-  - {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  off_set_x: 0.217
-  off_set_y: -0.285
-  bulletPrefab: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9,
-    type: 3}
-  firePoint: {fileID: 0}
-  BULLET_BASE_SPEED: 20
-  dashParticle: {fileID: 0}
-  dashSpeed: 1000
-  dashTime: 0.5
-  dashDuration: 0.2
-  startDashTime: -2
-  isOnDash: 0
 --- !u!95 &8369403181377191430
 Animator:
   serializedVersion: 3
@@ -192,3 +152,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.61343235, y: 1.3152742}
   m_EdgeRadius: 0
+--- !u!114 &2069849093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369403181377191428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812295d67d768a547950854f7bd00ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  dashParticle: {fileID: 0}
+  dashExplosionParticle: {fileID: 0}
+  DASHF: 0
+  dashSpeed: 0
+  dashTime: 0
+  dashDuration: 0
+  startDashTime: 0
+  isOnDash: 0
+  durationParticle: 0
