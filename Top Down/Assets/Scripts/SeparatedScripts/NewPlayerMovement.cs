@@ -63,6 +63,11 @@ public class NewPlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate(){
+        if (playerHitScript.isPlayerDead){
+            rb.velocity = (movement * 0);
+            return;
+        }
+
         //move o personagem conforme o movimento.
         if(!playerHitScript.isBack){
             if(isOnDash){

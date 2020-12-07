@@ -343,6 +343,8 @@ MonoBehaviour:
   TimeImune: 1.5
   isImune: 0
   healthBar: {fileID: 0}
+  isPlayerDead: 0
+  animator: {fileID: 7872384499868384592}
 --- !u!114 &6214380300665507040
 MonoBehaviour:
   m_ObjectHideFlags: 0

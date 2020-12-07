@@ -37,8 +37,12 @@ public class PlayerGotHit : MonoBehaviour
     float timeStartHit;
 
 
-
+    [Space]
+    [Header("health")]
     public HealthBar healthBar;
+    public bool isPlayerDead = false;
+    public Animator animator;
+
 
     Vector2 direction;
     Rigidbody2D rb;
@@ -68,6 +72,8 @@ public class PlayerGotHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("isDead", isPlayerDead);
+
         if (isBackBullet)
         {
             rb.velocity = (direction * ForceBackBulletHit);
@@ -128,6 +134,10 @@ public class PlayerGotHit : MonoBehaviour
             
             
         }
+
+        if(health <= 0){
+            isPlayerDead = true;
+        }
         
     }
     public void gotHitByBuleet(Transform bbPosition){
@@ -144,6 +154,9 @@ public class PlayerGotHit : MonoBehaviour
             timeStartHit = Time.time;
         }
 
+        if(health <= 0){
+            isPlayerDead = true;
+        }
     }    
 
 
