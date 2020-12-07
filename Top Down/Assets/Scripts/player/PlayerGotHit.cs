@@ -107,21 +107,26 @@ public class PlayerGotHit : MonoBehaviour
         {
             
             if (!isBackEnemy && other.gameObject.CompareTag("Enemy") ){
-                isBackEnemy = true;
-                health -= enemyHitDamage;
-                healthBar.SetHealth(health);
+
+                if(!other.gameObject.GetComponent<simple_enemy>().isDead) {
+                    isBackEnemy = true;
+                    health -= enemyHitDamage;
+                    healthBar.SetHealth(health);
+                }
+            }
+            if (isBackEnemy){
+                Transform enemyTransform = other.gameObject.GetComponent<Transform>();
+            
+                direction = ((Vector2)(transform.position) - (Vector2)enemyTransform.position).normalized;
+                
+                
+                isImune = true;
+                isBack = true;
+
+                timeStartHit = Time.time;
             }
             
             
-            Transform enemyTransform = other.gameObject.GetComponent<Transform>();
-            
-            direction = ((Vector2)(transform.position) - (Vector2)enemyTransform.position).normalized;
-            
-            
-            isImune = true;
-            isBack = true;
-
-            timeStartHit = Time.time;
         }
         
     }
