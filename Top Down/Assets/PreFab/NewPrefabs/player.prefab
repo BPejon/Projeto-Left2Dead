@@ -345,6 +345,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   isPlayerDead: 0
   animator: {fileID: 7872384499868384592}
+  timeAfterDead: 2.5
 --- !u!114 &6214380300665507040
 MonoBehaviour:
   m_ObjectHideFlags: 0

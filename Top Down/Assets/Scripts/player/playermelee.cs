@@ -22,6 +22,7 @@ public class playermelee : MonoBehaviour
     [Header("animation")]
     public Animator animator1;
     
+    private PlayerGotHit plyGotScript;
 
     float TimeStart; 
     float TimeEnd;
@@ -35,6 +36,7 @@ public class playermelee : MonoBehaviour
     void Start()
     {
         WeaponH = gameObject.transform.GetChild(0).gameObject;
+        plyGotScript = gameObject.GetComponent<PlayerGotHit>();
         TimeStart = -10;
         TimeEnd = -10;
         isAttackingMelee = false;
@@ -44,7 +46,9 @@ public class playermelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (plyGotScript.isPlayerDead)
+            return;
+
         if(Input.GetMouseButton(1) && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
             isAttackingMelee = true;
             WeaponH.SetActive(false);

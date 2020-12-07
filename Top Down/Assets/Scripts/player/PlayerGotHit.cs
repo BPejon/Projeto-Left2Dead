@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerGotHit : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class PlayerGotHit : MonoBehaviour
     public int enemyBulletHitDamage;
 
 
+    [Space]
+    [Header ("sprite")]
+    private SpriteRenderer spriteR;
 
 
     [Space]
@@ -44,12 +48,26 @@ public class PlayerGotHit : MonoBehaviour
     public Animator animator;
 
 
+    [Space]
+    [Header("Time ")]
+    public float timeAfterDead;
+    public float TimeFlashImune;
+    private bool switchImune;
+    float timeStartLastImune;
+    float timeDied;
+
+    GameObject WeaponH;
+
+
     Vector2 direction;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponH = gameObject.transform.GetChild(0).gameObject;
+        spriteR = gameObject.GetComponent<SpriteRenderer>();
+
         timeStartHit = -20.0f;
         moveScript =  gameObject.GetComponent<NewPlayerMovement>();
         meleeScript = gameObject.GetComponent<playermelee>();
@@ -72,6 +90,11 @@ public class PlayerGotHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPlayerDead && Time.time - timeDied > timeAfterDead)
+        {
+            SceneManager.LoadScene(0);
+        }
+
         animator.SetBool("isDead", isPlayerDead);
 
         if (isBackBullet)
@@ -96,8 +119,20 @@ public class PlayerGotHit : MonoBehaviour
 
         if (isImune)
         {
+            if (Time.time - timeStartLastImune > TimeFlashImune)
+            {   
+                if( switchImune){
+                    spriteR.color = new Color(1f,1f,1f,0.5f);
+                }else{
+                    spriteR.color = new Color(1f,1f,1f,1f);
+                }
+                switchImune = !switchImune;
+                timeStartLastImune = Time.time; 
+            }
+
             if (Time.time - timeStartHit > TimeImune)
             {
+                spriteR.color = new Color(1f,1f,1f,1f);
                 isImune = false;
             }
         }
@@ -118,6 +153,8 @@ public class PlayerGotHit : MonoBehaviour
                     isBackEnemy = true;
                     health -= enemyHitDamage;
                     healthBar.SetHealth(health);
+                    timeStartLastImune = Time.time;
+                    switchImune = true;
                 }
             }
             if (isBackEnemy){
@@ -135,8 +172,10 @@ public class PlayerGotHit : MonoBehaviour
             
         }
 
-        if(health <= 0){
+        if(!isPlayerDead && health <= 0){
             isPlayerDead = true;
+            WeaponH.SetActive(false);
+            timeDied = Time.time;
         }
         
     }
@@ -152,10 +191,15 @@ public class PlayerGotHit : MonoBehaviour
             direction = ((Vector2)(transform.position) - (Vector2)bbPosition.position).normalized;
             isImune = true;
             timeStartHit = Time.time;
+            timeStartLastImune = Time.time;
+            switchImune = true;
         }
 
-        if(health <= 0){
+        if(!isPlayerDead && health <= 0){
             isPlayerDead = true;
+            WeaponH.SetActive(false);
+            timeDied = Time.time;
+            
         }
     }    
 
