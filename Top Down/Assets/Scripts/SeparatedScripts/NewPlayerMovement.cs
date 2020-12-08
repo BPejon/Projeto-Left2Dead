@@ -41,6 +41,17 @@ public class NewPlayerMovement : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         animator = this.gameObject.GetComponent<Animator>();
         playerHitScript = gameObject.GetComponent<PlayerGotHit>();
+
+        //selecionamos a posicao inicial;
+        int default_ = PlayerPrefs.GetInt("use_position");
+
+        if(default_ == 1){
+            float x_position = PlayerPrefs.GetFloat("x_position");
+            float y_position = PlayerPrefs.GetFloat("y_position");
+
+            Vector2 newpos = new Vector2(x_position,y_position);
+            this.gameObject.transform.position = newpos;
+        }
     }
 
     // Update is called once per frame

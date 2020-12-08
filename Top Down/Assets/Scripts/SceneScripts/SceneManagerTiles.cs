@@ -9,7 +9,11 @@ public class SceneManagerTiles : MonoBehaviour
     public int sceneID;
     public GameObject player;
 
+    public float x_position;
 
+    public float y_position;
+
+    public bool usingPosition;
     public bool usingID;
 
     void OnTriggerEnter2D(Collider2D col){
@@ -44,6 +48,18 @@ public class SceneManagerTiles : MonoBehaviour
                 //Quanta vida o nosso jogador ainda tem:
                 PlayerPrefs.SetInt("hp", player.GetComponent<PlayerGotHit>().health);
                 PlayerPrefs.SetInt("use_default", 0);
+
+                //Quardamos uso de posicao;
+                if(usingPosition){
+                    PlayerPrefs.SetInt("use_position", 1);
+                }
+                else{
+                    PlayerPrefs.SetInt("use_position", 0);
+                }
+
+                PlayerPrefs.SetFloat("x_position", x_position);
+                PlayerPrefs.SetFloat("y_position", y_position);
+                
             }
             else{
                 SceneManager.LoadScene(sceneName);
