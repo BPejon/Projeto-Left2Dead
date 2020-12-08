@@ -112,6 +112,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4163167582672273142, guid: e98d7d130beeba34885f9cb816245ea9,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4849630293187480874, guid: e98d7d130beeba34885f9cb816245ea9,
         type: 3}
       propertyPath: m_IsTrigger
