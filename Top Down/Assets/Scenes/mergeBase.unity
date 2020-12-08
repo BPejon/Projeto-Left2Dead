@@ -4087,6 +4087,21 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 643246871}
+    - target: {fileID: 2059893637951528870, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: ShootTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059893637951528870, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: appRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059893639704547738, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.604
+      objectReference: {fileID: 0}
     - target: {fileID: 2059893639704547741, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
       propertyPath: m_Layer
@@ -4111,6 +4126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TimeFlashImune
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688337495728277591, guid: fea7782bdf8622d49833800444d2f727,
+        type: 3}
+      propertyPath: ShootTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3688337495728277608, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
@@ -4225,18 +4245,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6403314426991090457, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
-      propertyPath: curammo
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403314426991090457, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: elapsed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403314426991090457, guid: fea7782bdf8622d49833800444d2f727,
-        type: 3}
-      propertyPath: bulletspeed
-      value: 20
+      propertyPath: ShootTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7872384499429440942, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
@@ -4461,8 +4471,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9143677543512787009, guid: fea7782bdf8622d49833800444d2f727,
         type: 3}
-      propertyPath: bulletspeed
-      value: 40
+      propertyPath: ShootTime
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8837887377738968189, guid: fea7782bdf8622d49833800444d2f727, type: 3}

@@ -13,18 +13,31 @@ public class ShotGun : Gun
     public float bulletspeed;
 
     GameObject tip;
+    private SpriteRenderer tipSpriteR;
+
+
     [Space]
     [Header("shootEffect")]
-    public GameObject ShootEffectPreFab;
+    public float ShootTime;
+    public float appRate;
+    private float ShootStartTime;
+    private bool isShoingEffect;
+    private float curTipTransp;
+
     //Ao criar uma pistola, setamos então sua munição, e armas;
+    
+    
+    
     void Awake(){
-
-
+        curTipTransp = 0f;
+        isShoingEffect = false;
         self = this.gameObject;
+        
 
         //self.GetComponent<SpriteRenderer>().sprite = GetSprite("Pistol");  
         //Tip = Ponta da arma - Usada para determinar a posição de onde sai o tiro.
         tip = self.transform.Find("Tip").gameObject;  
+        tipSpriteR =  tip.GetComponent<SpriteRenderer>();
     }
     
     void Start()
@@ -39,7 +52,25 @@ public class ShotGun : Gun
     // Update is called once per frame
     void Update()
     {
+
+    }
+    private void FixedUpdate() {
         
+        if (isShoingEffect)
+        {
+            if (Time.time - ShootStartTime < ShootTime/2 && curTipTransp < 1.0f)
+            {
+                curTipTransp += appRate;
+                tipSpriteR.color = new Color(1f,1f,1f,curTipTransp);
+            }else if(Time.time - ShootStartTime > ShootTime/2 && curTipTransp > 0.0f){
+                curTipTransp -= appRate;
+                tipSpriteR.color = new Color(1f,1f,1f,curTipTransp);
+            }
+            if (curTipTransp < 0.0f)
+                isShoingEffect = false;
+            
+        }
+
     }
 
     public override KBReport Shoot(Vector3 aimvec){
@@ -69,6 +100,8 @@ public class ShotGun : Gun
        //se temos munição, atiramos; Tiro de pistóla é basico
        else{
             curammo--;
+            isShoingEffect = true;
+            ShootStartTime = Time.time;
             //Vector3.Normalize(aimvec);
 
             //Som da 12
