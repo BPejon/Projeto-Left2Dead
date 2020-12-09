@@ -732,7 +732,7 @@ MonoBehaviour:
   sceneName: SceneTest
   sceneID: 2
   player: {fileID: 757723017}
-  x_position: 31.5
+  x_position: 40
   y_position: -12.5
   usingPosition: 1
   usingID: 1

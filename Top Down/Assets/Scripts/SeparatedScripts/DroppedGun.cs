@@ -35,9 +35,28 @@ public class DroppedGun : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other){
          
+      
+
         if(Input.GetKeyDown(KeyCode.G)){
             if(other.gameObject.CompareTag("Player")){
                 
+
+                GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
+                if(aux == null){
+                    Debug.Log("Error");
+                }
+                else{
+                    Debug.Log("Good!");
+                    aux.ChangeWeapon(this.gameObject);
+                }
+                
+                Destroy(this.gameObject);
+            }
+        }
+        else if(Input.GetKey(KeyCode.G)){
+             if(other.gameObject.CompareTag("Player")){
+                
+
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");
@@ -55,10 +74,12 @@ public class DroppedGun : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-         
+
+        
+
         if(Input.GetKeyDown(KeyCode.G)){
             if(other.gameObject.CompareTag("Player")){
-                
+                    
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");
@@ -72,6 +93,21 @@ public class DroppedGun : MonoBehaviour
             }
         }
 
+         else if(Input.GetKey(KeyCode.G)){
+             if(other.gameObject.CompareTag("Player")){
+                
+                GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
+                if(aux == null){
+                    Debug.Log("Error");
+                }
+                else{
+                    Debug.Log("Good!");
+                    aux.ChangeWeapon(this.gameObject);
+                }
+                
+                Destroy(this.gameObject);
+            }
+        }
         
     }
 

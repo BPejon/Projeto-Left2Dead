@@ -91,6 +91,17 @@ public class SceneManagerTiles : MonoBehaviour
                 //Quanta vida o nosso jogador ainda tem:
                 PlayerPrefs.SetInt("hp", player.GetComponent<PlayerGotHit>().health);
                 PlayerPrefs.SetInt("use_default", 0);
+
+                //Quardamos uso de posicao;
+                if(usingPosition){
+                    PlayerPrefs.SetInt("use_position", 1);
+                }
+                else{
+                    PlayerPrefs.SetInt("use_position", 0);
+                }
+
+                PlayerPrefs.SetFloat("x_position", x_position);
+                PlayerPrefs.SetFloat("y_position", y_position);
             }
         }
     }

@@ -46,11 +46,14 @@ public class NewPlayerMovement : MonoBehaviour
         int default_ = PlayerPrefs.GetInt("use_position");
 
         if(default_ == 1){
+            Debug.Log("Using Position");
             float x_position = PlayerPrefs.GetFloat("x_position");
             float y_position = PlayerPrefs.GetFloat("y_position");
 
             Vector2 newpos = new Vector2(x_position,y_position);
             this.gameObject.transform.position = newpos;
+
+            PlayerPrefs.SetInt("use_position", 0);
         }
     }
 
