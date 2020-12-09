@@ -179,6 +179,47 @@ public class PlayerGotHit : MonoBehaviour
         }
         
     }
+    void OnCollisionStay2D(Collision2D  other) {
+        
+        if (!isImune && 
+            !meleeScript.isAttackingMelee &&
+            !moveScript.isOnDash &&
+            (other.gameObject.CompareTag("Enemy") ||
+            other.gameObject.CompareTag("enemyBullet")))
+        {
+            
+            if (!isBackEnemy && other.gameObject.CompareTag("Enemy") ){
+
+                if(!other.gameObject.GetComponent<simple_enemy>().isDead) {
+                    isBackEnemy = true;
+                    health -= enemyHitDamage;
+                    healthBar.SetHealth(health);
+                    timeStartLastImune = Time.time;
+                    switchImune = true;
+                }
+            }
+            if (isBackEnemy){
+                Transform enemyTransform = other.gameObject.GetComponent<Transform>();
+            
+                direction = ((Vector2)(transform.position) - (Vector2)enemyTransform.position).normalized;
+                
+                
+                isImune = true;
+                isBack = true;
+
+                timeStartHit = Time.time;
+            }
+            
+            
+        }
+
+        if(!isPlayerDead && health <= 0){
+            isPlayerDead = true;
+            WeaponH.SetActive(false);
+            timeDied = Time.time;
+        }
+        
+    }
     public void gotHitByBuleet(Transform bbPosition){
         if (!isBackBullet && !isImune && !moveScript.isOnDash){
             isBackBullet = true;
