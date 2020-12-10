@@ -59,6 +59,7 @@ public static class SoundManager{
             {
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+                //oneShotAudioSource.outputAudioMixerGroup("MainMixer");
             }
             
             oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
