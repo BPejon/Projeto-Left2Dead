@@ -80,7 +80,7 @@ public class GeneralWeaponScript : MonoBehaviour
         //Estamos na primeira cena ou nao - carregar estado do player;
         int default_ = PlayerPrefs.GetInt("use_default");
         if(default_ != 1){
-            Debug.Log("Here");
+            //Debug.Log("Here");
             held = PlayerPrefs.GetInt("held");
             _other = PlayerPrefs.GetInt("_other");
 

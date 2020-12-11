@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         arma1 = (GunImage) a1;
         arma2 = (GunImage) a2;
         
-        Debug.Log(a1+ " " + a2);
+        //Debug.Log(a1+ " " + a2);
 
         ShowGun1(GetSpriteGun(arma1));
         ShowGun2(GetSpriteGun(arma2));

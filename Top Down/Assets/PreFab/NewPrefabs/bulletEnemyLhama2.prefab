@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 3802818934192948225, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3802818934192948225, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
         type: 3}
@@ -67,12 +67,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletEnemyLhama2
       objectReference: {fileID: 0}
+    - target: {fileID: 3802818934192948229, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4087094571730989752, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 738f78e22ad0a6045bfb6e3d57b7eefa,
         type: 3}
+    - target: {fileID: 6209575987244652539, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6417718482341189842, guid: e3d3ca00c74ef7e45a8aa5beb6ebe478,
         type: 3}
       propertyPath: m_LocalRotation.z

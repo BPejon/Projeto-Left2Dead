@@ -32,7 +32,7 @@ public class MeleeG : MonoBehaviour
             isHit = false;
         }
         if (isHit){
-            Debug.Log("entrei aqui");
+            //Debug.Log("entrei aqui");
             GetComponent<Rigidbody2D>().velocity = (pushDirection * ForceBackEnemy * Time.fixedDeltaTime);
         }
         
