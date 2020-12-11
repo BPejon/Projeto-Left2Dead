@@ -70,6 +70,7 @@ public class EnemyShotAI : MonoBehaviour
     [Space]
     [Header("got Hit")]
     MeleeS enemyScriptHit; 
+    bool possiblePlaySound;
     
 
     void Awake() {
@@ -77,6 +78,7 @@ public class EnemyShotAI : MonoBehaviour
 
         enemyScript = gameObject.GetComponent<simple_enemy>();
         enemyScriptHit = gameObject.GetComponent<MeleeS>();
+        possiblePlaySound = true;
 
         isCharging = false;
         lastTimeShoot = 1.0f;
@@ -150,6 +152,10 @@ public class EnemyShotAI : MonoBehaviour
     void slow_when_preper_to_shoot(){
         if (Time.time - lastTimeShoot > (timeBetweenShoots - timeChagingShot) && onChase)
         {
+            if(possiblePlaySound){
+                SoundManager.PlaySound(SoundManager.Sound.Lhama, transform.position);
+                possiblePlaySound = false;
+            }
             speed = speedIni/2;
             isCharging = true;
         }else if (isCharging == true ){

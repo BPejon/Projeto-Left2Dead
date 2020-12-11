@@ -19,6 +19,8 @@ public static class SoundManager{
         dash,
         grabLife,
         meleeHit,
+        Lhama,
+        cheeta
     }
 
    

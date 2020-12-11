@@ -101,6 +101,7 @@ public class NewPlayerMovement : MonoBehaviour
                                                                                        transform.position.y,
                                                                                         - 2),
                                                                             Quaternion.identity);
+            SoundManager.PlaySound(SoundManager.Sound.dash);
             //float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
             //float duration = GetComponent<ParticleSystem>().main.duration;
             //float totalDuration = startTime + duration;

@@ -35,6 +35,8 @@ public class DroppedHealth : MonoBehaviour
             GameObject _player = other.gameObject;
             //Se o jogador tomou dano;
             if(_player.GetComponent<PlayerGotHit>().health < _player.GetComponent<PlayerGotHit>().maxHealth){
+                
+                SoundManager.PlaySound(SoundManager.Sound.grabLife);
                 _player.GetComponent<PlayerGotHit>().health += health;
                 if(_player.GetComponent<PlayerGotHit>().health > _player.GetComponent<PlayerGotHit>().maxHealth){
                     _player.GetComponent<PlayerGotHit>().health = _player.GetComponent<PlayerGotHit>().maxHealth;
