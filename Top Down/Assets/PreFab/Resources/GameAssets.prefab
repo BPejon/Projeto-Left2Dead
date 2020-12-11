@@ -84,8 +84,7 @@ MonoBehaviour:
     gunSprite: {fileID: -3731197321058260632, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
       type: 3}
   - gunImage: 4
-    gunSprite: {fileID: 246200477909967752, guid: 8a87a1b5b0e32ac4a90a32e934e5cbdc,
-      type: 3}
+    gunSprite: {fileID: 21300000, guid: 4f4187f373d183e4aa523cbd63d5b699, type: 3}
   ShakePresetArray:
   - shake: 0
     shakePreset: {fileID: 11400000, guid: 33432352258a4f6408bd51016d4094bd, type: 2}
