@@ -50,7 +50,7 @@ public class NewPlayerMovement : MonoBehaviour
             float x_position = PlayerPrefs.GetFloat("x_position");
             float y_position = PlayerPrefs.GetFloat("y_position");
 
-            Vector2 newpos = new Vector2(x_position,y_position);
+            Vector3 newpos = new Vector3(x_position,y_position,-9);
             this.gameObject.transform.position = newpos;
 
             PlayerPrefs.SetInt("use_position", 0);
@@ -101,6 +101,7 @@ public class NewPlayerMovement : MonoBehaviour
                                                                                        transform.position.y,
                                                                                         - 2),
                                                                             Quaternion.identity);
+            SoundManager.PlaySound(SoundManager.Sound.dash);
             //float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
             //float duration = GetComponent<ParticleSystem>().main.duration;
             //float totalDuration = startTime + duration;

@@ -39,7 +39,7 @@ public class enemyMeleeR : MonoBehaviour
     }
     void checkIfHitByPlayer(Collider2D  other){
         if (other.gameObject.CompareTag("Player")){
-            Debug.Log("entrei");
+            //Debug.Log("entrei");
             // se atacarmos um inimigo precisamos joga-lo para trás
             // vamos criar um vetor na direcao do inimigo
             

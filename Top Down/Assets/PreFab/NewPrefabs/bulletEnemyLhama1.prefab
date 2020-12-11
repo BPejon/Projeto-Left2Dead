@@ -93,6 +93,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bulletEnemyLhama1
       objectReference: {fileID: 0}
+    - target: {fileID: 1010095771815063330, guid: e6148e29462a0b143b71cbb50802cdd4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1010095771815063334, guid: e6148e29462a0b143b71cbb50802cdd4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -106,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 1010095771815063334, guid: e6148e29462a0b143b71cbb50802cdd4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1010095771815063334, guid: e6148e29462a0b143b71cbb50802cdd4,
         type: 3}

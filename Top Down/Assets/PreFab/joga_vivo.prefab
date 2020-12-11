@@ -12,13 +12,10 @@ GameObject:
   - component: {fileID: 261001218733136747}
   - component: {fileID: 261001218733136746}
   - component: {fileID: 261001218733136745}
-  - component: {fileID: 261001218733136750}
-  - component: {fileID: 4648747728485267945}
-  - component: {fileID: 4099112606707493593}
   - component: {fileID: 8197890304535656491}
   m_Layer: 0
-  m_Name: joga (2)
-  m_TagString: Player
+  m_Name: joga_vivo
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,80 +125,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &261001218733136750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261001218733136744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812295d67d768a547950854f7bd00ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 500
-  dashParticle: {fileID: 7698752985244832829, guid: ad9a9f9fdd6d0bb4285c156796cb9bce,
-    type: 3}
-  dashExplosionParticle: {fileID: 1417632264838582090, guid: 10039de2f407a5047b9b49e91a824485,
-    type: 3}
-  DASHF: 3
-  dashSpeed: 1300
-  dashTime: 0.5
-  dashDuration: 0.2
-  startDashTime: -2
-  isOnDash: 0
-  durationParticle: 0.5
---- !u!114 &4648747728485267945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261001218733136744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d61fe7ed6b795a74c92dd3bb29034d44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
-  moveScript: {fileID: 0}
-  meleeScript: {fileID: 0}
-  ForceBackBulletHit: 10
-  ForceBackEnemyHit: 20
-  TimeBack: 0.3
-  isBackEnemy: 0
-  isBackBullet: 0
-  isBack: 0
-  enemyHitDamage: 2
-  enemyBulletHitDamage: 1
-  TimeImune: 1.5
-  isImune: 0
-  healthBar: {fileID: 0}
---- !u!114 &4099112606707493593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261001218733136744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dfb6e10b56b6046a060776f48a61cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newHitSize: 3
-  ForceBack: 20
-  TimeAttacking: 0.3
-  TimeBTWAttackig: 0.5
-  m_collider: {fileID: 8197890304535656491}
-  bulletPrefab: {fileID: 4163167582672273136, guid: e98d7d130beeba34885f9cb816245ea9,
-    type: 3}
-  Damage: 2
-  ForceBackEnemy: 20
-  animator1: {fileID: 261001218733136745}
-  isAttackingMelee: 0
 --- !u!70 &8197890304535656491
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

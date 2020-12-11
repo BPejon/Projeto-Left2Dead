@@ -69,7 +69,7 @@ public class EnemyChargeAI : MonoBehaviour
 
     void Awake() {
         player = GameObject.Find("player").transform;
-        
+        onCharge = false;
         enemyScript = gameObject.GetComponent<simple_enemy>();
         enemyScriptHit = gameObject.GetComponent<MeleeC>();
 
@@ -169,8 +169,9 @@ public class EnemyChargeAI : MonoBehaviour
     }
 
     void checkIfCanCharge(){
-        if (onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
+        if (!onCharge && onAttack && Time.time - startTimeCharge > time_charging && Time.time - startTimeCharge < time_charging + time_attacking){
             /*podemos atacar adicionar a forca*/
+            SoundManager.PlaySound(SoundManager.Sound.cheeta,transform.position);
             speed = forceCharge;
             onCharge = true;
         }

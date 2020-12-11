@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BGSoundtrack : MonoBehaviour
 {
     public AudioSource Track0;
@@ -49,8 +49,18 @@ public class BGSoundtrack : MonoBehaviour
                 Track2.Play();
                 TrackHistory = 2;
             }
+
         }
 
+        if (SceneManager.GetActiveScene().name == "0.MainMenu")
+        {
+            Destroy(gameObject);
+        }
+
+        if (SceneManager.GetActiveScene().name == "CutsceneFinal")
+        {
+            Destroy(gameObject);
+        }
 
     }
 }

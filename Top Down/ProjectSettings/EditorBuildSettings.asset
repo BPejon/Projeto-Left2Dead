@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/6.Reator.unity
     guid: bbc7b941feb4afb448b5015940fc980b
+  - enabled: 1
+    path: Assets/Scenes/CutsceneInicial.unity
+    guid: b4487e8ce6c496148a6bb8bef9e8988b
+  - enabled: 1
+    path: Assets/Scenes/CutsceneFinal.unity
+    guid: 6422c77832a54d943a87428edb0fbfd8
   m_configObjects: {}

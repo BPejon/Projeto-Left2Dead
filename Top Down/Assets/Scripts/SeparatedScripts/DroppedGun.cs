@@ -40,7 +40,7 @@ public class DroppedGun : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G)){
             if(other.gameObject.CompareTag("Player")){
                 
-
+                SoundManager.PlaySound(SoundManager.Sound.sniperReload);
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");
@@ -56,7 +56,7 @@ public class DroppedGun : MonoBehaviour
         else if(Input.GetKey(KeyCode.G)){
              if(other.gameObject.CompareTag("Player")){
                 
-
+                SoundManager.PlaySound(SoundManager.Sound.sniperReload);
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");
@@ -79,7 +79,7 @@ public class DroppedGun : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.G)){
             if(other.gameObject.CompareTag("Player")){
-                    
+                SoundManager.PlaySound(SoundManager.Sound.sniperReload);
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");
@@ -95,7 +95,7 @@ public class DroppedGun : MonoBehaviour
 
          else if(Input.GetKey(KeyCode.G)){
              if(other.gameObject.CompareTag("Player")){
-                
+                SoundManager.PlaySound(SoundManager.Sound.sniperReload);
                 GeneralWeaponScript aux = other.gameObject.transform.Find("WeaponHolder").GetComponent<GeneralWeaponScript>();
                 if(aux == null){
                     Debug.Log("Error");

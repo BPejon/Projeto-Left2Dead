@@ -51,6 +51,7 @@ public class playermelee : MonoBehaviour
             return;
 
         if(Input.GetMouseButton(1) && !isAttackingMelee && Time.time - TimeEnd >= TimeBTWAttackig){
+            SoundManager.PlaySound(SoundManager.Sound.meleeHit);
             isAttackingMelee = true;
             WeaponH.SetActive(false);
             TimeStart = Time.time;

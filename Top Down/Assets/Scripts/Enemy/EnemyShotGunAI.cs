@@ -70,13 +70,14 @@ public class EnemyShotGunAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     bool isCharging;
+    bool possiblePlaySound;
     
 
     void Awake() {
         player = GameObject.Find("player").transform;
         enemyScript = gameObject.GetComponent<simple_enemy>();
         enemyScriptHit = gameObject.GetComponent<MeleeG>();
-
+        possiblePlaySound = true;
 
         lastTimeShoot = 1.0f;
         GameObject newEmptyGO = new GameObject();
@@ -149,9 +150,14 @@ public class EnemyShotGunAI : MonoBehaviour
     void slow_when_preper_to_shoot(){
         if (Time.time - lastTimeShoot > (timeBetweenShoots - timeChagingShot) && onChase)
         {
+            if(possiblePlaySound){
+                SoundManager.PlaySound(SoundManager.Sound.Lhama, transform.position);
+                possiblePlaySound = false;
+            }
             speed = speedIni/2;
             isCharging = true;
         }else if (isCharging == true ){
+            possiblePlaySound = true;
             isCharging = false;
         }
     }
@@ -231,7 +237,8 @@ public class EnemyShotGunAI : MonoBehaviour
             if (onChase){
                 roateWeapon();
                 if(Time.time - lastTimeShoot > timeBetweenShoots && Random.Range(0,10) == 2)
-                {   
+                {  
+                    
                     ShootShotgun();
                     speed = speedIni;
                     lastTimeShoot = Time.time;
