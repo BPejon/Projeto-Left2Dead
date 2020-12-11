@@ -1571,7 +1571,6 @@ GameObject:
   - component: {fileID: 370578019}
   - component: {fileID: 370578018}
   - component: {fileID: 370578020}
-  - component: {fileID: 370578021}
   m_Layer: 0
   m_Name: Tilemap_Wall
   m_TagString: Untagged
@@ -6386,25 +6385,6 @@ CompositeCollider2D:
       - {x: -89.99997, y: -6}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
---- !u!114 &370578021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370578014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4936bfd8dd17c45a25c6c96ad5ab1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
-  sceneID: 2
-  player: {fileID: 631533758}
-  x_position: 0
-  y_position: 0
-  usingPosition: 0
-  usingID: 1
 --- !u!1001 &379185083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17849,28 +17829,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1963319796}
     m_ColliderPaths:
-    - - X: -299999959
-        Y: 250000100
-      - X: -320000041
-        Y: 250000100
-      - X: -320000100
-        Y: 250000041
-      - X: -320000100
-        Y: 159999959
-      - X: -320000041
-        Y: 159999900
-      - X: -299999959
-        Y: 159999900
-      - X: -299999900
-        Y: 159999959
-      - X: -299999900
-        Y: 250000041
+    - - X: -300000000
+        Y: 160000000
+      - X: -300000000
+        Y: 250000000
+      - X: -320000000
+        Y: 250000000
+      - X: -320000000
+        Y: 160000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -30.000027, y: 15.99999}
-      - {x: -30.000027, y: 25.00001}
-      - {x: -32.00001, y: 24.999975}
-      - {x: -31.999975, y: 15.99999}
+    - - {x: -30.000029, y: 16}
+      - {x: -30.000029, y: 25}
+      - {x: -32, y: 24.999971}
+      - {x: -31.999971, y: 16}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1963319793
@@ -17892,7 +17864,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!483693784 &1963319794
 TilemapRenderer:
@@ -18149,8 +18121,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -32, y: 0, z: 0}
-  m_Size: {x: 32, y: 25, z: 1}
+  m_Origin: {x: -83, y: 0, z: 0}
+  m_Size: {x: 83, y: 25, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
