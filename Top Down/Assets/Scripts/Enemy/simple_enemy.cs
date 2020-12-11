@@ -100,7 +100,7 @@ public class simple_enemy : MonoBehaviour
                 timedied = Time.time;
             }
             
-            Debug.Log("squirtle Died");
+            //Debug.Log("squirtle Died");
         }
 
         movement = (  transform.position - prevLoc)/ Time.deltaTime;

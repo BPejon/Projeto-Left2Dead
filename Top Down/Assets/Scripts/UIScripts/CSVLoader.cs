@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
-using UnityEditor.Callbacks;
+//using UnityEditor.Callbacks;
 
 //Script para carregar o arquivo CSV corretamente
 

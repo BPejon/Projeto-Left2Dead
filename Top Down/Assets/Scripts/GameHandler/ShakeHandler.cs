@@ -17,7 +17,7 @@ public class ShakeHandler: MonoBehaviour {
 
     public static void PlayShake(Shake shake)
     {
-        Debug.Log(shake);
+        //Debug.Log(shake);
         Shaker.ShakeAll(GetShakePreset(shake));
     }
 

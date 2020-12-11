@@ -258,7 +258,7 @@ public class GeneralWeaponScript : MonoBehaviour
 
     //Pegar Itens e armas - 
     public void ChangeWeapon(GameObject other){
-        Debug.Log("Other!");
+        //Debug.Log("Other!");
         //se eh um item droppado (inicalmente faremos para armas)
         if(other.gameObject.CompareTag("DroppedItem")){
             
