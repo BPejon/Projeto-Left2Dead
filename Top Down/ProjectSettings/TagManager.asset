@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - bullet
+  - playerBullet
+  - enemyBullet
+  - DroppedItem
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,11 +23,11 @@ TagManager:
   - whatIsPlayer
   - front_player
   - top
-  - 
-  - 
-  - 
-  - 
-  - 
+  - part
+  - blood
+  - enemy
+  - BehindDF
+  - enemyCheeta
   - 
   - 
   - 
@@ -39,11 +43,26 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BehindDF
+    uniqueID: 78253341
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: whatIsGround
     uniqueID: 2402839255
+    locked: 0
+  - name: blood
+    uniqueID: 3649443391
+    locked: 0
+  - name: part
+    uniqueID: 13484647
+    locked: 0
+  - name: enemy
+    uniqueID: 2685534195
+    locked: 0
+  - name: enemyCheeta
+    uniqueID: 163480353
     locked: 0
   - name: behind_player
     uniqueID: 637676957

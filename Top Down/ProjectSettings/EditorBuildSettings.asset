@@ -4,5 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/0.MainMenu.unity
+    guid: 3342343cf4c333c41be883d36e55c202
+  - enabled: 1
+    path: Assets/Scenes/1.LaboratoryEmChamas.unity
+    guid: 7506eb44d81dae94381e93764d9a57b2
+  - enabled: 1
+    path: Assets/Scenes/2.Saguao.unity
+    guid: 55cc0e83b23c6164a9904dd8de1479d8
+  - enabled: 1
+    path: Assets/Scenes/3.Jardim.unity
+    guid: 7ee852308748f15499d9031faa58d588
+  - enabled: 1
+    path: Assets/Scenes/4.Salao.unity
+    guid: 0348b4f2d84d18d4cbce59c0b73c6173
+  - enabled: 1
+    path: Assets/Scenes/5.JardimPassagem.unity
+    guid: cc9e4c5a50bf04c49b0de7a445a1d55a
+  - enabled: 1
+    path: Assets/Scenes/6.Reator.unity
+    guid: bbc7b941feb4afb448b5015940fc980b
   m_configObjects: {}

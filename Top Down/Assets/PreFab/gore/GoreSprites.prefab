@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4750566651055478696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4750566651055478698}
+  - component: {fileID: 4750566651055478699}
+  m_Layer: 0
+  m_Name: GoreSprites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4750566651055478698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750566651055478696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.06, y: 2.8, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4750566651055478699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750566651055478696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebd2cd1094e3c740a1ed7de147e03e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - {fileID: 864148425816168596, guid: 4b0aa609f5e6bed4793a078ed2765134, type: 3}
+  - {fileID: -7188406945740839525, guid: 4b0aa609f5e6bed4793a078ed2765134, type: 3}
+  splatters:
+  - {fileID: -2196507584047120782, guid: 76daed60d101adc4ba2f22f6d53f7864, type: 3}
+  - {fileID: -2935230067662717185, guid: 76daed60d101adc4ba2f22f6d53f7864, type: 3}
+  - {fileID: 4569108249962259654, guid: 76daed60d101adc4ba2f22f6d53f7864, type: 3}
+  - {fileID: -3626965974631079084, guid: 76daed60d101adc4ba2f22f6d53f7864, type: 3}
