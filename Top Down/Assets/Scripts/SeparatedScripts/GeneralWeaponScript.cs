@@ -110,6 +110,8 @@ public class GeneralWeaponScript : MonoBehaviour
         UI.SetBulletGun(gunTypes[Belt[_other]].GetComponent<Gun>().curammo, _other);
         UI.SetBulletColdre(gunTypes[Belt[_other]].GetComponent<Gun>().ammo, _other);
 
+        UI.setGunImages(Belt[0], Belt[1]);
+
     }
 
     // Update is called once per frame

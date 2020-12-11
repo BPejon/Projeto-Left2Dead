@@ -101,10 +101,10 @@ public class NewPlayerMovement : MonoBehaviour
                                                                                        transform.position.y,
                                                                                         - 2),
                                                                             Quaternion.identity);
-            float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
-            float duration = GetComponent<ParticleSystem>().main.duration;
-            float totalDuration = startTime + duration;
-            Destroy(dashParticleClone.gameObject, totalDuration);
+            //float startTime = GetComponent<ParticleSystem>().main.startLifetime.constantMax;
+            //float duration = GetComponent<ParticleSystem>().main.duration;
+            //float totalDuration = startTime + duration;
+            Destroy(dashParticleClone.gameObject, 2f /*totalDuration*/);
             
             isOnDash = true;
             counter_aux = 0;            
