@@ -41173,9 +41173,9 @@ MonoBehaviour:
   sceneName: 
   sceneID: 4
   player: {fileID: 1166274612}
-  x_position: 0
-  y_position: 0
-  usingPosition: 0
+  x_position: 82
+  y_position: 12
+  usingPosition: 1
   usingID: 1
 --- !u!483693784 &1294866697
 TilemapRenderer:
