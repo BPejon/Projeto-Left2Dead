@@ -34,7 +34,6 @@ public class MeleeC : MonoBehaviour
         if (isHit){
             ///Debug.Log("entrei aqui");
             GetComponent<Rigidbody2D>().velocity = (pushDirection * ForceBackEnemy * Time.fixedDeltaTime);
-            SoundManager.PlaySound(SoundManager.Sound.meleeHit);
         }
         
     }
