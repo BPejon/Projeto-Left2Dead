@@ -38,7 +38,7 @@ public class MeleeC : MonoBehaviour
         }
         
     }
-    void checkIfHitByPlayer(Collision2D  other){
+    void checkIfHitByPlayer(Collider2D  other){
         if (other.gameObject.CompareTag("Player")){
             // se atacarmos um inimigo precisamos joga-lo para trás
             // vamos criar um vetor na direcao do inimigo
@@ -61,7 +61,10 @@ public class MeleeC : MonoBehaviour
     
 
 
-    void OnCollisionEnter2D(Collision2D other) {
+    void OnTriggerEnter2D(Collider2D other) {
+        checkIfHitByPlayer(other);
+    }
+    private void OnTriggerStay2D(Collider2D other) {
         checkIfHitByPlayer(other);
     }
 }

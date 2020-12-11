@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 8488597463513257603}
   - component: {fileID: 8876944242640130921}
   - component: {fileID: 1365655724769117018}
+  - component: {fileID: 2867569308081695087}
   m_Layer: 15
   m_Name: enemy
   m_TagString: Enemy
@@ -457,6 +458,22 @@ MonoBehaviour:
   ForceBackEnemy: 1000
   TimeBetHit: 0.3
   isHit: 0
+--- !u!70 &2867569308081695087
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026476679029886081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.032829285, y: -0.109429836}
+  m_Size: {x: 0.9029846, y: 1.3154383}
+  m_Direction: 0
 --- !u!1 &7490528618710134014
 GameObject:
   m_ObjectHideFlags: 0

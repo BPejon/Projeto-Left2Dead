@@ -13,6 +13,7 @@ public class playermelee : MonoBehaviour
     public float TimeAttacking;
     public float TimeBTWAttackig;
     public CapsuleCollider2D m_collider;
+
     public GameObject bulletPrefab; 
     public int Damage;
     public float ForceBackEnemy;
@@ -72,8 +73,8 @@ public class playermelee : MonoBehaviour
 
     
 
-    // se a bala entrar em contato com algo ela é destruida.
-    void OnCollisionEnter2D(Collision2D  other) {
-    }
+    
+
+    
 
 }
