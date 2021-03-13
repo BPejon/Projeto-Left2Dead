@@ -11,4 +11,8 @@ A simple top down game in Unity
   <li> Scenes - where we save Scenes  </li>
   <li> Script - where we save the Scripts  </li>
 </ul>
-  
+
+<p align="center">
+<img src="https://github.com/BPejon/Projeto-Left2Dead/blob/master/image1.gif" width="600"/>
+</p>
+
